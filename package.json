@@ -1,0 +1,15 @@
+{
+  "name": "vault-ui",
+  "version": "1.0.0",
+  "description": "a free vault ui",
+  "main": "index.js",
+  "repository": {
+    "url": "git@github.com:alanraison/vault-ui.git",
+    "type": "git"
+  },
+  "author": "Alan Raison <alan.raison@users.sourceforge.net>",
+  "license": "GPLv3",
+  "devDependencies": {
+    "webpack": "^3.0.0-rc.1"
+  }
+}
