@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "a free vault ui",
   "main": "index.js",
+  "private": true,
   "repository": {
     "url": "git@github.com:alanraison/vault-ui.git",
     "type": "git"
@@ -10,6 +11,26 @@
   "author": "Alan Raison <alan.raison@users.sourceforge.net>",
   "license": "GPLv3",
   "devDependencies": {
-    "webpack": "^3.0.0-rc.1"
+    "eslint": "^4.0.0",
+    "eslint-plugin-import": "^2.5.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
+    "react-scripts": "^1.0.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "history": "^4.6.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.0",
+    "redux-first-router": "^1.4.16",
+    "redux-first-router-link": "^1.0.3",
+    "redux-saga": "^0.15.3"
   }
 }
