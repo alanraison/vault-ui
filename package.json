@@ -10,6 +10,7 @@
   },
   "author": "Alan Raison <alan.raison@users.sourceforge.net>",
   "license": "GPLv3",
+  "proxy": "http://localhost:8200",
   "devDependencies": {
     "eslint": "^4.0.0",
     "eslint-plugin-import": "^2.5.0",
@@ -31,6 +32,7 @@
     "redux": "^3.7.0",
     "redux-first-router": "^1.4.16",
     "redux-first-router-link": "^1.0.3",
+    "redux-logger": "^3.0.6",
     "redux-saga": "^0.15.3"
   }
 }

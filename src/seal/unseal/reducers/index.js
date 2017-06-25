@@ -1,8 +1,10 @@
 import * as actions from '../actions';
 
-export default (state = {}, action) => {
+const initialState = "";
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case actions.GET_UNSEAL_STATUS_COMPLETE:
+    case actions.EDIT_UNSEAL_KEY:
       return action.data;
     default:
       return state;

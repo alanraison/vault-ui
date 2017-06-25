@@ -1,8 +1,8 @@
 import {
   combineReducers,
 } from 'redux';
-import unsealStatus from '../unseal/reducers';
+import sealStatus from '../seal/reducers';
 
 export default combineReducers({
-  unsealStatus,
+  sealStatus,
 });

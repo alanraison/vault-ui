@@ -1,34 +1,34 @@
 import React from 'react';
-import {
-  connect,
-} from 'react-redux';
+import { connect } from 'react-redux';
 import { 
   getUnsealStatusStart, 
-} from './unseal/actions';
+} from './seal/actions';
+import IfUnsealed from './seal/components';
 
 const Loading = () => <div>Loading...</div>
-const Unseal = () => <div>Unseal!</div>
 const Unsealed = () => <div>Unsealed!</div>
 
 class App extends React.Component {
   componentDidMount() {
-    if (!this.props.sealStatus) {
+    if (this.props.sealed === null) {
       this.props.onReady();
     }
   }
   render() {
-    if (!this.props.sealStatus) {
+    if (!this.props.sealed === null) {
       return <Loading/>
-    } else if (this.props.sealStatus.sealed) {
-      return <Unseal/>
     } else {
-      return <Unsealed/>
+      return (
+        <IfUnsealed>
+          <Unsealed/>
+        </IfUnsealed>
+      );
     }
   }
 }
 
 const mapStateToProps = (state) => ({
-  sealStatus: state.app.seal,
+  sealed: state.app.sealStatus.serverState.sealed,
 });
 const mapDispatchToProps = ({
   onReady: getUnsealStatusStart,

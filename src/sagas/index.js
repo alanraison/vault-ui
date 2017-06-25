@@ -1,3 +1,3 @@
-import unseal from '../unseal/sagas';
+import unseal from '../seal/sagas';
 
 export default unseal;

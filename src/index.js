@@ -4,27 +4,28 @@ import {
   applyMiddleware,
   createStore, 
   combineReducers,
-  compose,
+  // compose,
 } from 'redux';
 import { 
   Provider, 
 } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import createHistory from 'history/createBrowserHistory';
-import { connectRoutes } from 'redux-first-router';
+import logger from 'redux-logger';
+// import createHistory from 'history/createBrowserHistory';
+// import { connectRoutes } from 'redux-first-router';
 import App from './app';
 import app from './reducers';
-import sagas from './unseal/sagas';
+import sagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const history = createHistory();
-const routesMap = {
-  UNSEAL: '/unseal',
-};
+// const history = createHistory();
+// const routesMap = {
+//   UNSEAL: '/unseal',
+// };
 //const { reducer, routingMiddleware, enhancer } = connectRoutes(history, routesMap);
 
-const middlewares = applyMiddleware(sagaMiddleware);
+const middlewares = applyMiddleware(sagaMiddleware, logger);
 const store = createStore(
   combineReducers({app}),
   middlewares
