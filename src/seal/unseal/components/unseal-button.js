@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Button from '@react-mdc/button';
 import { startUnseal } from '../actions';
+import '@material/button/dist/mdc.button.css';
 
-const UnsealButton = ({
+export const UnsealButton = ({
   unsealKey,
   onClick,
 }) => (
-  <button onClick={() => onClick(unsealKey)}>Unseal</button>
+  <Button onClick={() => onClick(unsealKey)}>Unseal</Button>
 );
 
 const mapStateToProps = (state) => ({

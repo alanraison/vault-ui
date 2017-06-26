@@ -1,20 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { editUnsealKey } from '../actions'
+import FormField from '@react-mdc/form-field';
+// import TextField from '@react-mdc/textfield';
+import '@material/form-field/dist/mdc.form-field.css';
+import '@material/textfield/dist/mdc.textfield.css';
 
-const UnsealInput = ({
+export const UnsealInput = ({
   value,
   onChange,
 }) => {
   let input;
   return (
-    <div>
-      <input id="unseal-key-input"
+    <FormField>
+      <div className="mdc-textfield mdc-textfield--fullwidth">
+        <input id="unseal-key-input"
+          className="mdc-textfield__input"
           ref={ n => input = n }
           onChange={ () => onChange(input.value) }
           value={value} />
-      <label htmlFor="unseal-key-input">Unseal Key</label>
-    </div>
+        <label htmlFor="unseal-key-input" className="mdc-textfield__label">Unseal Key</label>
+      </div>
+    </FormField>
   )
 }
 

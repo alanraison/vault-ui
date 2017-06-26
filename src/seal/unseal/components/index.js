@@ -2,17 +2,24 @@ import React from 'react';
 import UnsealCount from './unseal-count';
 import UnsealInput from './unseal-input';
 import UnsealButton from './unseal-button';
+import Card from '@react-mdc/card';
+import '@material/card/dist/mdc.card.css';
 
 export default () => (
-  <div>
-    <div>
-      <UnsealCount/>
-    </div>
-    <div>
+  <Card>
+    <Card.Primary>
+      <Card.Title>
+        <strong>Vault is sealed.</strong>
+      </Card.Title>
+      <Card.Subtitle>
+        <UnsealCount/>
+      </Card.Subtitle>
+    </Card.Primary>
+    <Card.SupportingText>
       <UnsealInput/>
-    </div>
-    <div>
+    </Card.SupportingText>
+    <Card.Actions>
       <UnsealButton/>
-    </div>
-  </div>
+    </Card.Actions>
+  </Card>
 );

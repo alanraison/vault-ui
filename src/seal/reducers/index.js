@@ -9,7 +9,7 @@ const initialState = {
 const serverState = (state = initialState, action) => {
   switch (action.type) {
     case actions.UNSEAL_STATUS_UPDATED:
-      return action.data
+      return action.data;
     default:
       return state;
   }

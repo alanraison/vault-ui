@@ -12,11 +12,15 @@
   "license": "GPLv3",
   "proxy": "http://localhost:8200",
   "devDependencies": {
+    "enzyme": "^2.9.1",
     "eslint": "^4.0.0",
     "eslint-plugin-import": "^2.5.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
-    "react-scripts": "^1.0.7"
+    "jest": "^20.0.4",
+    "jest-enzyme": "^3.3.0",
+    "react-scripts": "^1.0.7",
+    "react-test-renderer": "^15.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,6 +32,7 @@
     "history": "^4.6.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-material-components-web": "^0.1.17",
     "react-redux": "^5.0.5",
     "redux": "^3.7.0",
     "redux-first-router": "^1.4.16",

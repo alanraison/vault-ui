@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const UnsealCount = ({
+export const UnsealCount = ({
   count,
 }) => (
-  <div>
-    {count}
-  </div>
+  <span>
+    Please enter {count} unseal key{count === 1 ? "":"s"} to unlock Vault.
+  </span>
 );
 
 const mapStateToProps = (state) => ({

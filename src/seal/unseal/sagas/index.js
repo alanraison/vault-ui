@@ -5,15 +5,20 @@ import {
 } from 'redux-saga/effects';
 import * as actions from '../actions';
 import * as statusActions from '../../actions';
+import * as globalActions from '../../../actions';
 import * as api from '../api';
 
 
 function* callUnseal(action) {
   try {
     const status = yield call(api.unseal, action.data);
-    yield put(statusActions.unsealStatusUpdated(status));
+    if (status.errors) {
+      yield put(globalActions.error(status.errors, "unsealing vault"));
+    } else {
+      yield put(statusActions.unsealStatusUpdated(status));
+    }
   } catch (e) {
-    yield put(actions.unsealError(e))
+    yield put(globalActions.error(e, "unsealing vault"))
   }
 }
 
