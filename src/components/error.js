@@ -13,10 +13,10 @@ export const Error = ({
 }) => (
   <Card>
     <Card.Primary>
-      <Card.Title>Error</Card.Title>
+      <Card.Title><strong>Error</strong></Card.Title>
     </Card.Primary>
     <Card.SupportingText>
-      Error with {source}: {error.toString()}
+      Error {source}: {error.toString()}
     </Card.SupportingText>
     <Card.Actions>
       <Button onClick={onDismiss}>Dismiss</Button>

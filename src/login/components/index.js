@@ -7,7 +7,7 @@ import '@material/button/dist/mdc.button.css';
 export default () => (
   <Card>
     <Card.Primary>
-      <Card.Title>Login to Vault.</Card.Title>
+      <Card.Title><strong>Login to Vault.</strong></Card.Title>
     </Card.Primary>
     <Card.SupportingText>
       LoginChooser

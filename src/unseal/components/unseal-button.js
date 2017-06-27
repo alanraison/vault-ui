@@ -12,7 +12,7 @@ export const UnsealButton = ({
 );
 
 const mapStateToProps = (state) => ({
-  unsealKey: state.app.sealStatus.unseal,
+  unsealKey: state.app.unseal,
 })
 
 const mapDispatchToProps = ({

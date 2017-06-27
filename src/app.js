@@ -6,6 +6,7 @@ import {
 import {
   Page,
 } from './components';
+import '@material/typography/dist/mdc.typography.css';
 
 export class App extends React.Component {
   componentDidMount() {
