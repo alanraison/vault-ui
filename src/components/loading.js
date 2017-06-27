@@ -8,4 +8,4 @@ export default () => (
       <Card.Title>Loading...</Card.Title>
     </Card.Primary>
   </Card>
-)
+);

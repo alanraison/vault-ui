@@ -1,11 +1,10 @@
 import React from 'react';
 import Header from './header';
+import Initialise from './initialise';
 
-export default ({children}) => (
+export default () => (
   <div>
     <Header/>
-    <div>
-      {children}
-    </div>
+    <Initialise/>
   </div>
 );

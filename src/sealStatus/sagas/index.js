@@ -6,7 +6,7 @@ import {
 import * as actions from '../actions';
 import * as globalActions from '../../actions';
 import * as api from '../api';
-import unsealSagas from '../unseal/sagas';
+import unsealSagas from '../../unseal/sagas';
 
 function* callGetSealStatus() {
   try {

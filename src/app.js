@@ -2,15 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   getUnsealStatusStart,
-} from './seal/actions';
+} from './sealStatus/actions';
 import {
   Page,
-  Error,
-  Loading,
 } from './components';
-import IfUnsealed from './seal/components';
-
-const Unsealed = () => <div>Unsealed!</div>
 
 export class App extends React.Component {
   componentDidMount() {
@@ -19,29 +14,14 @@ export class App extends React.Component {
     }
   }
   render() {
-    let content;
-    if (this.props.sealed === null) {
-      content = <Loading />
-    } else if (this.props.error) {
-      content = <Error/>
-    } else {
-      content = (
-        <IfUnsealed>
-          <Unsealed/>
-        </IfUnsealed>
-      );
-    }
     return (
-      <Page>
-        {content}
-      </Page>
+      <Page/>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  sealed: state.app.sealStatus.serverState.sealed,
-  error: state.app.error,
+  sealed: state.app.sealStatus.sealed,
 });
 const mapDispatchToProps = ({
   onReady: getUnsealStatusStart,

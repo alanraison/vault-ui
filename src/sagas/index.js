@@ -1,3 +1,3 @@
-import unseal from '../seal/sagas';
+import sealStatus from '../sealStatus/sagas';
 
-export default unseal;
+export default sealStatus;

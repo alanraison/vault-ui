@@ -1,9 +1,9 @@
 import Page from './page';
 import Error from './error';
-import Loading from './loading';
+import Initalise from './initialise';
 
 export {
   Page,
   Error,
-  Loading,
+  Initalise,
 };

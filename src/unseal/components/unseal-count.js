@@ -10,7 +10,7 @@ export const UnsealCount = ({
 );
 
 const mapStateToProps = (state) => ({
-  count: state.app.sealStatus.serverState.t - state.app.sealStatus.serverState.progress,
+  count: state.app.sealStatus.t - state.app.sealStatus.progress,
 });
 
 export default connect(mapStateToProps)(UnsealCount);
