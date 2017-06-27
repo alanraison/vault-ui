@@ -5,7 +5,7 @@ import '@material/card/dist/mdc.card.css';
 export default () => (
   <Card>
     <Card.Primary>
-      <Card.Title>Loading...</Card.Title>
+      <Card.Title large>Loading...</Card.Title>
     </Card.Primary>
   </Card>
 );

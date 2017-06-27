@@ -6,6 +6,7 @@ import {
 import {
   Page,
 } from './components';
+import Typography from '@react-mdc/typography';
 import '@material/typography/dist/mdc.typography.css';
 
 export class App extends React.Component {
@@ -16,7 +17,9 @@ export class App extends React.Component {
   }
   render() {
     return (
-      <Page/>
+      <Typography>
+        <Page/>
+      </Typography>
     );
   }
 }

@@ -8,9 +8,7 @@ import '@material/card/dist/mdc.card.css';
 export default () => (
   <Card>
     <Card.Primary>
-      <Card.Title>
-        <strong>Vault is sealed.</strong>
-      </Card.Title>
+      <Card.Title large>Vault is sealed.</Card.Title>
       <Card.Subtitle>
         <UnsealCount/>
       </Card.Subtitle>
