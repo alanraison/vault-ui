@@ -6,7 +6,7 @@ export default () => (
   <Toolbar>
     <Toolbar.Row>
       <Toolbar.Section align="start">
-        <a href="#/"><i className="logo"/></a>
+        <i className="material-icons">lock</i>
         <Toolbar.Title>Vault</Toolbar.Title>
       </Toolbar.Section>
     </Toolbar.Row>

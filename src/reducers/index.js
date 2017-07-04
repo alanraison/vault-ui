@@ -29,10 +29,20 @@ const connected = (state = false, action) => {
   }
 }
 
+const authToken = (state = "", action) => {
+  switch (action.type) {
+    case actions.login.LOGIN_SUCCESS:
+      return action.data;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
-  sealStatus,
-  unseal,
+  authToken,
+  connected,
   error,
   login,
-  connected,
+  sealStatus,
+  unseal,
 });

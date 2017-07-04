@@ -1,4 +1,5 @@
 import {
+  all,
   call,
   takeLatest,
   put,
@@ -18,6 +19,8 @@ function* callGetSealStatus() {
 }
 
 export default function* () {
-  yield takeLatest(actions.GET_UNSEAL_STATUS_START, callGetSealStatus);
-  yield unsealSagas();
+  yield all([
+    takeLatest(actions.GET_UNSEAL_STATUS_START, callGetSealStatus),
+    unsealSagas(),
+  ]);
 }
