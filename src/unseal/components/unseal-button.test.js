@@ -8,4 +8,4 @@ test('onClick handler invoked with key prop', () => {
 
   wrapper.find('button').simulate('click');
   expect(onClick.mock.calls.length).toBe(1);
-})
+});

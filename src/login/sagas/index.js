@@ -7,7 +7,11 @@ function* login(action) {
   const loginData = yield select(state => state.app.login[loginMethod]);
   try {
     const auth = yield call(api.login, loginMethod, loginData);
-    yield put(actions.loginSuccess(auth));
+    if (auth.errors) {
+      yield put(actions.loginError(auth));
+    } else {
+      yield put(actions.loginSuccess(auth));
+    }
   } catch(e) {
     yield put(actions.loginError(e));
   }

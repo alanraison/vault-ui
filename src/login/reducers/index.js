@@ -8,6 +8,11 @@ export default (state = {method:null}, action) => {
         ...state,
         method: action.data,
       }
+    case actions.LOGIN_ERROR:
+      return {
+        ...state,
+        error: action.errors,
+      }
     default:
       if (state.method) {
         const currentMethodState = state[state.method];

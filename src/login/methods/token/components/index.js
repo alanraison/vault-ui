@@ -9,23 +9,17 @@ import '@material/textfield/dist/mdc.textfield.css';
 const TokenEntry = ({
   value,
   onChange,
-}) => {
-  let textfield;
-  return (
-  <div>
-    <FormField>
-      <TextField id="token-input">
-          <input className="mdc-textfield__input"
-          ref={ n => textfield = n }
-          onChange={() => onChange(textfield.value)}
+}) => (
+  <FormField>
+    <TextField id="token-input">
+        <TextField.Input
+          onChange={(e) => onChange(e.target.value)}
           value={value}
-        />
-        <TextField.Label htmlFor="token-input">Token</TextField.Label>
-      </TextField>
-    </FormField>
-  </div>
-  );
-}
+      />
+      <TextField.Label htmlFor="token-input">Token</TextField.Label>
+    </TextField>
+  </FormField>
+);
 
 const mapStateToProps = (state) => ({
   value: state.app.login.tokenEntry,
