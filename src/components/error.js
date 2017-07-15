@@ -19,7 +19,7 @@ export const Error = ({
       Error {source}: {error.toString()}
     </Card.SupportingText>
     <Card.Actions>
-      <Button onClick={onDismiss}>Dismiss</Button>
+      <Button className="dismiss" onClick={onDismiss}>Dismiss</Button>
     </Card.Actions>
   </Card>
 );
