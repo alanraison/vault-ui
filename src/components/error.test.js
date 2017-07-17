@@ -13,10 +13,10 @@ describe('Overall Error Element', () => {
       onDismiss={dismissFunction}
     />);
   it('should display the error message', () => {
-    expect(wrapper.text()).toContain(testError.toString());
+    expect(wrapper).toIncludeText(testError.toString());
   });
   it('should display the error source', () => {
-    expect(wrapper.text()).toContain(errorSource);
+    expect(wrapper).toIncludeText(errorSource);
   });
   it('should call the dismiss function when the dismiss button is clicked', () => {
     wrapper.find('button.dismiss').simulate('click');
