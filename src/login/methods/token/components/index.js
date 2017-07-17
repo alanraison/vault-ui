@@ -6,7 +6,7 @@ import { changeToken } from '../actions';
 import '@material/form-field/dist/mdc.form-field.css';
 import '@material/textfield/dist/mdc.textfield.css';
 
-const TokenEntry = ({
+export const TokenEntry = ({
   value,
   onChange,
 }) => (

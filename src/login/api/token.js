@@ -1,7 +1,7 @@
 import { url } from '../../api';
 
 export default (token) => (
-  fetch(new Request(`${url}/v1/auth/token/create`, {
+  fetch(new Request(`${url()}/v1/auth/token/create`, {
     method: 'POST',
     headers: new Headers({
       'X-Vault-Token': token,

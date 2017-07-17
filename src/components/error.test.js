@@ -20,6 +20,6 @@ describe('Overall Error Element', () => {
   });
   it('should call the dismiss function when the dismiss button is clicked', () => {
     wrapper.find('button.dismiss').simulate('click');
-    expect(dismissFunction.mock.calls.length).toBe(1);
+    expect(dismissFunction).toBeCalled();
   });
 });

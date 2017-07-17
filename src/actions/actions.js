@@ -1,5 +1,3 @@
-import * as actions from '.';
-
 export const testActionCreators = (actions) => ({
   actionCreator(action, type, data) {
     describe(action, () => {

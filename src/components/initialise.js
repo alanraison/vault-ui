@@ -34,7 +34,6 @@ export const Initialise = ({
 const mapStateToProps = (state) => ({
   error: state.app.error,
   loading: state.app.sealStatus.loading,
-  connected: state.app.connected,
   sealed: state.app.connected && state.app.sealStatus.sealed,
   unauthenticated: state.app.connected && !state.app.authToken,
   ready: state.app.connected && state.app.authToken.auth,
