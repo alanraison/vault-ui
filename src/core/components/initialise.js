@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Error from './error';
 import Loading from './loading';
-import Unseal from '../unseal/components';
-import Login from '../login/components';
-import Workspace from '../workspace/components';
+import Unseal from '../../unseal/components';
+import Login from '../../login/components';
+import Workspace from '../../workspace/components';
 
 export const Initialise = ({
   error,

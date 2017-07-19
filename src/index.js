@@ -13,9 +13,9 @@ import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 // import createHistory from 'history/createBrowserHistory';
 // import { connectRoutes } from 'redux-first-router';
-import App from './app';
-import app from './reducers';
-import sagas from './sagas';
+import App from './core/app';
+import app from './core/reducers';
+import sagas from './core/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   getUnsealStatusStart,
-} from './sealStatus/actions';
+} from '../sealStatus/actions';
 import {
   Page,
 } from './components';

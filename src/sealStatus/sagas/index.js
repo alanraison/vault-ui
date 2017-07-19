@@ -5,7 +5,7 @@ import {
   put,
 } from 'redux-saga/effects';
 import * as actions from '../actions';
-import * as globalActions from '../../actions';
+import * as coreActions from '../../core/actions';
 import * as api from '../api';
 import unsealSagas from '../../unseal/sagas';
 
@@ -14,7 +14,7 @@ function* callGetSealStatus() {
     const status = yield call(api.getSealStatus);
     yield put(actions.unsealStatusUpdated(status));
   } catch(e) {
-    yield put(globalActions.error(e, "getting unseal status"));
+    yield put(coreActions.error(e, "getting unseal status"));
   }
 }
 

@@ -5,7 +5,7 @@ import {
 } from 'redux-saga/effects';
 import * as actions from '../actions';
 import * as statusActions from '../../sealStatus/actions';
-import * as globalActions from '../../actions';
+import * as globalActions from '../../core/actions';
 import * as api from '../api';
 
 

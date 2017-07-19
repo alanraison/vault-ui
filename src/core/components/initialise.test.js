@@ -3,12 +3,12 @@ import { shallow, mount } from 'enzyme';
 import { Initialise } from './initialise';
 import Err from './error';
 import Loading from './loading';
-import Unseal from '../unseal/components';
-import Login from '../login/components';
-import Workspace from '../workspace/components';
+import Unseal from '../../unseal/components';
+import Login from '../../login/components';
+import Workspace from '../../workspace/components';
 
 jest.mock('./error');
-jest.mock('../unseal/components');
+jest.mock('../../unseal/components');
 
 Err.mockReturnValue(() => <div/>);
 Unseal.mockReturnValue(() => <div/>);

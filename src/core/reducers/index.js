@@ -2,9 +2,9 @@ import {
   combineReducers,
 } from 'redux';
 import * as actions from '../actions';
-import sealStatus from '../sealStatus/reducers';
-import unseal from '../unseal/reducers';
-import login from '../login/reducers';
+import sealStatus from '../../sealStatus/reducers';
+import unseal from '../../unseal/reducers';
+import login from '../../login/reducers';
 
 const error = (state = null, action) => {
   switch (action.type) {
