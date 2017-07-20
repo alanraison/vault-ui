@@ -1,5 +1,5 @@
 import * as actions from '.';
-import { testActionCreators } from '../../actions/actions';
+import { testActionCreators } from '../../core/actions/actions';
 import uuid from 'uuid/v4';
 
 const tests = testActionCreators(actions);
