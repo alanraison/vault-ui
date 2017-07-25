@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { Initialise } from './initialise';
 import Err from './error';
 import Loading from './loading';
