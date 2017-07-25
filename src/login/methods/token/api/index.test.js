@@ -1,7 +1,7 @@
-import token from './token';
-import { url } from '../../core/api';
+import token from './';
+import { url } from '../../../../core/api';
 
-jest.mock('../../core/api');
+jest.mock('../../../../core/api');
 
 const mockUrl = "http://foo";
 url.mockReturnValue(mockUrl);

@@ -1,10 +1,10 @@
-import loginReducer from './index';
+import loginReducer from './';
 import * as actions from '../actions';
-import methodReducer from '../methods/reducers';
+import methodReducer from './methods';
 
-jest.mock('../methods/reducers');
+jest.mock('./methods');
 
-it('should be able to choose the login method', () => {
+it('should set the login method', () => {
   const state = {};
   const newState = loginReducer(state, actions.selectLoginMethod("myMethod"));
   expect(newState.method).toEqual("myMethod");

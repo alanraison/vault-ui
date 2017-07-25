@@ -1,8 +1,8 @@
 import { login } from '.';
-import token from './token';
+import token from '../methods/token/api';
 import uuid from 'uuid/v4';
 
-jest.mock('./token');
+jest.mock('../methods/token/api');
 
 describe('Login handler', () => {
   describe('with token login', () => {

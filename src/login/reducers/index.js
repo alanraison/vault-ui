@@ -1,5 +1,5 @@
 import * as actions from '../actions';
-import methods from '../methods/reducers';
+import methods from './methods';
 
 export default (state = {method:null}, action) => {
   switch (action.type) {

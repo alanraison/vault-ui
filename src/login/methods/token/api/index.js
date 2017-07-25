@@ -1,4 +1,4 @@
-import { url } from '../../core/api';
+import { url } from '../../../../core/api';
 
 export default (token) => (
   fetch(new Request(`${url()}/v1/auth/token/create`, {

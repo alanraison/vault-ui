@@ -1,4 +1,4 @@
-const mock = jest.genMockFromModule('../index');
+const mock = jest.genMockFromModule('../');
 
 mock.addMethod = (name) => {
   mock[name] = jest.fn();
