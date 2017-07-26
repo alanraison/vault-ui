@@ -11,7 +11,7 @@ export default (state = {method:null}, action) => {
     case actions.LOGIN_ERROR:
       return {
         ...state,
-        error: action.errors,
+        error: action.err,
       }
     default:
       if (state.method) {
