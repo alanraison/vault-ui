@@ -2,7 +2,7 @@ import { put, call, takeEvery, select } from 'redux-saga/effects';
 import * as actions from '../actions';
 import * as api from '../api';
 
-function* login(action) {
+export function* login(action) {
   const loginMethod = action.data;
   const loginData = yield select(state => state.app.login[loginMethod]);
   try {
