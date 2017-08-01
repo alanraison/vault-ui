@@ -1,5 +1,5 @@
-export const testActionCreators = (actions) => ({
-  actionCreator(action, type, data) {
+export const testActionCreators = (actions: object) => ({
+  actionCreator(action: string, type: string, data: any) {
     describe(action, () => {
       const actual = actions[action](data);
       it(`should create a ${type} action`, () => {
@@ -10,7 +10,7 @@ export const testActionCreators = (actions) => ({
       });
     });
   },
-  errorActionCreator(action, type) {
+  errorActionCreator(action: any, type: string) {
     describe(action, () => {
       const error = new Error("test error");
       const actual = actions[action](error);

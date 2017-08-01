@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { 
   applyMiddleware,
   createStore, 
@@ -9,13 +9,13 @@ import {
 import { 
   Provider, 
 } from 'react-redux';
-import createSagaMiddleware from 'redux-saga';
-import logger from 'redux-logger';
+import * as createSagaMiddleware from 'redux-saga';
+import * as logger from 'redux-logger';
 // import createHistory from 'history/createBrowserHistory';
 // import { connectRoutes } from 'redux-first-router';
-import App from './core/components/app';
-import app from './core/reducers';
-import sagas from './core/sagas';
+import * as App from './core/components/app';
+import * as app from './core/reducers';
+import * as sagas from './core/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 

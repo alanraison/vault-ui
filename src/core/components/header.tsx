@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Toolbar from '@react-mdc/toolbar';
 import '@material/toolbar/dist/mdc.toolbar.css';
 
@@ -11,4 +11,4 @@ export default () => (
       </Toolbar.Section>
     </Toolbar.Row>
   </Toolbar>
-)
+);

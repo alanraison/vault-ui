@@ -6,7 +6,7 @@ import sealStatus from '../../sealStatus/reducers';
 import unseal from '../../unseal/reducers';
 import login from '../../login/reducers';
 
-const error = (state = null, action) => {
+const error = (state = null, action: actions.Action) => {
   switch (action.type) {
     case actions.ERROR:
       return {
@@ -20,7 +20,7 @@ const error = (state = null, action) => {
   }
 }
 
-const connected = (state = false, action) => {
+const connected = (state = false, action: actions.Action) => {
   switch (action.type) {
     case actions.sealStatus.UNSEAL_STATUS_UPDATED:
       return true;
@@ -29,7 +29,7 @@ const connected = (state = false, action) => {
   }
 }
 
-const authToken = (state = "", action) => {
+const authToken = (state = "", action: actions.Action) => {
   switch (action.type) {
     case actions.login.LOGIN_SUCCESS:
       return action.data;
