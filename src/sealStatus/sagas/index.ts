@@ -4,6 +4,7 @@ import {
   takeLatest,
   put,
 } from 'redux-saga/effects';
+import { SagaIterator } from 'redux-saga';
 import * as actions from '../actions';
 import * as coreActions from '../../core/actions';
 import * as api from '../api';
@@ -18,9 +19,9 @@ function* callGetSealStatus() {
   }
 }
 
-export default function* () {
+export default function* (): SagaIterator {
   yield all([
-    takeLatest(actions.GET_UNSEAL_STATUS_START, callGetSealStatus),
+    takeLatest<actions.GetUnsealStatusStart>(actions.GET_UNSEAL_STATUS_START, callGetSealStatus),
     unsealSagas(),
   ]);
 }

@@ -1,15 +1,22 @@
-import React from 'react';
+import * as React from 'react';
+import { Action } from 'redux';
 import { connect } from 'react-redux';
+import StoreState from '../../types';
 import { editUnsealKey } from '../actions'
 import FormField from '@react-mdc/form-field';
 import TextField from '@react-mdc/textfield';
 import '@material/form-field/dist/mdc.form-field.css';
 import '@material/textfield/dist/mdc.textfield.css';
 
+export interface Props {
+  value: string;
+  onChange: (e: React.SyntheticEvent<any>) => Action
+}
+
 export const UnsealInput = ({
   value,
   onChange,
-}) => (
+}: Props) => (
   <FormField>
     <TextField fullwidth>
       <TextField.Input
@@ -20,7 +27,7 @@ export const UnsealInput = ({
   </FormField>
 )
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: StoreState) => ({
   value: state.app.sealStatus.unsealEntryValue,
 });
 

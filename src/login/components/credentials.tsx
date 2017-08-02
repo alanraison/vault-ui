@@ -1,20 +1,25 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
+import StoreState from '../../types';
 import TokenCredentials from '../methods/token/components';
 
-const Credentials = ({
+export interface Props {
+  method: string;
+}
+
+const Credentials: React.SFC<Props> = ({
   method,
 }) => {
   switch (method) {
     case 'token':
-      return <TokenCredentials/>
+      return <TokenCredentials/>;
     default:
       return null;
   }
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: StoreState) => ({
   method: state.app.login.method,
-})
+});
 
 export default connect(mapStateToProps)(Credentials);

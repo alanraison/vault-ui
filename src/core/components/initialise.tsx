@@ -1,12 +1,22 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
+import { Action } from 'redux';
+import StoreState from '../../types';
 import Error from './error';
 import Loading from './loading';
 import Unseal from '../../unseal/components';
 import Login from '../../login/components';
 import Workspace from '../../workspace/components';
 
-export const Initialise = ({
+export interface Props {
+  error: boolean;
+  loading: boolean;
+  sealed: boolean;
+  unauthenticated: boolean;
+  ready: boolean;
+}
+
+export const Initialise: React.SFC<Props> = ({
   error,
   loading,
   sealed,
@@ -31,8 +41,8 @@ export const Initialise = ({
   return null;
 }
 
-const mapStateToProps = (state) => ({
-  error: state.app.error,
+const mapStateToProps = (state: StoreState) => ({
+  error: !!state.app.error,
   loading: state.app.sealStatus.loading,
   sealed: state.app.connected && state.app.sealStatus.sealed,
   unauthenticated: state.app.connected && !state.app.authToken,

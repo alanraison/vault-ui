@@ -1,19 +1,27 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
+import { Action } from 'redux';
+import StoreState from '../../types';
 import Card from '@react-mdc/card';
 import Button from '@react-mdc/button';
 import { clearError } from '../actions';
 import '@material/card/dist/mdc.card.css';
 import '@material/button/dist/mdc.button.css';
 
-export const Error = ({
+export interface Props {
+  error: Error;
+  source: string;
+  onDismiss: () => Action;
+}
+
+export const Error: React.SFC<Props> = ({
   error,
   source,
   onDismiss,
 }) => (
   <Card>
     <Card.Primary>
-      <Card.Title large>Error</Card.Title>
+      <Card.Title large={true}>Error</Card.Title>
     </Card.Primary>
     <Card.SupportingText>
       Error {source}: {error.toString()}
@@ -24,9 +32,9 @@ export const Error = ({
   </Card>
 );
 
-const mapStateToProps = (state) => ({
-  error: state.app.error.err,
-  source: state.app.error.source,
+const mapStateToProps = (state: StoreState) => ({
+  error: state.app.error ? state.app.error.err : null,
+  source: state.app.error ? state.app.error.source : null,
 });
 
 const mapDispatchToProps = ({

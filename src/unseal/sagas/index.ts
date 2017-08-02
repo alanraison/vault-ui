@@ -1,15 +1,16 @@
 import { 
-  call, 
+  call,
   put,
   takeLatest, 
 } from 'redux-saga/effects';
+import { SagaIterator } from 'redux-saga';
 import * as actions from '../actions';
 import * as statusActions from '../../sealStatus/actions';
 import * as globalActions from '../../core/actions';
 import * as api from '../api';
 
 
-function* callUnseal(action) {
+function* callUnseal(action: actions.StartUnseal) {
   try {
     const status = yield call(api.unseal, action.data);
     if (status.errors) {
@@ -22,6 +23,6 @@ function* callUnseal(action) {
   }
 }
 
-export default function* () {
+export default function* (): SagaIterator {
   yield takeLatest(actions.START_UNSEAL, callUnseal);
 }

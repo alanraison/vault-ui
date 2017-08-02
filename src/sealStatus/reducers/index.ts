@@ -1,11 +1,19 @@
-import * as actions from '..//actions';
+import * as actions from '../actions';
 
-const initialState = {
+export interface StoreState {
+  sealed: boolean | null;
+  loading: boolean | null;
+}
+
+const initialState: StoreState = {
   sealed: null,
   loading: false,
 };
 
-export default (state = initialState, action) => {
+export default (
+  state: StoreState = initialState, 
+  action: actions.SealStatusAction | actions.ErrorAction
+): StoreState => {
   switch (action.type) {
     case actions.GET_UNSEAL_STATUS_START:
       return {

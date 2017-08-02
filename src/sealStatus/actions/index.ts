@@ -1,6 +1,7 @@
 import {
   ERROR,
   error,
+  ErrorAction,
 } from '../../core/actions';
 
 export const GET_UNSEAL_STATUS_START = 'GET_UNSEAL_STATUS_START';
@@ -29,4 +30,5 @@ export type SealStatusAction = GetUnsealStatusStart
 export {
   ERROR,
   error,
-}
+  ErrorAction,
+};

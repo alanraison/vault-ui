@@ -9,13 +9,13 @@ import {
 import { 
   Provider, 
 } from 'react-redux';
-import * as createSagaMiddleware from 'redux-saga';
-import * as logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
+import logger from 'redux-logger';
 // import createHistory from 'history/createBrowserHistory';
 // import { connectRoutes } from 'redux-first-router';
 import * as App from './core/components/app';
-import * as app from './core/reducers';
-import * as sagas from './core/sagas';
+import app from './core/reducers';
+import sagas from './core/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -23,7 +23,7 @@ const sagaMiddleware = createSagaMiddleware();
 // const routesMap = {
 //   UNSEAL: '/unseal',
 // };
-//const { reducer, routingMiddleware, enhancer } = connectRoutes(history, routesMap);
+// const { reducer, routingMiddleware, enhancer } = connectRoutes(history, routesMap);
 
 const middlewares = applyMiddleware(sagaMiddleware, logger);
 const store = createStore(
