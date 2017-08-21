@@ -10,7 +10,7 @@ jest.mock('./unseal-button');
 jest.mock('./unseal-input');
 
 describe('Unseal component', () => {
-  const wrapper = shallow(<Unseal/>);
+  const wrapper = shallow(<Unseal />);
   it('should contain a count of the outstanding unseal keys required', () => {
     expect(wrapper.find(UnsealCount)).toBePresent();
   });

@@ -4,7 +4,7 @@ import Header from './header';
 
 describe('The Header component', () => {
   it('should contain a toolbar', () => {
-    const wrapper = shallow(<Header/>);
+    const wrapper = shallow(<Header />);
     expect(wrapper).toHaveTagName('Toolbar');
   });
 });

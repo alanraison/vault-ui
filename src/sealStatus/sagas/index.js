@@ -13,8 +13,8 @@ function* callGetSealStatus() {
   try {
     const status = yield call(api.getSealStatus);
     yield put(actions.unsealStatusUpdated(status));
-  } catch(e) {
-    yield put(coreActions.error(e, "getting unseal status"));
+  } catch (e) {
+    yield put(coreActions.error(e, 'getting unseal status'));
   }
 }
 

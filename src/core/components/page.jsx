@@ -4,7 +4,7 @@ import Initialise from './initialise';
 
 export default () => (
   <div>
-    <Header/>
-    <Initialise/>
+    <Header />
+    <Initialise />
   </div>
 );

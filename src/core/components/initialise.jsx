@@ -14,24 +14,24 @@ export const Initialise = ({
   ready,
 }) => {
   if (error) {
-    return <Error/>;
+    return <Error />;
   }
   if (loading) {
     return <Loading/>;
   }
   if (sealed) {
-    return <Unseal/>;
+    return <Unseal />;
   }
   if (unauthenticated) {
-    return <Login/>;
+    return <Login />;
   }
   if (ready) {
-    return <Workspace/>;
+    return <Workspace />;
   }
   return null;
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   error: state.app.error,
   loading: state.app.sealStatus.loading,
   sealed: state.app.connected && state.app.sealStatus.sealed,

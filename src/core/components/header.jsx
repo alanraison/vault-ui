@@ -11,4 +11,4 @@ export default () => (
       </Toolbar.Section>
     </Toolbar.Row>
   </Toolbar>
-)
+);

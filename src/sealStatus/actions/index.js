@@ -9,7 +9,7 @@ export const UNSEAL_STATUS_UPDATED = 'UNSEAL_STATUS_UPDATED';
 export const getUnsealStatusStart = () => ({
   type: GET_UNSEAL_STATUS_START,
 });
-export const unsealStatusUpdated = (data) => ({
+export const unsealStatusUpdated = data => ({
   type: UNSEAL_STATUS_UPDATED,
   data,
 });
@@ -17,4 +17,4 @@ export const unsealStatusUpdated = (data) => ({
 export {
   ERROR,
   error,
-}
+};

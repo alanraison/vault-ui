@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { 
+import {
   applyMiddleware,
-  createStore, 
+  createStore,
   combineReducers,
   // compose,
 } from 'redux';
-import { 
-  Provider, 
+import {
+  Provider,
 } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
@@ -27,15 +27,13 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middlewares = applyMiddleware(sagaMiddleware, logger);
 const store = createStore(
-  combineReducers({app}),
-  middlewares
-);
+  combineReducers({ app }),
+  middlewares);
 
 sagaMiddleware.run(sagas);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
-  </Provider>, 
-  document.getElementById('root')
-);
+    <App />
+  </Provider>,
+  document.getElementById('root'));

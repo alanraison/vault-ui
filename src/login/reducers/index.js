@@ -1,18 +1,18 @@
 import * as actions from '../actions';
 import methods from './methods';
 
-export default (state = {method:null}, action) => {
+export default (state = { method: null }, action) => {
   switch (action.type) {
     case actions.SELECT_LOGIN_METHOD:
       return {
         ...state,
         method: action.data,
-      }
+      };
     case actions.LOGIN_ERROR:
       return {
         ...state,
         error: action.err,
-      }
+      };
     default:
       if (state.method) {
         const currentMethodState = state[state.method];
@@ -27,4 +27,4 @@ export default (state = {method:null}, action) => {
       }
       return state;
   }
-}
+};

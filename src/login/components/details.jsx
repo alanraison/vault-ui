@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@react-mdc/button';
 import Card from '@react-mdc/card';
-import Credentials from './credentials';
-import { loginStart } from '../actions';
 import '@material/button/dist/mdc.button.css';
 import '@material/card/dist/mdc.card.css';
+
+import Credentials from './credentials';
+import { loginStart } from '../actions';
 
 const Details = ({
   method,
@@ -17,7 +18,7 @@ const Details = ({
       <Card.Title large>Login to Vault.</Card.Title>
     </Card.Primary>
     <Card.SupportingText>
-      <Credentials/>
+      <Credentials />
     </Card.SupportingText>
     <Card.Actions>
       <Button onClick={() => doLogin(method)}>Login</Button>
@@ -25,9 +26,9 @@ const Details = ({
   </Card>
 );
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   method: state.app.login.method,
-})
+});
 
 const mapDispatchToProps = {
   doLogin: loginStart,

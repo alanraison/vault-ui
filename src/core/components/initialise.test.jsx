@@ -10,12 +10,12 @@ import Workspace from '../../workspace/components';
 jest.mock('./error');
 jest.mock('../../unseal/components');
 
-Err.mockReturnValue(() => <div/>);
-Unseal.mockReturnValue(() => <div/>);
+Err.mockReturnValue(() => <div />);
+Unseal.mockReturnValue(() => <div />);
 
 describe('The Initialise component', () => {
   it('should show the Error compoment when there is an error', () => {
-    const e = new Error("test error")
+    const e = new Error('test error');
     const wrapper = shallow(<Initialise error={e} />);
     expect(wrapper.find(Err)).toBePresent();
     expect(wrapper.find(Loading)).not.toBePresent();
@@ -24,7 +24,7 @@ describe('The Initialise component', () => {
     expect(wrapper.find(Workspace)).not.toBePresent();
   });
   it('should show the loading component when loading', () => {
-    const wrapper = shallow(<Initialise loading={true} />);
+    const wrapper = shallow(<Initialise loading />);
     expect(wrapper.find(Err)).not.toBePresent();
     expect(wrapper.find(Loading)).toBePresent();
     expect(wrapper.find(Unseal)).not.toBePresent();
@@ -32,7 +32,7 @@ describe('The Initialise component', () => {
     expect(wrapper.find(Workspace)).not.toBePresent();
   })
   it('should show the unseal component when vault is sealed', () => {
-    const wrapper = shallow(<Initialise sealed={true}/>);
+    const wrapper = shallow(<Initialise sealed />);
     expect(wrapper.find(Err)).not.toBePresent();
     expect(wrapper.find(Loading)).not.toBePresent();
     expect(wrapper.find(Unseal)).toBePresent();
@@ -40,7 +40,7 @@ describe('The Initialise component', () => {
     expect(wrapper.find(Workspace)).not.toBePresent();
   });
   it('should show login when unuathenticated', () => {
-    const wrapper = shallow(<Initialise unauthenticated={true}/>);
+    const wrapper = shallow(<Initialise unauthenticated />);
     expect(wrapper.find(Err)).not.toBePresent();
     expect(wrapper.find(Loading)).not.toBePresent();
     expect(wrapper.find(Unseal)).not.toBePresent();
@@ -48,7 +48,7 @@ describe('The Initialise component', () => {
     expect(wrapper.find(Workspace)).not.toBePresent();
   });
   it('should show the workspace when ready', () => {
-    const wrapper = shallow(<Initialise ready={true}/>);
+    const wrapper = shallow(<Initialise ready />);
     expect(wrapper.find(Err)).not.toBePresent();
     expect(wrapper.find(Loading)).not.toBePresent();
     expect(wrapper.find(Unseal)).not.toBePresent();

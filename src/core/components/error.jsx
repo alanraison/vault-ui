@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Card from '@react-mdc/card';
 import Button from '@react-mdc/button';
-import { clearError } from '../actions';
 import '@material/card/dist/mdc.card.css';
 import '@material/button/dist/mdc.button.css';
+import { clearError } from '../actions';
 
 export const Error = ({
   error,
@@ -24,7 +24,7 @@ export const Error = ({
   </Card>
 );
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   error: state.app.error.err,
   source: state.app.error.source,
 });

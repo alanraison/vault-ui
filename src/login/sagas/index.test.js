@@ -1,5 +1,5 @@
+import { takeEvery } from 'redux-saga/effects';
 import saga, { login } from './';
-import { takeEvery, put } from 'redux-saga/effects';
 import * as actions from '../actions';
 
 describe('Login saga', () => {

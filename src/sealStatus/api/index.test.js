@@ -3,7 +3,7 @@ import { url } from '../../core/api';
 
 jest.mock('../../core/api');
 
-const mockUrl = "http://foo";
+const mockUrl = 'http://foo';
 url.mockReturnValue(mockUrl);
 const response = { testResult: 1 };
 
@@ -15,9 +15,9 @@ describe('getSealStatus', () => {
     fetch.resetMocks();
   });
   it('should call the seal status API', () => {
-    return getSealStatus().then(res => {
+    return getSealStatus().then(() => {
       expect(fetch).toHaveBeenCalled();
-      
+
       const actualRequest = fetch.mock.calls[0][0];
       expect(actualRequest).toEqual(`${mockUrl}/v1/sys/seal-status`);
     });

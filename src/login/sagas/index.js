@@ -12,7 +12,7 @@ export function* login(action) {
     } else {
       yield put(actions.loginSuccess(auth));
     }
-  } catch(e) {
+  } catch (e) {
     yield put(actions.loginError(e));
   }
 }

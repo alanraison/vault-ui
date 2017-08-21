@@ -18,7 +18,7 @@ const error = (state = null, action) => {
     default:
       return state;
   }
-}
+};
 
 const connected = (state = false, action) => {
   switch (action.type) {
@@ -27,16 +27,16 @@ const connected = (state = false, action) => {
     default:
       return state;
   }
-}
+};
 
-const authToken = (state = "", action) => {
+const authToken = (state = '', action) => {
   switch (action.type) {
     case actions.login.LOGIN_SUCCESS:
       return action.data;
     default:
       return state;
   }
-}
+};
 
 export default combineReducers({
   authToken,

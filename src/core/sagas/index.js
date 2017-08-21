@@ -5,6 +5,6 @@ import auth from '../../login/sagas';
 export default function* () {
   yield all([
     sealStatus(),
-    auth()
+    auth(),
   ]);
 }

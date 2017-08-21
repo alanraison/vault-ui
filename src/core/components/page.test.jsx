@@ -7,8 +7,8 @@ import Initialise from './initialise';
 jest.mock('./initialise');
 
 describe('Page Component', () => {
-  Initialise.mockReturnValue(() => <div/>);
-  const wrapper = shallow(<Page store={{}}/>);
+  Initialise.mockReturnValue(() => <div />);
+  const wrapper = shallow(<Page store={{}} />);
   it('should contain a Header', () => {
     expect(wrapper.find(Header)).toBePresent();
   });

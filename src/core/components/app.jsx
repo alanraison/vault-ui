@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import Page from './page';
 import Typography from '@react-mdc/typography';
 import '@material/typography/dist/mdc.typography.css';
+
+import * as actions from '../actions';
+import Page from './page';
 
 export class App extends React.Component {
   componentDidMount() {
@@ -14,13 +15,13 @@ export class App extends React.Component {
   render() {
     return (
       <Typography>
-        <Page/>
+        <Page />
       </Typography>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   sealed: state.app.sealStatus.sealed,
 });
 const mapDispatchToProps = ({

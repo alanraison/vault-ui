@@ -7,14 +7,14 @@ const Credentials = ({
 }) => {
   switch (method) {
     case 'token':
-      return <TokenCredentials/>
+      return <TokenCredentials />;
     default:
       return null;
   }
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   method: state.app.login.method,
-})
+});
 
 export default connect(mapStateToProps)(Credentials);

@@ -1,7 +1,7 @@
-import { 
-  call, 
+import {
+  call,
   put,
-  takeLatest, 
+  takeLatest,
 } from 'redux-saga/effects';
 import * as actions from '../actions';
 import * as statusActions from '../../sealStatus/actions';
@@ -13,12 +13,12 @@ function* callUnseal(action) {
   try {
     const status = yield call(api.unseal, action.data);
     if (status.errors) {
-      yield put(globalActions.error(status.errors, "unsealing vault"));
+      yield put(globalActions.error(status.errors, 'unsealing vault'));
     } else {
       yield put(statusActions.unsealStatusUpdated(status));
     }
   } catch (e) {
-    yield put(globalActions.error(e, "unsealing vault"))
+    yield put(globalActions.error(e, 'unsealing vault'));
   }
 }
 
