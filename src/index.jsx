@@ -13,7 +13,7 @@ import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 // import createHistory from 'history/createBrowserHistory';
 // import { connectRoutes } from 'redux-first-router';
-import App from './core/components/app';
+import PlainApp from './core/components/app';
 import app from './core/reducers';
 import sagas from './core/sagas';
 
@@ -34,6 +34,6 @@ sagaMiddleware.run(sagas);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PlainApp />
   </Provider>,
   document.getElementById('root'));

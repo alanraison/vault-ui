@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Button from '@react-mdc/button';
 import Card from '@react-mdc/card';
 import '@material/button/dist/mdc.button.css';
@@ -8,7 +9,7 @@ import '@material/card/dist/mdc.card.css';
 import Credentials from './credentials';
 import { loginStart } from '../actions';
 
-const Details = ({
+const DetailsComponent = ({
   method,
   doLogin,
   className,
@@ -26,6 +27,16 @@ const Details = ({
   </Card>
 );
 
+DetailsComponent.propTypes = ({
+  method: PropTypes.string.isRequired,
+  doLogin: PropTypes.func.isRequired,
+  className: PropTypes.string,
+});
+
+DetailsComponent.defaultProps = ({
+  className: undefined,
+});
+
 const mapStateToProps = state => ({
   method: state.app.login.method,
 });
@@ -34,4 +45,4 @@ const mapDispatchToProps = {
   doLogin: loginStart,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+export default connect(mapStateToProps, mapDispatchToProps)(DetailsComponent);

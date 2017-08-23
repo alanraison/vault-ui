@@ -1,4 +1,4 @@
-import { getSealStatus } from './';
+import getSealStatus from './';
 import { url } from '../../core/api';
 
 jest.mock('../../core/api');
@@ -14,12 +14,11 @@ describe('getSealStatus', () => {
   afterEach(() => {
     fetch.resetMocks();
   });
-  it('should call the seal status API', () => {
-    return getSealStatus().then(() => {
+  it('should call the seal status API', () =>
+    getSealStatus().then(() => {
       expect(fetch).toHaveBeenCalled();
 
       const actualRequest = fetch.mock.calls[0][0];
       expect(actualRequest).toEqual(`${mockUrl}/v1/sys/seal-status`);
-    });
-  });
+    }));
 });

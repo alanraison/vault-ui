@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import FormField from '@react-mdc/form-field';
 import TextField from '@react-mdc/textfield';
 import '@material/form-field/dist/mdc.form-field.css';
@@ -7,7 +8,7 @@ import '@material/textfield/dist/mdc.textfield.css';
 
 import { changeToken } from '../actions';
 
-export const TokenEntry = ({
+export const TokenEntryComponent = ({
   value,
   onChange,
 }) => (
@@ -22,6 +23,15 @@ export const TokenEntry = ({
   </FormField>
 );
 
+TokenEntryComponent.propTypes = ({
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+});
+
+TokenEntryComponent.defaultProps = ({
+  onChange: () => {},
+});
+
 const mapStateToProps = state => ({
   value: state.app.login.tokenEntry,
 });
@@ -30,4 +40,4 @@ const mapDispatchToProps = {
   onChange: changeToken,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TokenEntry);
+export default connect(mapStateToProps, mapDispatchToProps)(TokenEntryComponent);

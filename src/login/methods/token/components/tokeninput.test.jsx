@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { TokenEntry } from '.';
+import { TokenEntryComponent as TokenEntry } from '.';
 
 describe('Token Entry component', () => {
   it('should display the token value', () => {

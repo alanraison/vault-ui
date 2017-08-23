@@ -18,4 +18,4 @@ export {
   sealStatus,
   unseal,
   login,
-}
+};

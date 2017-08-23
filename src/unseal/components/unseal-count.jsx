@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export const UnsealCount = ({
+export const PlainUnsealCount = ({
   count,
 }) => (
   <span>
@@ -9,8 +10,12 @@ export const UnsealCount = ({
   </span>
 );
 
+PlainUnsealCount.propTypes = ({
+  count: PropTypes.number.isRequired,
+});
+
 const mapStateToProps = state => ({
   count: state.app.sealStatus.t - state.app.sealStatus.progress,
 });
 
-export default connect(mapStateToProps)(UnsealCount);
+export default connect(mapStateToProps)(PlainUnsealCount);

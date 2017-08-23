@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Error as ErrorComponent } from './error';
+import { ErrorComponent } from './error';
 
 describe('Overall Error Element', () => {
   const errorSource = 'error source';

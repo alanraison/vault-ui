@@ -50,5 +50,4 @@ describe('Login reducer', () => {
 
     expect(newState.error).toEqual(testError);
   });
-
 });

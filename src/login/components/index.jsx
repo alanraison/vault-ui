@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import LoginChooser from './chooser';
 import LoginDetails from './details';
 import './login.css';
@@ -12,6 +13,10 @@ const Login = ({
     <LoginDetails className={`slider--panel slider--panel__right ${chosenMethod ? 'active' : ''}`} />
   </div>
 );
+
+Login.propTypes = ({
+  chosenMethod: PropTypes.string.isRequired,
+});
 
 const mapStateToProps = state => ({
   chosenMethod: state.app.login.method,

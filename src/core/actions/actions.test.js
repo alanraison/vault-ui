@@ -1,6 +1,6 @@
 import * as actions from '.';
 import {
-  testActionCreators
+  testActionCreators,
 } from './actions';
 
 const tests = testActionCreators(actions);

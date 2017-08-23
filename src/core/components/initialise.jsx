@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Error from './error';
 import Loading from './loading';
 import Unseal from '../../unseal/components';
 import Login from '../../login/components';
 import Workspace from '../../workspace/components';
 
-export const Initialise = ({
+export const InitialiseComponent = ({
   error,
   loading,
   sealed,
@@ -17,7 +19,7 @@ export const Initialise = ({
     return <Error />;
   }
   if (loading) {
-    return <Loading/>;
+    return <Loading />;
   }
   if (sealed) {
     return <Unseal />;
@@ -29,7 +31,23 @@ export const Initialise = ({
     return <Workspace />;
   }
   return null;
-}
+};
+
+InitialiseComponent.propTypes = ({
+  error: PropTypes.bool,
+  loading: PropTypes.bool,
+  sealed: PropTypes.bool,
+  unauthenticated: PropTypes.bool,
+  ready: PropTypes.bool,
+});
+
+InitialiseComponent.defaultProps = ({
+  error: false,
+  loading: false,
+  sealed: false,
+  unauthenticated: false,
+  ready: false,
+});
 
 const mapStateToProps = state => ({
   error: state.app.error,
@@ -39,4 +57,4 @@ const mapStateToProps = state => ({
   ready: state.app.connected && state.app.authToken.auth,
 });
 
-export default connect(mapStateToProps)(Initialise);
+export default connect(mapStateToProps)(InitialiseComponent);

@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import TokenCredentials from '../methods/token/components';
 
-const Credentials = ({
+export const CredentialsComponent = ({
   method,
 }) => {
   switch (method) {
@@ -13,8 +14,12 @@ const Credentials = ({
   }
 };
 
+CredentialsComponent.propTypes = ({
+  method: PropTypes.string.isRequired,
+});
+
 const mapStateToProps = state => ({
   method: state.app.login.method,
 });
 
-export default connect(mapStateToProps)(Credentials);
+export default connect(mapStateToProps)(CredentialsComponent);

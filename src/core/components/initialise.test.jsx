@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Initialise } from './initialise';
+import { InitialiseComponent as Initialise } from './initialise';
 import Err from './error';
 import Loading from './loading';
 import Unseal from '../../unseal/components';
@@ -30,7 +30,7 @@ describe('The Initialise component', () => {
     expect(wrapper.find(Unseal)).not.toBePresent();
     expect(wrapper.find(Login)).not.toBePresent();
     expect(wrapper.find(Workspace)).not.toBePresent();
-  })
+  });
   it('should show the unseal component when vault is sealed', () => {
     const wrapper = shallow(<Initialise sealed />);
     expect(wrapper.find(Err)).not.toBePresent();
