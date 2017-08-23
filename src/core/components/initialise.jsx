@@ -34,7 +34,7 @@ export const InitialiseComponent = ({
 };
 
 InitialiseComponent.propTypes = ({
-  error: PropTypes.bool,
+  error: PropTypes.instanceOf(Error),
   loading: PropTypes.bool,
   sealed: PropTypes.bool,
   unauthenticated: PropTypes.bool,
@@ -42,7 +42,7 @@ InitialiseComponent.propTypes = ({
 });
 
 InitialiseComponent.defaultProps = ({
-  error: false,
+  error: null,
   loading: false,
   sealed: false,
   unauthenticated: false,

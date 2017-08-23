@@ -6,7 +6,6 @@ import {
 export const GET_UNSEAL_STATUS_START = 'GET_UNSEAL_STATUS_START';
 export const GET_UNSEAL_STATUS_RESULT = 'GET_UNSEAL_STATUS_RESULT';
 export const UNSEAL_KEY_REQUIRED = 'UNSEAL_KEY_REQUIRED';
-export const UNSEAL_KEY_ENTERED = 'UNSEAL_KEY_ENTERED'; //TODO verify
 export const UNSEAL_COMPLETE = 'UNSEAL_COMPLETE';
 
 export const getUnsealStatusStart = () => ({

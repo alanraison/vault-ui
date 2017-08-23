@@ -32,8 +32,8 @@ describe('Core reducers:', () => {
     });
   });
   describe('Connected reducer', () => {
-    it('should set the connected status if the unseal status changes', () => {
-      const newState = reducer({}, actions.sealStatus.unsealStatusUpdated('blah'));
+    it('should set the connected status if the health check succeeds', () => {
+      const newState = reducer({}, actions.healthCheckOk());
       expect(newState.connected).toEqual(true);
     });
     it('should not respond to other actions', () => {

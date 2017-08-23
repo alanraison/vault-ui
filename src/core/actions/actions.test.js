@@ -1,7 +1,5 @@
 import * as actions from '.';
-import {
-  testActionCreators,
-} from './actions';
+import testActionCreators from './actions';
 
 const tests = testActionCreators(actions);
 
