@@ -8,6 +8,22 @@ import '@material/list/dist/mdc.list.css';
 import '@material/ripple/dist/mdc.ripple.css';
 import { selectLoginMethod } from '../actions';
 
+const LoginChoiceItem = ({
+  method,
+  onClick,
+}) => (
+  <Ripple onClick={onClick}>
+    <li className="mdc-list-item">
+      {method}
+    </li>
+  </Ripple>
+);
+
+LoginChoiceItem.propTypes = ({
+  method: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+});
+
 const LoginChooserComponent = ({
   className,
   methods,
@@ -19,11 +35,18 @@ const LoginChooserComponent = ({
     </Card.Primary>
     <Card.SupportingText>
       <ul className="mdc-list">
-        <Ripple onClick={() => onSelect('token')}>
-          <li className="mdc-list-item">
-            Token
-          </li>
-        </Ripple>
+        <LoginChoiceItem
+          method='token'
+          onClick={() => onSelect('token')}
+        />
+        {
+          methods.map(method => (
+            <LoginChoiceItem
+              key={method}
+              method={method}
+              onClick={() => onSelect(method)}
+            />))
+        }
       </ul>
     </Card.SupportingText>
   </Card>
@@ -37,11 +60,11 @@ LoginChooserComponent.propTypes = ({
 
 LoginChooserComponent.defaultProps = ({
   className: undefined,
-  methods: undefined,
+  methods: [],
 });
 
 const mapStateToProps = () => ({
-  methods: null,
+  methods: [],
 });
 
 const mapDispatchToProps = {

@@ -23,7 +23,7 @@ export class AppComponent extends React.Component {
 }
 
 AppComponent.propTypes = ({
-  sealed: PropTypes.boolean,
+  sealed: PropTypes.bool,
   onReady: PropTypes.func,
 });
 

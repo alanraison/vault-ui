@@ -1,8 +1,10 @@
 import { url } from '../../core/api';
 
-export default key => (
+export const unseal = key => (
   fetch(`${url()}/v1/sys/unseal`, {
     method: 'PUT',
     body: JSON.stringify({ key }),
   }).then(resp => resp.json())
 );
+
+export default {};
