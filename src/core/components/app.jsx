@@ -9,7 +9,7 @@ import Page from './page';
 
 export class AppComponent extends React.Component {
   componentDidMount() {
-    if (this.props.sealed === null) {
+    if (!this.props.connected) {
       this.props.onReady();
     }
   }
@@ -23,20 +23,20 @@ export class AppComponent extends React.Component {
 }
 
 AppComponent.propTypes = ({
-  sealed: PropTypes.bool,
+  connected: PropTypes.bool,
   onReady: PropTypes.func,
 });
 
 AppComponent.defaultProps = ({
-  sealed: null,
+  connected: false,
   onReady: () => {},
 });
 
 const mapStateToProps = state => ({
-  sealed: state.app.sealStatus.sealed,
+  connected: state.app.connected,
 });
 const mapDispatchToProps = ({
-  onReady: actions.sealStatus.getUnsealStatusStart,
+  onReady: actions.initialise,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppComponent);

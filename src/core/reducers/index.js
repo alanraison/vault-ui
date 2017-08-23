@@ -22,7 +22,7 @@ const error = (state = null, action) => {
 
 const connected = (state = false, action) => {
   switch (action.type) {
-    case actions.sealStatus.UNSEAL_STATUS_UPDATED:
+    case actions.HEALTH_CHECK_OK:
       return true;
     default:
       return state;

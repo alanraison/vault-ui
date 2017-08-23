@@ -15,7 +15,7 @@ function* callUnseal(action) {
     if (status.errors) {
       yield put(globalActions.error(status.errors, 'unsealing vault'));
     } else {
-      yield put(statusActions.unsealStatusUpdated(status));
+      yield put(statusActions.getUnsealStatusResult(status));
     }
   } catch (e) {
     yield put(globalActions.error(e, 'unsealing vault'));

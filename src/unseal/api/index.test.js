@@ -1,5 +1,5 @@
 import uuid from 'uuid/v4';
-import unseal from './';
+import { unseal } from './';
 import { url } from '../../core/api';
 
 jest.mock('../../core/api');

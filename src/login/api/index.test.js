@@ -1,5 +1,5 @@
 import uuid from 'uuid/v4';
-import login from '.';
+import { login } from '.';
 import token from '../methods/token/api';
 
 jest.mock('../methods/token/api');

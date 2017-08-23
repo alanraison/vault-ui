@@ -13,7 +13,7 @@ export const PlainUnsealInput = ({
   onChange,
 }) => (
   <FormField>
-    <TextField fullwidth>
+    <TextField id="unseal-key-input" fullwidth>
       <TextField.Input
         onChange={e => onChange(e.target.value)}
         value={value}

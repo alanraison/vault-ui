@@ -1,4 +1,4 @@
-import getSealStatus from './';
+import { getSealStatus } from './';
 import { url } from '../../core/api';
 
 jest.mock('../../core/api');

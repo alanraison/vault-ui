@@ -1,3 +1,5 @@
 export const url = () => 'http://localhost:3000';
 
-export default {};
+export const healthCheck = () => (
+  fetch(`${url()}/v1/sys/health`).then(resp => resp.json())
+);

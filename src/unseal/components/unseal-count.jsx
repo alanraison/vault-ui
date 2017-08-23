@@ -15,7 +15,7 @@ PlainUnsealCount.propTypes = ({
 });
 
 const mapStateToProps = state => ({
-  count: state.app.sealStatus.t - state.app.sealStatus.progress,
+  count: state.app.sealStatus.sealInfo.t - state.app.sealStatus.sealInfo.progress,
 });
 
 export default connect(mapStateToProps)(PlainUnsealCount);

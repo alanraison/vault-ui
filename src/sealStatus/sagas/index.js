@@ -12,15 +12,24 @@ import unsealSagas from '../../unseal/sagas';
 function* callGetSealStatus() {
   try {
     const status = yield call(api.getSealStatus);
-    yield put(actions.unsealStatusUpdated(status));
+    yield put(actions.getUnsealStatusResult(status));
   } catch (e) {
     yield put(coreActions.error(e, 'getting unseal status'));
+  }
+}
+
+function* isSealed(action) {
+  if (action.data.sealed) {
+    yield put(actions.unsealKeyRequired());
+  } else {
+    yield put(actions.unsealComplete());
   }
 }
 
 export default function* () {
   yield all([
     takeLatest(actions.GET_UNSEAL_STATUS_START, callGetSealStatus),
+    takeLatest(actions.GET_UNSEAL_STATUS_RESULT, isSealed),
     unsealSagas(),
   ]);
 }
