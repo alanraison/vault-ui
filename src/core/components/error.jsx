@@ -7,23 +7,25 @@ import '@material/card/dist/mdc.card.css';
 import '@material/button/dist/mdc.button.css';
 import { clearError } from '../actions';
 
-export const ErrorComponent = ({
+export function ErrorComponent({
   error,
   source,
   onDismiss,
-}) => (
-  <Card>
-    <Card.Primary>
-      <Card.Title large>Error</Card.Title>
-    </Card.Primary>
-    <Card.SupportingText>
-      Error {source}: {error.toString()}
-    </Card.SupportingText>
-    <Card.Actions>
-      <Button className="dismiss" onClick={onDismiss}>Dismiss</Button>
-    </Card.Actions>
-  </Card>
-);
+}) {
+  return (
+    <Card>
+      <Card.Primary>
+        <Card.Title large>Error</Card.Title>
+      </Card.Primary>
+      <Card.SupportingText>
+        Error {source}: {error.toString()}
+      </Card.SupportingText>
+      <Card.Actions>
+        <Button className="dismiss" onClick={onDismiss}>Dismiss</Button>
+      </Card.Actions>
+    </Card>
+  );
+}
 
 ErrorComponent.propTypes = ({
   error: PropTypes.instanceOf(Error).isRequired,

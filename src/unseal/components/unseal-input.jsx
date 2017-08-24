@@ -8,27 +8,29 @@ import '@material/textfield/dist/mdc.textfield.css';
 
 import { editUnsealKey } from '../actions';
 
-export const PlainUnsealInput = ({
+export function UnsealInputComponent({
   value,
   onChange,
-}) => (
-  <FormField>
-    <TextField id="unseal-key-input" fullwidth>
-      <TextField.Input
-        onChange={e => onChange(e.target.value)}
-        value={value}
-      />
-      <TextField.Label htmlFor="unseal-key-input">Unseal Key</TextField.Label>
-    </TextField>
-  </FormField>
-);
+}) {
+  return (
+    <FormField>
+      <TextField id="unseal-key-input" fullwidth>
+        <TextField.Input
+          onChange={e => onChange(e.target.value)}
+          value={value}
+        />
+        <TextField.Label htmlFor="unseal-key-input">Unseal Key</TextField.Label>
+      </TextField>
+    </FormField>
+  );
+}
 
-PlainUnsealInput.propTypes = ({
+UnsealInputComponent.propTypes = ({
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func,
 });
 
-PlainUnsealInput.defaultProps = ({
+UnsealInputComponent.defaultProps = ({
   onChange: () => {},
 });
 
@@ -40,4 +42,4 @@ const mapDispatchToProps = ({
   onChange: editUnsealKey,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlainUnsealInput);
+export default connect(mapStateToProps, mapDispatchToProps)(UnsealInputComponent);

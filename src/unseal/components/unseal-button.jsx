@@ -6,19 +6,21 @@ import '@material/button/dist/mdc.button.css';
 
 import { startUnseal } from '../actions';
 
-export const PlainUnsealButton = ({
+export function UnsealButtonComponent({
   unsealKey,
   onClick,
-}) => (
-  <Button onClick={() => onClick(unsealKey)}>Unseal</Button>
-);
+}) {
+  return (
+    <Button onClick={() => onClick(unsealKey)}>Unseal</Button>
+  );
+}
 
-PlainUnsealButton.propTypes = ({
+UnsealButtonComponent.propTypes = ({
   unsealKey: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 });
 
-PlainUnsealButton.defaultProps = ({
+UnsealButtonComponent.defaultProps = ({
   onClick: () => {},
 });
 
@@ -30,4 +32,4 @@ const mapDispatchToProps = ({
   onClick: startUnseal,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlainUnsealButton);
+export default connect(mapStateToProps, mapDispatchToProps)(UnsealButtonComponent);

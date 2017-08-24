@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 import Error from './error';
 import Loading from './loading';
 import Unseal from '../../unseal/components';
-import Login from '../../login/components';
+import LoginComponent from '../../login/components';
 import Workspace from '../../workspace/components';
 
-export const InitialiseComponent = ({
+export function InitialiseComponent({
   error,
   loading,
   sealed,
   unauthenticated,
   ready,
-}) => {
+}) {
   if (error) {
     return <Error />;
   }
@@ -25,13 +25,13 @@ export const InitialiseComponent = ({
     return <Unseal />;
   }
   if (unauthenticated) {
-    return <Login />;
+    return <LoginComponent />;
   }
   if (ready) {
     return <Workspace />;
   }
   return null;
-};
+}
 
 InitialiseComponent.propTypes = ({
   error: PropTypes.instanceOf(Error),

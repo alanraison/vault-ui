@@ -9,23 +9,25 @@ import '@material/card/dist/mdc.card.css';
 import Credentials from './credentials';
 import { loginStart } from '../actions';
 
-const DetailsComponent = ({
+function DetailsComponent({
   method,
   doLogin,
   className,
-}) => (
-  <Card className={className}>
-    <Card.Primary>
-      <Card.Title large>Login to Vault.</Card.Title>
-    </Card.Primary>
-    <Card.SupportingText>
-      <Credentials />
-    </Card.SupportingText>
-    <Card.Actions>
-      <Button onClick={() => doLogin(method)}>Login</Button>
-    </Card.Actions>
-  </Card>
-);
+}) {
+  return (
+    <Card className={className}>
+      <Card.Primary>
+        <Card.Title large>Login to Vault.</Card.Title>
+      </Card.Primary>
+      <Card.SupportingText>
+        <Credentials />
+      </Card.SupportingText>
+      <Card.Actions>
+        <Button onClick={() => doLogin(method)}>Login</Button>
+      </Card.Actions>
+    </Card>
+  );
+}
 
 DetailsComponent.propTypes = ({
   method: PropTypes.string.isRequired,

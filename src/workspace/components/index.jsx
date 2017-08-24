@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Workspace = () => (<div>Workspace</div>);
+function Workspace() {
+  return (<div>Workspace</div>);
+}
 
 export default Workspace;

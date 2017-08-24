@@ -2,15 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-export const PlainUnsealCount = ({
+export function UnsealCountComponent({
   count,
-}) => (
-  <span>
-    Please enter {count} unseal key{count === 1 ? '' : 's'} to unlock Vault.
-  </span>
-);
+}) {
+  return (
+    <span>
+      Please enter {count} unseal key{count === 1 ? '' : 's'} to unlock Vault.
+    </span>
+  );
+}
 
-PlainUnsealCount.propTypes = ({
+UnsealCountComponent.propTypes = ({
   count: PropTypes.number.isRequired,
 });
 
@@ -18,4 +20,4 @@ const mapStateToProps = state => ({
   count: state.app.sealStatus.sealInfo.t - state.app.sealStatus.sealInfo.progress,
 });
 
-export default connect(mapStateToProps)(PlainUnsealCount);
+export default connect(mapStateToProps)(UnsealCountComponent);

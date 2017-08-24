@@ -8,49 +8,53 @@ import '@material/list/dist/mdc.list.css';
 import '@material/ripple/dist/mdc.ripple.css';
 import { selectLoginMethod } from '../actions';
 
-const LoginChoiceItem = ({
+function LoginChoiceItem({
   method,
   onClick,
-}) => (
-  <Ripple onClick={onClick}>
-    <li className="mdc-list-item">
-      {method}
-    </li>
-  </Ripple>
-);
+}) {
+  return (
+    <Ripple onClick={onClick}>
+      <li className="mdc-list-item">
+        {method}
+      </li>
+    </Ripple>
+  );
+}
 
 LoginChoiceItem.propTypes = ({
   method: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 });
 
-const LoginChooserComponent = ({
+function LoginChooserComponent({
   className,
   methods,
   onSelect,
-}) => (
-  <Card className={className}>
-    <Card.Primary>
-      <Card.Title large>Login to Vault.</Card.Title>
-    </Card.Primary>
-    <Card.SupportingText>
-      <ul className="mdc-list">
-        <LoginChoiceItem
-          method='token'
-          onClick={() => onSelect('token')}
-        />
-        {
-          methods.map(method => (
-            <LoginChoiceItem
-              key={method}
-              method={method}
-              onClick={() => onSelect(method)}
-            />))
-        }
-      </ul>
-    </Card.SupportingText>
-  </Card>
-);
+}) {
+  return (
+    <Card className={className}>
+      <Card.Primary>
+        <Card.Title large>Login to Vault.</Card.Title>
+      </Card.Primary>
+      <Card.SupportingText>
+        <ul className="mdc-list">
+          <LoginChoiceItem
+            method='token'
+            onClick={() => onSelect('token')}
+          />
+          {
+            methods.map(method => (
+              <LoginChoiceItem
+                key={method}
+                method={method}
+                onClick={() => onSelect(method)}
+              />))
+          }
+        </ul>
+      </Card.SupportingText>
+    </Card>
+  );
+}
 
 LoginChooserComponent.propTypes = ({
   className: PropTypes.string,

@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TokenCredentials from '../methods/token/components';
 
-export const CredentialsComponent = ({
+export function CredentialsComponent({
   method,
-}) => {
+}) {
   switch (method) {
     case 'token':
       return <TokenCredentials />;
     default:
       return null;
   }
-};
+}
 
 CredentialsComponent.propTypes = ({
   method: PropTypes.string.isRequired,
