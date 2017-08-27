@@ -10,7 +10,7 @@ describe('Token Entry component', () => {
   });
   it('should call the change handler on change', () => {
     const changeHandler = jest.fn();
-    const wrapper = mount(<TokenEntry onChange={changeHandler} />);
+    const wrapper = mount(<TokenEntry value="" onChange={changeHandler} />);
     const mockValue = 'mock value';
     const mockEvent = {
       target: {

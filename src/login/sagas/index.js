@@ -3,7 +3,7 @@ import * as actions from '../actions';
 import * as api from '../api';
 
 export function* login(action) {
-  const loginMethod = action.data;
+  const loginMethod = action.payload;
   const loginData = yield select(state => state.app.login[loginMethod]);
   try {
     const auth = yield call(api.login, loginMethod, loginData);

@@ -7,7 +7,7 @@ describe('Token login method reducer', () => {
     expect(newState).toEqual('bar');
   });
   it('should ignore other actions', () => {
-    const newState = reducer('foo', { type: 'EDIT_TOKEN', data: 'baz' });
+    const newState = reducer('foo', { type: 'EDIT_TOKEN', payload: 'baz' });
     expect(newState).toEqual('foo');
   });
 });

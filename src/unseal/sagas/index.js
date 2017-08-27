@@ -11,7 +11,7 @@ import * as api from '../api';
 
 function* callUnseal(action) {
   try {
-    const status = yield call(api.unseal, action.data);
+    const status = yield call(api.unseal, action.payload);
     if (status.errors) {
       yield put(globalActions.error(status.errors, 'unsealing vault'));
     } else {

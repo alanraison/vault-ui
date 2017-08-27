@@ -8,20 +8,22 @@ import '@material/textfield/dist/mdc.textfield.css';
 
 import { changeToken } from '../actions';
 
-export const TokenEntryComponent = ({
+export function TokenEntryComponent({
   value,
   onChange,
-}) => (
-  <FormField>
-    <TextField id="token-input">
-      <TextField.Input
-        onChange={(e) => onChange(e.target.value)}
-        value={value}
-      />
-      <TextField.Label htmlFor="token-input">Token</TextField.Label>
-    </TextField>
-  </FormField>
-);
+}) {
+  return (
+    <FormField>
+      <TextField id="token-input">
+        <TextField.Input
+          onChange={(e) => onChange(e.target.value)}
+          value={value}
+        />
+        <TextField.Label htmlFor="token-input">Token</TextField.Label>
+      </TextField>
+    </FormField>
+  );
+}
 
 TokenEntryComponent.propTypes = ({
   value: PropTypes.string.isRequired,

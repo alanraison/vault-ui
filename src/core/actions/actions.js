@@ -6,7 +6,7 @@ export default actions => ({
         expect(actual.type).toEqual(type);
       });
       it('should set the action payload', () => {
-        expect(actual.data).toEqual(payload);
+        expect(actual.payload).toEqual(payload);
       });
     });
   },

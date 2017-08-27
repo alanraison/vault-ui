@@ -32,7 +32,7 @@ const connected = (state = false, action) => {
 const authToken = (state = '', action) => {
   switch (action.type) {
     case actions.login.LOGIN_SUCCESS:
-      return action.data;
+      return action.payload;
     default:
       return state;
   }

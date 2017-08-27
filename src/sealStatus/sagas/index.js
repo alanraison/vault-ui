@@ -19,7 +19,7 @@ function* callGetSealStatus() {
 }
 
 function* isSealed(action) {
-  if (action.data.sealed) {
+  if (action.payload.sealed) {
     yield put(actions.unsealKeyRequired());
   } else {
     yield put(actions.unsealComplete());

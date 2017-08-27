@@ -27,7 +27,7 @@ describe('Seal Status reducer', () => {
   });
   it('should not respond to other actions', () => {
     const oldState = { foo: 'bar' };
-    const newState = reducer(oldState, { type: 'INTERNAL_ACTION', data: 'baz' });
+    const newState = reducer(oldState, { type: 'INTERNAL_ACTION', payload: 'baz' });
     expect(newState).toEqual(oldState);
   });
 });
