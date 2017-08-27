@@ -11,9 +11,9 @@ export const UNSEAL_COMPLETE = 'UNSEAL_COMPLETE';
 export const getUnsealStatusStart = () => ({
   type: GET_UNSEAL_STATUS_START,
 });
-export const getUnsealStatusResult = data => ({
+export const getUnsealStatusResult = payload => ({
   type: GET_UNSEAL_STATUS_RESULT,
-  data,
+  payload,
 });
 export const unsealKeyRequired = () => ({
   type: UNSEAL_KEY_REQUIRED,
