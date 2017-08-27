@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import ErrorComponent from './error';
+import ShowError from './error';
 import Loading from './loading';
 import Unseal from '../../unseal/components';
 import LoginComponent from '../../login/components';
@@ -16,7 +16,7 @@ export function InitialiseComponent({
   ready,
 }) {
   if (error) {
-    return <ErrorComponent />;
+    return <ShowError />;
   }
   if (loading) {
     return <Loading />;
