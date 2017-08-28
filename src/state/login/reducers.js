@@ -1,4 +1,4 @@
-import * as actions from '../../../actions/login';
+import * as actions from '../../actions/login';
 import methods from './methods';
 
 export default (state = { method: null }, action) => {

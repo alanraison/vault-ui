@@ -1,4 +1,4 @@
-import { url } from '../../core/api';
+import { url } from '../core/api';
 
 export const unseal = key => (
   fetch(`${url()}/v1/sys/unseal`, {

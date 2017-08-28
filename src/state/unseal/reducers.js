@@ -1,4 +1,4 @@
-import * as actions from '../../../actions/unseal';
+import * as actions from '../../actions/unseal';
 
 const initialState = '';
 

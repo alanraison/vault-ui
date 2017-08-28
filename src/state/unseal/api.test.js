@@ -1,8 +1,8 @@
 import uuid from 'uuid/v4';
-import { unseal } from './';
-import { url } from '../../core/api';
+import { unseal } from './api';
+import { url } from '../core/api';
 
-jest.mock('../../core/api');
+jest.mock('../core/api');
 const mockUrl = 'http://baz';
 url.mockReturnValue(mockUrl);
 const response = { testResponse: uuid() };

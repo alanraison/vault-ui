@@ -3,8 +3,8 @@ import {
   put,
   takeLatest,
 } from 'redux-saga/effects';
-import actions from '../../../actions';
-import * as api from '../api';
+import actions from '../../actions';
+import * as api from './api';
 
 
 function* callUnseal(action) {

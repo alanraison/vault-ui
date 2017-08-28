@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga/effects';
-import saga, { login } from './';
-import * as actions from '../../../actions/login';
+import saga, { login } from './sagas';
+import * as actions from '../../actions/login';
 
 describe('Login saga', () => {
   it('should call the login saga on LOGIN_START actions', () => {

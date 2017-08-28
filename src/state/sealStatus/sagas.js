@@ -4,10 +4,9 @@ import {
   takeLatest,
   put,
 } from 'redux-saga/effects';
-import actions from '../../../actions';
-// import * as coreActions from '../../core/actions';
-import * as api from '../api';
-import unsealSagas from '../../unseal/sagas';
+import actions from '../../actions';
+import * as api from './api';
+import unsealSagas from '../unseal/sagas';
 
 function* callGetSealStatus() {
   try {

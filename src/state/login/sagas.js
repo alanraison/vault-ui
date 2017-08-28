@@ -1,6 +1,6 @@
 import { put, call, takeEvery, select } from 'redux-saga/effects';
-import * as actions from '../../../actions/login';
-import * as api from '../api';
+import * as actions from '../../actions/login';
+import * as api from './api';
 
 export function* login(action) {
   const loginMethod = action.payload;

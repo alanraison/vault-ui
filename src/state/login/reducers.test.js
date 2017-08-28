@@ -1,5 +1,5 @@
-import loginReducer from './';
-import actions from '../../../actions';
+import loginReducer from './reducers';
+import actions from '../../actions';
 import methodReducer from './methods';
 
 jest.mock('./methods');

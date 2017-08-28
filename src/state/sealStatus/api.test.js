@@ -1,7 +1,7 @@
-import { getSealStatus } from './';
-import { url } from '../../core/api';
+import { getSealStatus } from './api';
+import { url } from '../core/api';
 
-jest.mock('../../core/api');
+jest.mock('../core/api');
 
 const mockUrl = 'http://foo';
 url.mockReturnValue(mockUrl);

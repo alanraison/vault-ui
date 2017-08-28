@@ -1,5 +1,5 @@
-import reducer from './';
-import * as actions from '../../../actions/unseal';
+import reducer from './reducers';
+import * as actions from '../../actions/unseal';
 
 describe('the unseal reducer', () => {
   it('should set the unseal key when an EDIT_UNSEAL_KEY action is received', () => {

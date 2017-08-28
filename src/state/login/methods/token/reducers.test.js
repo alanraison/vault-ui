@@ -1,5 +1,5 @@
-import reducer from './';
-import * as actions from '../../../../../actions/authMethods/token';
+import reducer from './reducers';
+import * as actions from '../../../../actions/authMethods/token';
 
 describe('Token login method reducer', () => {
   it('should set the token data on CHANGE_TOKEN', () => {
