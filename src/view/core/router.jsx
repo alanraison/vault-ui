@@ -7,7 +7,8 @@ import actions from '../../actions';
 import ShowError from './error';
 import Loading from './loading';
 import Unseal from '../unseal';
-import LoginComponent from '../login';
+import LoginChooser from '../login/chooser';
+import LoginDetails from '../login/details';
 import Workspace from '../workspace';
 
 const NotFound = () => <div>Path not found.</div>;
@@ -17,7 +18,8 @@ const routesMap = ({
   [NOT_FOUND]: NotFound,
   [actions.INITIALISE]: Loading,
   [actions.sealStatus.UNSEAL_KEY_REQUIRED]: Unseal,
-  [actions.login.START_CHOOSE_LOGIN_METHOD]: LoginComponent,
+  [actions.login.START_CHOOSE_LOGIN_METHOD]: LoginChooser,
+  [actions.login.SELECT_LOGIN_METHOD]: LoginDetails,
   [actions.login.LOGIN_SUCCESS]: Workspace,
 });
 

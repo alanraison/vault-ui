@@ -1,5 +1,5 @@
-import * as token from './token/reducers';
+import token from './token/reducers';
 
-export {
+export default {
   token,
 };

@@ -30,6 +30,7 @@ const routesMap = {
   [actions.sealStatus.UNSEAL_KEY_REQUIRED]: '/unseal',
   [actions.login.START_CHOOSE_LOGIN_METHOD]: '/login',
   [actions.login.SELECT_LOGIN_METHOD]: '/login/:method',
+  [actions.login.LOGIN_SUCCESS]: '/workspace',
 };
 const { reducer, middleware: routingMiddleware, enhancer } = connectRoutes(history, routesMap, { location: 'router' });
 

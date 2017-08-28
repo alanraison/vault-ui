@@ -6,6 +6,7 @@ import Ripple from '@react-mdc/ripple';
 import '@material/card/dist/mdc.card.css';
 import '@material/list/dist/mdc.list.css';
 import '@material/ripple/dist/mdc.ripple.css';
+
 import { selectLoginMethod } from '../../actions/login';
 
 function LoginChoiceItem({
@@ -38,10 +39,6 @@ function LoginChooserComponent({
       </Card.Primary>
       <Card.SupportingText>
         <ul className="mdc-list">
-          <LoginChoiceItem
-            method="token"
-            onClick={() => onSelect('token')}
-          />
           {
             methods.map(method => (
               <LoginChoiceItem
@@ -68,7 +65,7 @@ LoginChooserComponent.defaultProps = ({
 });
 
 const mapStateToProps = () => ({
-  methods: [],
+  methods: ['token'],
 });
 
 const mapDispatchToProps = {

@@ -7,9 +7,9 @@ import actions from '../../actions';
 import * as api from './api';
 
 
-function* callUnseal(action) {
+export function* callUnseal(action) {
   try {
-    const status = yield call(api.unseal, action.payload);
+    const status = yield call(api.unseal, action.payload.key);
     if (status.errors) {
       yield put(actions.error(status.errors, 'unsealing vault'));
     } else {

@@ -6,7 +6,7 @@ export default (state = { method: null }, action) => {
     case actions.SELECT_LOGIN_METHOD:
       return {
         ...state,
-        method: action.payload,
+        method: action.payload.method,
       };
     case actions.LOGIN_ERROR:
       return {

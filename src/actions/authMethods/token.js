@@ -1,5 +1,5 @@
 export const CHANGE_TOKEN = 'CHANGE_TOKEN';
-export const changeToken = payload => ({
+export const changeToken = token => ({
   type: CHANGE_TOKEN,
-  payload,
+  payload: { token },
 });

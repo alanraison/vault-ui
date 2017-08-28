@@ -5,5 +5,5 @@ import testActionCreators from '../testhelper';
 const tests = testActionCreators(actions);
 
 describe('token actions', () => {
-  tests.actionCreator('changeToken', actions.CHANGE_TOKEN, uuid());
+  tests.actionCreator('changeToken', actions.CHANGE_TOKEN, 'token', uuid());
 });

@@ -6,9 +6,9 @@ export const UNSEAL_COMPLETE = 'UNSEAL_COMPLETE';
 export const getUnsealStatusStart = () => ({
   type: GET_UNSEAL_STATUS_START,
 });
-export const getUnsealStatusResult = payload => ({
+export const getUnsealStatusResult = status => ({
   type: GET_UNSEAL_STATUS_RESULT,
-  payload,
+  payload: { status },
 });
 export const unsealKeyRequired = () => ({
   type: UNSEAL_KEY_REQUIRED,

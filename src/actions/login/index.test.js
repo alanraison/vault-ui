@@ -6,9 +6,9 @@ const tests = testActionCreators(actions);
 
 describe('login action creators', () => {
   [
-    { method: 'loginStart', action: actions.LOGIN_START },
-    { method: 'loginSuccess', action: actions.LOGIN_SUCCESS },
-    { method: 'selectLoginMethod', action: actions.SELECT_LOGIN_METHOD },
-  ].map(({ method, action }) => tests.actionCreator(method, action, uuid()));
+    { method: 'loginStart', action: actions.LOGIN_START, key: 'method' },
+    { method: 'loginSuccess', action: actions.LOGIN_SUCCESS, key: 'auth' },
+    { method: 'selectLoginMethod', action: actions.SELECT_LOGIN_METHOD, key: 'method' },
+  ].map(({ method, action, key }) => tests.actionCreator(method, action, key, uuid()));
   tests.errorActionCreator('loginError', actions.LOGIN_ERROR);
 });

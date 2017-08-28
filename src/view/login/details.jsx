@@ -6,7 +6,7 @@ import Card from '@react-mdc/card';
 import '@material/button/dist/mdc.button.css';
 import '@material/card/dist/mdc.card.css';
 
-import Credentials from './credentials';
+import LoginRouter from './router';
 import { loginStart } from '../../actions/login';
 
 function DetailsComponent({
@@ -20,7 +20,7 @@ function DetailsComponent({
         <Card.Title large>Login to Vault.</Card.Title>
       </Card.Primary>
       <Card.SupportingText>
-        <Credentials />
+        <LoginRouter />
       </Card.SupportingText>
       <Card.Actions>
         <Button onClick={() => doLogin(method)}>Login</Button>

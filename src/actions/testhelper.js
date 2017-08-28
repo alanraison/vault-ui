@@ -1,12 +1,14 @@
 export default actions => ({
-  actionCreator(action, type, payload) {
+  actionCreator(action, type, key, payload) {
     describe(action, () => {
       const actual = actions[action](payload);
       it(`should create a ${type} action`, () => {
         expect(actual.type).toEqual(type);
       });
       it('should set the action payload', () => {
-        expect(actual.payload).toEqual(payload);
+        if (key) {
+          expect(actual.payload[key]).toEqual(payload);
+        }
       });
     });
   },

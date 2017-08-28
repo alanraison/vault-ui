@@ -6,7 +6,7 @@ import TextField from '@react-mdc/textfield';
 import '@material/form-field/dist/mdc.form-field.css';
 import '@material/textfield/dist/mdc.textfield.css';
 
-import { changeToken } from '../../actions/authMethods/token';
+import { changeToken } from '../../../actions/authMethods/token';
 
 export function TokenEntryComponent({
   value,

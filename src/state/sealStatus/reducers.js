@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case actions.sealStatus.GET_UNSEAL_STATUS_RESULT:
       return {
         ...state,
-        sealInfo: action.payload,
+        sealInfo: action.payload.status,
         loading: false,
       };
     case actions.ERROR:
@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
         ...state,
         sealed: true,
       };
-    case actions.unseal.UNSEAL_COMPLETE:
+    case actions.sealStatus.UNSEAL_COMPLETE:
       return {
         ...state,
         sealed: false,

@@ -8,16 +8,16 @@ import actions from '../../actions';
 import * as api from './api';
 import unsealSagas from '../unseal/sagas';
 
-function* callGetSealStatus() {
+export function* callGetSealStatus() {
   try {
     const status = yield call(api.getSealStatus);
-    yield put(actions.sealStaus.getUnsealStatusResult(status));
+    yield put(actions.sealStatus.getUnsealStatusResult(status));
   } catch (e) {
     yield put(actions.error(e, 'getting unseal status'));
   }
 }
 
-function* isSealed(action) {
+export function* isSealed(action) {
   if (action.payload.sealed) {
     yield put(actions.sealStatus.unsealKeyRequired());
   } else {

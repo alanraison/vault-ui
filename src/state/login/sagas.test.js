@@ -1,13 +1,5 @@
-import { takeEvery } from 'redux-saga/effects';
-import saga, { login } from './sagas';
+import { login } from './sagas';
 import * as actions from '../../actions/login';
-
-describe('Login saga', () => {
-  it('should call the login saga on LOGIN_START actions', () => {
-    const gen = saga();
-    expect(gen.next().value).toEqual(takeEvery(actions.LOGIN_START, login));
-  });
-});
 
 describe('login saga handler', () => {
   it('should get the state for the selected login handler', () => {

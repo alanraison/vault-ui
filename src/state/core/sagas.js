@@ -1,13 +1,12 @@
 import {
-  all,
   call,
-  select,
   spawn,
   put,
   takeEvery,
 } from 'redux-saga/effects';
-import sealStatus from '../sealStatus/sagas';
-import auth from '../login/sagas';
+import * as sealStatus from '../sealStatus/sagas';
+import * as unseal from '../unseal/sagas';
+import * as login from '../login/sagas';
 import actions from '../../actions';
 import * as api from './api';
 
@@ -27,17 +26,15 @@ function* initialise() {
 
 const routesMap = ({
   [actions.INITIALISE]: initialise,
+  [actions.sealStatus.GET_UNSEAL_STATUS_START]: sealStatus.callGetSealStatus,
+  [actions.sealStatus.GET_UNSEAL_STATUS_RESULT]: sealStatus.isSealed,
+  [actions.unseal.START_UNSEAL]: unseal.callUnseal,
+  [actions.sealStatus.UNSEAL_COMPLETE]: login.startLogin,
+  [actions.login.LOGIN_START]: login.login,
 });
 
-function* handleRouteChange({ type }) {
-  yield spawn(routesMap[type]);
-}
-
-function* startLogin() {
-  const authToken = yield select(state => state.app.authToken);
-  if (!authToken) {
-    yield put(actions.login.startChooseLoginMethod());
-  }
+function* handleRouteChange(action) {
+  yield spawn(routesMap[action.type], action);
 }
 
 export default function* () {

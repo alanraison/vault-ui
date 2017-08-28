@@ -7,6 +7,6 @@ const tests = testActionCreators(actions);
 describe('sealStatus actionCreators', () => {
   [
     { method: 'getUnsealStatusStart', action: actions.GET_UNSEAL_STATUS_START },
-    { method: 'getUnsealStatusResult', action: actions.GET_UNSEAL_STATUS_RESULT, payload: uuid() },
-  ].map(({ method, action, payload }) => tests.actionCreator(method, action, payload));
+    { method: 'getUnsealStatusResult', action: actions.GET_UNSEAL_STATUS_RESULT, key: 'status', payload: uuid() },
+  ].map(({ method, action, key, payload }) => tests.actionCreator(method, action, key, payload));
 });
