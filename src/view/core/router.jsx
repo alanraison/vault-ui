@@ -1,0 +1,39 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { NOT_FOUND } from 'redux-first-router';
+
+import actions from '../../actions';
+import ShowError from './error';
+import Loading from './loading';
+import Unseal from '../unseal';
+import LoginComponent from '../login';
+import Workspace from '../workspace';
+
+const NotFound = () => <div>Path not found.</div>;
+
+const routesMap = ({
+  [actions.ERROR]: ShowError,
+  [NOT_FOUND]: NotFound,
+  [actions.INITIALISE]: Loading,
+  [actions.sealStatus.UNSEAL_KEY_REQUIRED]: Unseal,
+  [actions.login.START_CHOOSE_LOGIN_METHOD]: LoginComponent,
+  [actions.login.LOGIN_SUCCESS]: Workspace,
+});
+
+export function RouteContainer({
+  route,
+}) {
+  const Route = routesMap[route] ? routesMap[route] : routesMap[NOT_FOUND];
+  return <Route />;
+}
+
+RouteContainer.propTypes = ({
+  route: PropTypes.string.isRequired,
+});
+
+const mapStateToProps = state => ({
+  route: state.router.type,
+});
+
+export default connect(mapStateToProps)(RouteContainer);
