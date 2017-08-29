@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Button from '@react-mdc/button';
-import '@material/button/dist/mdc.button.css';
+import Button from 'material-ui/Button';
 
 import { startUnseal } from '../../actions/unseal';
 

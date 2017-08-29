@@ -1,13 +1,14 @@
 import React from 'react';
-import Card from '@react-mdc/card';
-import '@material/card/dist/mdc.card.css';
+import Card, { CardHeader, CardContent } from 'material-ui/Card';
+import { CircularProgress } from 'material-ui/Progress';
 
 export default function LoadingComponent() {
   return (
     <Card>
-      <Card.Primary>
-        <Card.Title large>Loading...</Card.Title>
-      </Card.Primary>
+      <CardHeader title="Loading..." />
+      <CardContent>
+        <CircularProgress />
+      </CardContent>
     </Card>
   );
 }

@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import FormField from '@react-mdc/form-field';
-import TextField from '@react-mdc/textfield';
-import '@material/form-field/dist/mdc.form-field.css';
-import '@material/textfield/dist/mdc.textfield.css';
+import TextField from 'material-ui/TextField';
 
 import { changeToken } from '../../../actions/authMethods/token';
 
@@ -13,15 +10,12 @@ export function TokenEntryComponent({
   onChange,
 }) {
   return (
-    <FormField>
-      <TextField id="token-input">
-        <TextField.Input
-          onChange={(e) => onChange(e.target.value)}
-          value={value}
-        />
-        <TextField.Label htmlFor="token-input">Token</TextField.Label>
-      </TextField>
-    </FormField>
+    <TextField
+      id="token-input"
+      label="Token"
+      onChange={(e) => onChange(e.target.value)}
+      value={value}
+    />
   );
 }
 

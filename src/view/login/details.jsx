@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Button from '@react-mdc/button';
-import Card from '@react-mdc/card';
-import '@material/button/dist/mdc.button.css';
-import '@material/card/dist/mdc.card.css';
+import Button from 'material-ui/Button';
+import Card, { CardActions, CardHeader, CardContent } from 'material-ui/Card';
 
 import LoginRouter from './router';
 import { loginStart } from '../../actions/login';
@@ -16,15 +14,13 @@ function DetailsComponent({
 }) {
   return (
     <Card className={className}>
-      <Card.Primary>
-        <Card.Title large>Login to Vault.</Card.Title>
-      </Card.Primary>
-      <Card.SupportingText>
+      <CardHeader title="Login to Vault." />
+      <CardContent>
         <LoginRouter />
-      </Card.SupportingText>
-      <Card.Actions>
+      </CardContent>
+      <CardActions>
         <Button onClick={() => doLogin(method)}>Login</Button>
-      </Card.Actions>
+      </CardActions>
     </Card>
   );
 }

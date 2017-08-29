@@ -1,16 +1,20 @@
 import React from 'react';
-import Toolbar from '@react-mdc/toolbar';
-import '@material/toolbar/dist/mdc.toolbar.css';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
 
 export default function HeaderComponent() {
   return (
-    <Toolbar>
-      <Toolbar.Row>
-        <Toolbar.Section align="start">
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton color="contrast" aria-label="menu">
           <i className="material-icons">lock</i>
-          <Toolbar.Title>Vault</Toolbar.Title>
-        </Toolbar.Section>
-      </Toolbar.Row>
-    </Toolbar>
+        </IconButton>
+        <Typography type="title" color="inherit">
+          Vault
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 }

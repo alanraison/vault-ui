@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Card from '@react-mdc/card';
-import Ripple from '@react-mdc/ripple';
-import '@material/card/dist/mdc.card.css';
-import '@material/list/dist/mdc.list.css';
-import '@material/ripple/dist/mdc.ripple.css';
+import Card, { CardHeader, CardContent } from 'material-ui/Card';
+import List, { ListItem, ListItemText } from 'material-ui/List';
 
 import { selectLoginMethod } from '../../actions/login';
 import methods from './methods';
@@ -15,11 +12,9 @@ function LoginChoiceItem({
   onClick,
 }) {
   return (
-    <Ripple onClick={onClick}>
-      <li className="mdc-list-item">
-        {method}
-      </li>
-    </Ripple>
+    <ListItem button onClick={onClick}>
+      <ListItemText primary={method} />
+    </ListItem>
   );
 }
 
@@ -35,11 +30,9 @@ function LoginChooserComponent({
 }) {
   return (
     <Card className={className}>
-      <Card.Primary>
-        <Card.Title large>Login to Vault.</Card.Title>
-      </Card.Primary>
-      <Card.SupportingText>
-        <ul className="mdc-list">
+      <CardHeader title="Login to Vault." />
+      <CardContent>
+        <List>
           {
             methodList.map(method => (
               <LoginChoiceItem
@@ -48,8 +41,8 @@ function LoginChooserComponent({
                 onClick={() => onSelect(method)}
               />))
           }
-        </ul>
-      </Card.SupportingText>
+        </List>
+      </CardContent>
     </Card>
   );
 }
@@ -61,12 +54,12 @@ LoginChooserComponent.propTypes = ({
 });
 
 LoginChooserComponent.defaultProps = ({
-  className: undefined,
+  className: '',
   methodList: [],
 });
 
 const mapStateToProps = () => ({
-  methodList: methods,
+  methodList: Object.keys(methods),
 });
 
 const mapDispatchToProps = {

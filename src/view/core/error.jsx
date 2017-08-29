@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Card from '@react-mdc/card';
-import Button from '@react-mdc/button';
-import '@material/card/dist/mdc.card.css';
-import '@material/button/dist/mdc.button.css';
+import Button from 'material-ui/Button';
+import Card, { CardHeader, CardContent, CardActions } from 'material-ui/Card';
 import { clearError } from '../../actions/core';
 
 export function ErrorComponent({
@@ -14,15 +12,13 @@ export function ErrorComponent({
 }) {
   return (
     <Card>
-      <Card.Primary>
-        <Card.Title large>Error</Card.Title>
-      </Card.Primary>
-      <Card.SupportingText>
+      <CardHeader title={Error}/>
+      <CardContent>
         Error {source}: {error.toString()}
-      </Card.SupportingText>
-      <Card.Actions>
+      </CardContent>
+      <CardActions>
         <Button className="dismiss" onClick={onDismiss}>Dismiss</Button>
-      </Card.Actions>
+      </CardActions>
     </Card>
   );
 }
