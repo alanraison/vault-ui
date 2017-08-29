@@ -18,7 +18,7 @@ export function* callGetSealStatus() {
 }
 
 export function* isSealed(action) {
-  if (action.payload.sealed) {
+  if (action.payload.status.sealed) {
     yield put(actions.sealStatus.unsealKeyRequired());
   } else {
     yield put(actions.sealStatus.unsealComplete());

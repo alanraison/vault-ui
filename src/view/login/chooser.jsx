@@ -8,6 +8,7 @@ import '@material/list/dist/mdc.list.css';
 import '@material/ripple/dist/mdc.ripple.css';
 
 import { selectLoginMethod } from '../../actions/login';
+import methods from './methods';
 
 function LoginChoiceItem({
   method,
@@ -29,7 +30,7 @@ LoginChoiceItem.propTypes = ({
 
 function LoginChooserComponent({
   className,
-  methods,
+  methodList,
   onSelect,
 }) {
   return (
@@ -40,7 +41,7 @@ function LoginChooserComponent({
       <Card.SupportingText>
         <ul className="mdc-list">
           {
-            methods.map(method => (
+            methodList.map(method => (
               <LoginChoiceItem
                 key={method}
                 method={method}
@@ -55,17 +56,17 @@ function LoginChooserComponent({
 
 LoginChooserComponent.propTypes = ({
   className: PropTypes.string,
-  methods: PropTypes.arrayOf(PropTypes.string),
+  methodList: PropTypes.arrayOf(PropTypes.string),
   onSelect: PropTypes.func.isRequired,
 });
 
 LoginChooserComponent.defaultProps = ({
   className: undefined,
-  methods: [],
+  methodList: [],
 });
 
 const mapStateToProps = () => ({
-  methods: ['token'],
+  methodList: methods,
 });
 
 const mapDispatchToProps = {
