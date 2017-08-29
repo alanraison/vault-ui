@@ -3,7 +3,6 @@ import {
 } from 'redux';
 import actions from '../../actions';
 import sealStatus from '../sealStatus/reducers';
-import unseal from '../unseal/reducers';
 import login from '../login/reducers';
 
 const error = (state = null, action) => {
@@ -44,5 +43,4 @@ export default combineReducers({
   error,
   login,
   sealStatus,
-  unseal,
 });

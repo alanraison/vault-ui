@@ -25,6 +25,19 @@ export function* isSealed(action) {
   }
 }
 
+export function* callUnseal(action) {
+  try {
+    const status = yield call(api.unseal, action.payload.key);
+    if (status.errors) {
+      yield put(actions.error(status.errors, 'unsealing vault'));
+    } else {
+      yield put(actions.sealStatus.getUnsealStatusResult(status));
+    }
+  } catch (e) {
+    yield put(actions.error(e, 'unsealing vault'));
+  }
+}
+
 export default function* () {
   yield all([
     takeLatest(actions.GET_UNSEAL_STATUS_START, callGetSealStatus),

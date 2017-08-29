@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 
-import { startUnseal } from '../../actions/unseal';
+import { startUnseal } from '../../actions/sealStatus';
 
 export function UnsealButtonComponent({
   unsealKey,
@@ -24,7 +24,7 @@ UnsealButtonComponent.defaultProps = ({
 });
 
 const mapStateToProps = state => ({
-  unsealKey: state.app.unseal,
+  unsealKey: state.app.sealStatus.unsealKey,
 });
 
 const mapDispatchToProps = ({

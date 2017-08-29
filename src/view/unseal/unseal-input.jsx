@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 
-import { editUnsealKey } from '../../actions/unseal';
+import { editUnsealKey } from '../../actions/sealStatus';
 
 export function UnsealInputComponent({
   value,
@@ -30,7 +30,7 @@ UnsealInputComponent.defaultProps = ({
 });
 
 const mapStateToProps = state => ({
-  value: state.app.sealStatus.unsealEntryValue,
+  value: state.app.sealStatus.unsealKey,
 });
 
 const mapDispatchToProps = ({

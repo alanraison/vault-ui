@@ -25,6 +25,10 @@ describe('Seal Status reducer', () => {
     const newState = reducer({ loading: true }, actions.error(new Error('test', 'test')));
     expect(newState.loading).toBeFalsy();
   });
+  it('should set the unseal key when an EDIT_UNSEAL_KEY action is received', () => {
+    const newState = reducer('', actions.sealStatus.editUnsealKey('foo'));
+    expect(newState.unsealKey).toEqual('foo');
+  });
   it('should not respond to other actions', () => {
     const oldState = { foo: 'bar' };
     const newState = reducer(oldState, { type: 'INTERNAL_ACTION', payload: 'baz' });

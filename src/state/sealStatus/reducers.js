@@ -29,6 +29,11 @@ export default (state = initialState, action) => {
         ...state,
         sealed: true,
       };
+    case actions.sealStatus.EDIT_UNSEAL_KEY:
+      return {
+        ...state,
+        unsealKey: action.payload.key,
+      };
     case actions.sealStatus.UNSEAL_COMPLETE:
       return {
         ...state,

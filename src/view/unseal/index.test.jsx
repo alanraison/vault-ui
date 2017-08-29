@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Unseal from './';
 import UnsealCount from './unseal-count';
 import UnsealButton from './unseal-button';
@@ -10,7 +10,7 @@ jest.mock('./unseal-button');
 jest.mock('./unseal-input');
 
 describe('Unseal component', () => {
-  const wrapper = shallow(<Unseal />);
+  const wrapper = mount(<Unseal />);
   it('should contain a count of the outstanding unseal keys required', () => {
     expect(wrapper.find(UnsealCount)).toBePresent();
   });

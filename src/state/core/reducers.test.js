@@ -27,7 +27,7 @@ describe('Core reducers:', () => {
           source: 'test',
         },
       };
-      const newState = reducer(oldState, actions.unseal.startUnseal(''));
+      const newState = reducer(oldState, actions.sealStatus.startUnseal(''));
       expect(newState.error).toEqual(oldState.error);
     });
   });

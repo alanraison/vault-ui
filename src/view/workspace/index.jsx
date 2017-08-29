@@ -1,7 +1,12 @@
 import React from 'react';
+import Paper from 'material-ui/Paper';
 
 function Workspace() {
-  return (<div>Workspace</div>);
+  return (
+    <Paper>
+      Workspace
+    </Paper>
+  );
 }
 
 export default Workspace;

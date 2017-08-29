@@ -7,7 +7,7 @@ import UnsealButton from './unseal-button';
 export default function UnsealComponent() {
   return (
     <Card>
-      <CardHeader title="Vault is sealed." subtitle={UnsealCount}/>
+      <CardHeader title="Vault is sealed." subheader={<UnsealCount />} />
       <CardContent>
         <UnsealInput />
       </CardContent>
