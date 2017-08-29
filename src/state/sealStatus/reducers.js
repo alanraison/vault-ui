@@ -4,6 +4,7 @@ const initialState = {
   sealed: null,
   sealInfo: null,
   loading: false,
+  unsealKey: '',
 };
 
 export default (state = initialState, action) => {

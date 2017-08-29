@@ -13,21 +13,24 @@ function* healthCheck() {
   try {
     yield call(api.healthCheck);
     yield put(actions.healthCheckOk());
+    return true;
   } catch (e) {
     yield put(actions.error(e, 'connecting to Vault'));
+    return false;
   }
 }
 
 function* initialise() {
-  yield healthCheck();
-  yield put(actions.sealStatus.getUnsealStatusStart());
+  if (yield call(healthCheck)) {
+    yield put(actions.sealStatus.getUnsealStatusStart());
+  }
 }
 
 const routesMap = ({
   [actions.INITIALISE]: initialise,
   [actions.sealStatus.GET_UNSEAL_STATUS_START]: sealStatus.callGetSealStatus,
   [actions.sealStatus.GET_UNSEAL_STATUS_RESULT]: sealStatus.isSealed,
-  [actions.unseal.START_UNSEAL]: sealStatus.callUnseal,
+  [actions.sealStatus.START_UNSEAL]: sealStatus.callUnseal,
   [actions.sealStatus.UNSEAL_COMPLETE]: login.startLogin,
   [actions.login.LOGIN_START]: login.login,
 });

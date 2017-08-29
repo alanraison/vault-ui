@@ -12,7 +12,7 @@ export function UnsealInputComponent({
   return (
     <TextField
       id="unseal-key-input"
-      fullwidth
+      fullWidth
       onChange={e => onChange(e.target.value)}
       value={value}
       label="Unseal Key"
