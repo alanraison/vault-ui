@@ -24,6 +24,21 @@ describe('The vault API', () => {
         expect(vaultFetch).toHaveBeenCalledWith('/v1/sys/health?sealedcode=200');
         expect(vaultFetchTokenMock).toHaveBeenCalledWith();
       }));
+    it('should throw an error if the healthcheck fails completely', () => {
+      vaultFetchTokenMock.mockReturnValue(Promise.reject('Simulated Connection Error'));
+      expect.assertions(1);
+      return sys.health().catch((e) => {
+        expect(e).toMatch('Simulated Connection Error');
+      });
+    });
+    it('should thow an error if the healthcheck returns an unsuccessful status code', () => {
+      vaultFetchTokenMock.mockReturnValue(Promise.resolve(
+        new Response(JSON.stringify({ error: true }), { status: 404 })));
+      expect.assertions(1);
+      return sys.health().catch((e) => {
+        expect(e.message).toMatch('health check failed');
+      });
+    });
   });
 
   describe('sealStatus', () => {
