@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { NOT_FOUND } from 'redux-first-router';
+import Grid from 'material-ui/Grid';
 
 import actions from '../../actions';
 import ShowError from './error';
@@ -27,7 +28,10 @@ export function RouteContainer({
   route,
 }) {
   const Route = routesMap[route] ? routesMap[route] : routesMap[NOT_FOUND];
-  return <Route />;
+  return (
+    <Grid item xs>
+      <Route />
+    </Grid>);
 }
 
 RouteContainer.propTypes = ({

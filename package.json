@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "history": "^4.6.3",
+    "jest-fetch-mock": "latest",
     "material-ui": "next",
     "prop-types": "^15.5.7",
     "react": "^15.6.1",

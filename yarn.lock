@@ -4003,9 +4003,9 @@ jest-enzyme:
     enzyme-matchers "^3.3.0"
     enzyme-to-json "^1.5.0"
 
-jest-fetch-mock:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/jest-fetch-mock/-/jest-fetch-mock-1.2.0.tgz#15ac5c2d32d2c888bd3d132b682a4deb17f3ab35"
+jest-fetch-mock@latest:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/jest-fetch-mock/-/jest-fetch-mock-1.2.1.tgz#5fcf54583a53cf987b10c626f0d684fe353725f2"
   dependencies:
     whatwg-fetch "1.0.0"
 

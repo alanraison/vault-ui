@@ -7,11 +7,11 @@ import {
 import * as sealStatus from '../sealStatus/sagas';
 import * as login from '../login/sagas';
 import actions from '../../actions';
-import * as api from './api';
+import * as api from '../../api';
 
 function* healthCheck() {
   try {
-    yield call(api.healthCheck);
+    yield call(api.sys.health);
     yield put(actions.healthCheckOk());
     return true;
   } catch (e) {

@@ -1,4 +1,4 @@
-import token from './methods/token/api';
+import token from './token';
 
 export const login = (method, data) => {
   if (method === 'token') {
