@@ -1,72 +1,50 @@
-import uuid from 'uuid/v4';
-import * as sys from './sys';
-import { vaultFetch } from '.';
+import UrlAssembler from 'url-assembler';
+import { SysApi, UnauthenticatedSysApi } from './sys';
+import Vault, { UnauthenticatedVault } from './vault';
 
-jest.mock('.');
+jest.mock('./vault');
+const addr = 'http://foo';
+UnauthenticatedVault.mockImplementation(() => ({
+  urlBuilder: new UrlAssembler(addr),
+}));
 
-const response = { testResponse: uuid() };
-const vaultFetchTokenMock = jest.fn();
+describe('The Unauthenticated Vault Sys API', () => {
+  let vault;
+  let sys;
 
-describe('The vault API', () => {
   beforeEach(() => {
-    vaultFetch.mockReturnValue(vaultFetchTokenMock);
-    vaultFetchTokenMock.mockReturnValue(Promise.resolve(
-      new Response(JSON.stringify(response))));
-  });
-  afterEach(() => {
-    vaultFetch.mockReset();
-    vaultFetchTokenMock.mockReset();
+    vault = new UnauthenticatedVault(addr);
+    sys = new UnauthenticatedSysApi(vault);
   });
 
+  it('should contain a Vault', () => {
+    expect(vault).toBeTruthy();
+    expect(sys.vault).toBe(vault);
+    expect(vault.sys).toBe(sys);
+  });
+  it('should build urls under /v1/sys', () => {
+    expect(sys.urlBuilder.toString()).toEqual('http://foo/v1/sys');
+  });
   describe('health', () => {
-    it('should call the health API', () =>
+    beforeEach(() => {
+      fetch.mockResponse(JSON.stringify({ testResponse: true }));
+    });
+    afterEach(() => {
+      fetch.resetMocks();
+    });
+    it('should call the health API', () => (
       sys.health().then(() => {
-        expect(vaultFetch).toHaveBeenCalledWith('/v1/sys/health?sealedcode=200');
-        expect(vaultFetchTokenMock).toHaveBeenCalledWith();
-      }));
-    it('should throw an error if the healthcheck fails completely', () => {
-      vaultFetchTokenMock.mockReturnValue(Promise.reject('Simulated Connection Error'));
-      expect.assertions(1);
-      return sys.health().catch((e) => {
-        expect(e).toMatch('Simulated Connection Error');
-      });
-    });
-    it('should thow an error if the healthcheck returns an unsuccessful status code', () => {
-      vaultFetchTokenMock.mockReturnValue(Promise.resolve(
-        new Response(JSON.stringify({ error: true }), { status: 404 })));
-      expect.assertions(1);
-      return sys.health().catch((e) => {
-        expect(e.message).toMatch('health check failed');
-      });
-    });
-  });
-
-  describe('sealStatus', () => {
-    it('should call the seal status API', () =>
-      sys.sealStatus().then(() => {
-        expect(vaultFetch).toHaveBeenCalledWith('/v1/sys/seal-status');
-        expect(vaultFetchTokenMock).toHaveBeenCalledWith();
-      }));
-  });
-
-  describe('unseal', () => {
-    it('should make a PUT request to the unseal API', () => {
-      const key = 'abcde';
-      const body = JSON.stringify({ key });
-      return sys.unseal(key).then(() => {
-        expect(vaultFetch).toHaveBeenCalledWith('/v1/sys/unseal', { method: 'PUT', body });
-        expect(vaultFetchTokenMock).toHaveBeenCalledWith();
-      });
-    });
-  });
-
-  describe('mounts', () => {
-    it('should call the mounts API', () => {
-      const token = 'foo';
-      return sys.mounts(token).then(() => {
-        expect(vaultFetch).toHaveBeenCalledWith('/v1/sys/mounts');
-        expect(vaultFetchTokenMock).toHaveBeenCalledWith(token);
-      });
-    });
+        expect(fetch).toHaveBeenCalledWith(`${addr}/v1/sys/health`);
+      })
+    ));
+    it('should accept parameters to change the return codes', () => (
+      sys.health({
+        sealcode: 300,
+        standbyok: true,
+        activecode: 418,
+      }).then(() => {
+        expect(fetch).toHaveBeenCalledWith(`${addr}/v1/sys/health?sealcode=300&standbyok=true&activecode=418`);
+      })
+    ));
   });
 });

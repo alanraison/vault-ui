@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "history": "^4.6.3",
-    "jest-fetch-mock": "latest",
     "material-ui": "next",
     "prop-types": "^15.5.7",
     "react": "^15.6.1",
@@ -44,7 +43,8 @@
     "redux-first-router": "^1.4.16",
     "redux-first-router-link": "^1.0.3",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^0.15.3"
+    "redux-saga": "^0.15.3",
+    "url-assembler": "^1.2.8"
   },
   "jest": {
     "coverageReporters": [

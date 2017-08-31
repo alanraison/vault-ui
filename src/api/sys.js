@@ -1,26 +1,43 @@
-import { vaultFetch } from '.';
+export class UnauthenticatedSysApi {
+  constructor(vault) {
+    this.vault = vault;
+    this.vault.sys = this;
+  }
+  get urlBuilder() {
+    return this.vault.urlBuilder.prefix('/v1/sys');
+  }
+  fetch(url, init = {}) {
+    return this.fetch(this.urlBuilder.segment(url).toString(), init);
+  }
+  /* options can be:
+  {
+    standbyok,
+    activecode,
+    standbycode,
+    sealedcode,
+    uninitcode,
+  }
+  */
+  health(options = {}) {
+    const url = this.urlBuilder.segment('/health').query(options);
+    return fetch(url.toString());
+  }
+  sealStatus() {
+    return this.fetch('/seal-status');
+  }
+  unseal(key) {
+    return this.fetch('/unseal', {
+      method: 'PUT',
+      body: JSON.stringify({ key }),
+    });
+  }
+}
 
-export const health = () => (
-  vaultFetch('/v1/sys/health?sealedcode=200')().then((resp) => {
-    if (resp.status !== 200) {
-      throw new Error('health check failed');
-    }
-    return resp;
-  }).then(resp => resp.json())
-);
-
-export const sealStatus = () => (
-  vaultFetch('/v1/sys/seal-status')().then(resp => resp.json())
-);
-
-export const unseal = key => (
-  vaultFetch('/v1/sys/unseal', {
-    method: 'PUT',
-    body: JSON.stringify({ key }),
-  })().then(resp => resp.json())
-);
-
-export const mounts = token => (
-  vaultFetch('/v1/sys/mounts')(token)
-    .then(resp => resp.json())
-);
+export class SysApi extends UnauthenticatedSysApi {
+  authFetch(url, init) {
+    return this.vault.authFetch(url, init);
+  }
+  mounts() {
+    return this.authFetch(this.urlBuilder.segment('/mounts').toString());
+  }
+}
