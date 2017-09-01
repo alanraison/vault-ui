@@ -1,3 +1,6 @@
+/**
+ * The Vault API calls under the /sys mount which do not require authentication
+ */
 export class UnauthenticatedSysApi {
   constructor(vault) {
     this.vault = vault;
@@ -9,15 +12,19 @@ export class UnauthenticatedSysApi {
   fetch(url, init = {}) {
     return this.fetch(this.urlBuilder.segment(url).toString(), init);
   }
-  /* options can be:
-  {
-    standbyok,
-    activecode,
-    standbycode,
-    sealedcode,
-    uninitcode,
-  }
-  */
+  /**
+   * Discover the health of the Vault server
+   *
+   * @see {@link https://www.vaultproject.io/api/system/health.html}
+   *
+   * @param options - health api options
+   * @param {bool} options.standbyok - whether to return success if connecting to a server on
+   *    standby
+   * @param {int} options.activecode - status to return when active
+   * @param {int} options.standbycode - status to return when a standby server
+   * @param {int} options.sealedcode - status to return when sealed
+   * @param {int} options.uninitcode - status to return when ininitialised
+   */
   health(options = {}) {
     const url = this.urlBuilder.segment('/health').query(options);
     return fetch(url.toString());
