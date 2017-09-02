@@ -4,13 +4,12 @@
 export class UnauthenticatedSysApi {
   constructor(vault) {
     this.vault = vault;
-    this.vault.sys = this;
   }
-  get urlBuilder() {
-    return this.vault.urlBuilder.prefix('/v1/sys');
+  get baseUrl() {
+    return this.vault.baseUrl.prefix('/v1/sys');
   }
   fetch(url, init = {}) {
-    return this.fetch(this.urlBuilder.segment(url).toString(), init);
+    return this.fetch(this.baseUrl.segment(url).toString(), init);
   }
   /**
    * Discover the health of the Vault server
@@ -26,7 +25,7 @@ export class UnauthenticatedSysApi {
    * @param {int} options.uninitcode - status to return when ininitialised
    */
   health(options = {}) {
-    const url = this.urlBuilder.segment('/health').query(options);
+    const url = this.baseUrl.segment('/health').query(options);
     return fetch(url.toString());
   }
   sealStatus() {
@@ -45,6 +44,6 @@ export class SysApi extends UnauthenticatedSysApi {
     return this.vault.authFetch(url, init);
   }
   mounts() {
-    return this.authFetch(this.urlBuilder.segment('/mounts').toString());
+    return this.authFetch(this.baseUrl.segment('/mounts').toString());
   }
 }

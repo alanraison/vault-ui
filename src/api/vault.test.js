@@ -4,7 +4,7 @@ describe('Unauthenticated Vault', () => {
   it('should construct paths under the vault address', () => {
     const vaultAddr = 'http://foo.bar';
     const v = new UnauthenticatedVault(vaultAddr);
-    expect(v.urlBuilder.toString()).toEqual(vaultAddr);
+    expect(v.baseUrl.toString()).toEqual(vaultAddr);
   });
 });
 describe('Authenticated Vault', () => {
@@ -19,7 +19,7 @@ describe('Authenticated Vault', () => {
     const token = 'vault-tok';
     const v = new Vault(addr, token);
     fetch.mockResponse(JSON.stringify({ testResponse: 1 }));
-    return v.authFetch(v.urlBuilder.segment('/apiCall').toString()).then(() => {
+    return v.authFetch(v.baseUrl.segment('/apiCall').toString()).then(() => {
       expect(fetch).toHaveBeenCalled();
       const actualRequest = fetch.mock.calls[0];
       expect(actualRequest[0]).toEqual(`${addr}/apiCall`);

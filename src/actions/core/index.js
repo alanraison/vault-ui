@@ -10,8 +10,9 @@ export const clearError = () => ({
 });
 
 export const INITIALISE = 'INITIALISE';
-export const initialise = () => ({
+export const initialise = vault => ({
   type: INITIALISE,
+  payload: { vault },
 });
 
 export const HEALTH_CHECK_START = 'HEALTH_CHECK_START';

@@ -5,7 +5,7 @@ import Vault, { UnauthenticatedVault } from './vault';
 jest.mock('./vault');
 const addr = 'http://foo';
 UnauthenticatedVault.mockImplementation(() => ({
-  urlBuilder: new UrlAssembler(addr),
+  baseUrl: new UrlAssembler(addr),
 }));
 
 describe('The Unauthenticated Vault Sys API', () => {
@@ -20,10 +20,9 @@ describe('The Unauthenticated Vault Sys API', () => {
   it('should contain a Vault', () => {
     expect(vault).toBeTruthy();
     expect(sys.vault).toBe(vault);
-    expect(vault.sys).toBe(sys);
   });
   it('should build urls under /v1/sys', () => {
-    expect(sys.urlBuilder.toString()).toEqual('http://foo/v1/sys');
+    expect(sys.baseUrl.toString()).toEqual('http://foo/v1/sys');
   });
   describe('health', () => {
     beforeEach(() => {

@@ -37,10 +37,26 @@ const authToken = (state = '', action) => {
   }
 };
 
+const vault = (state = null, action) => {
+  switch (action.type) {
+    case actions.INITIALISE: {
+      console.log(action);
+      return action.payload.vault;
+    }
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   authToken,
   connected,
   error,
   login,
   sealStatus,
+  vault,
 });
+
+// selectors
+export const getAppState = state => state.app;
+export const getVault = state => getAppState(state).vault;

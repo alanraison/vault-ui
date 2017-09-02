@@ -1,5 +1,6 @@
 import {
   call,
+  select,
   spawn,
   put,
   takeEvery,
@@ -7,11 +8,12 @@ import {
 import * as sealStatus from '../sealStatus/sagas';
 import * as login from '../login/sagas';
 import actions from '../../actions';
-import * as api from '../../api';
+import * as selectors from './reducers';
 
 function* healthCheck() {
   try {
-    yield call(api.sys.health);
+    const vault = yield select(selectors.getVault);
+    yield call(vault.health); // Throws an error if unhealthy
     yield put(actions.healthCheckOk());
     return true;
   } catch (e) {

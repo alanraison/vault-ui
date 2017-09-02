@@ -1,4 +1,5 @@
-import reducer from './reducers';
+import uuid from 'uuid/v4';
+import reducer, { getAppState, getVault } from './reducers';
 import actions from '../../actions';
 
 describe('Core reducers:', () => {
@@ -49,6 +50,20 @@ describe('Core reducers:', () => {
     it('should not respond to other actions', () => {
       const newState = reducer({ authToken: 'alan' }, { type: 'ANY_OLD_ACTION', data: 'foo' });
       expect(newState.authToken).toEqual('alan');
+    });
+  });
+  describe('AppState selector', () => {
+    it('should select the app state', () => {
+      const appState = uuid();
+      const state = { foo: uuid(), app: appState, bar: uuid() };
+      expect(getAppState(state)).toBe(appState);
+    });
+  });
+  describe('Vault selector', () => {
+    it('should select the vault state', () => {
+      const vault = uuid();
+      const state = { app: { foo: uuid(), vault, bar: uuid() }};
+      expect(getVault(state)).toBe(vault);
     });
   });
 });
