@@ -32,11 +32,12 @@ const routesMap = {
   [actions.login.SELECT_LOGIN_METHOD]: '/login/:method',
   [actions.login.LOGIN_SUCCESS]: '/workspace',
 };
-const { reducer, middleware: routingMiddleware, enhancer } = connectRoutes(history, routesMap, { location: 'router' });
+const { reducer: location, middleware: routingMiddleware, enhancer } =
+  connectRoutes(history, routesMap);
 
 const middlewares = applyMiddleware(sagaMiddleware, routingMiddleware, logger);
 const store = createStore(
-  combineReducers({ router: reducer, app }),
+  combineReducers({ location, app }),
   compose(enhancer, middlewares));
 
 sagaMiddleware.run(sagas);

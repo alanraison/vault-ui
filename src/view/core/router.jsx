@@ -39,7 +39,7 @@ RouteContainer.propTypes = ({
 });
 
 const mapStateToProps = state => ({
-  route: state.router.type,
+  route: state.location.type,
 });
 
 export default connect(mapStateToProps)(RouteContainer);
