@@ -21,7 +21,7 @@ const error = (state = null, action) => {
 
 const connected = (state = false, action) => {
   switch (action.type) {
-    case actions.HEALTH_CHECK_OK:
+    case actions.HEALTH_CHECK_RESPONSE:
       return true;
     default:
       return state;
@@ -40,7 +40,6 @@ const authToken = (state = '', action) => {
 const vault = (state = null, action) => {
   switch (action.type) {
     case actions.INITIALISE: {
-      console.log(action);
       return action.payload.vault;
     }
     default:

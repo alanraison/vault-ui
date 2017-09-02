@@ -14,7 +14,7 @@ function* healthCheck() {
   try {
     const vault = yield select(selectors.getVault);
     yield call(vault.health); // Throws an error if unhealthy
-    yield put(actions.healthCheckOk());
+    yield put(actions.healthCheckResponse());
     return true;
   } catch (e) {
     yield put(actions.error(e, 'connecting to Vault'));

@@ -34,7 +34,7 @@ describe('Core reducers:', () => {
   });
   describe('Connected reducer', () => {
     it('should set the connected status if the health check succeeds', () => {
-      const newState = reducer({}, actions.healthCheckOk());
+      const newState = reducer({}, actions.healthCheckResponse());
       expect(newState.connected).toEqual(true);
     });
     it('should not respond to other actions', () => {
@@ -62,7 +62,7 @@ describe('Core reducers:', () => {
   describe('Vault selector', () => {
     it('should select the vault state', () => {
       const vault = uuid();
-      const state = { app: { foo: uuid(), vault, bar: uuid() }};
+      const state = { app: { foo: uuid(), vault, bar: uuid() } };
       expect(getVault(state)).toBe(vault);
     });
   });
