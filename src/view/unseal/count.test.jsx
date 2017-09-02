@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { UnsealCountComponent } from './unseal-count';
+import { UnsealCountComponent } from './count';
 
 it('should render the count', () => {
   let wrapper = shallow(<UnsealCountComponent count={1} />);

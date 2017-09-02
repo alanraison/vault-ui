@@ -1,13 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Unseal from './';
-import UnsealCount from './unseal-count';
-import UnsealButton from './unseal-button';
-import UnsealInput from './unseal-input';
+import UnsealCount from './count';
+import UnsealButton from './button';
+import UnsealInput from './input';
 
-jest.mock('./unseal-count');
-jest.mock('./unseal-button');
-jest.mock('./unseal-input');
+jest.mock('./count');
+jest.mock('./button');
+jest.mock('./input');
 
 describe('Unseal component', () => {
   const wrapper = mount(<Unseal />);

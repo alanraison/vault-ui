@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { UnsealButtonComponent } from './unseal-button';
+import { UnsealButtonComponent } from './button';
 
 test('onClick handler invoked with key prop', () => {
   const onClick = jest.fn();
