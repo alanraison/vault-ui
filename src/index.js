@@ -19,7 +19,7 @@ import Page from './view/core/page';
 import app from './state/core/reducers';
 import sagas from './state/core/sagas';
 import actions from './actions';
-import VaultUI from './ui-api';
+import { UnauthenticatedVault } from './api/vault';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -43,7 +43,7 @@ const store = createStore(
 
 sagaMiddleware.run(sagas);
 
-const vault = new VaultUI('http://localhost:3000');
+const vault = new UnauthenticatedVault('http://localhost:3000');
 store.dispatch(actions.initialise(vault));
 
 ReactDOM.render(

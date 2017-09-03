@@ -6,9 +6,9 @@ const tests = testActionCreators(actions);
 
 describe('sealStatus actionCreators', () => {
   [
-    { method: 'getUnsealStatusStart', action: actions.GET_UNSEAL_STATUS_START },
-    { method: 'getUnsealStatusResult', action: actions.GET_UNSEAL_STATUS_RESULT, key: 'status' },
+    { method: 'unsealStatusRequest', action: actions.UNSEAL_STATUS_REQUEST },
+    { method: 'unsealStatusResponse', action: actions.UNSEAL_STATUS_RESPONSE, key: 'status' },
     { method: 'editUnsealKey', action: actions.EDIT_UNSEAL_KEY, key: 'key' },
-    { method: 'startUnseal', action: actions.START_UNSEAL },
+    { method: 'unsealRequest', action: actions.UNSEAL_REQUEST },
   ].map(({ method, action, key }) => tests.actionCreator(method, action, key, uuid()));
 });

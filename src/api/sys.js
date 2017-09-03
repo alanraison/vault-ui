@@ -1,15 +1,15 @@
+import UrlSpec from './url-spec';
 /**
  * The Vault API calls under the /sys mount which do not require authentication
  */
 export class UnauthenticatedSysApi {
   constructor(vault) {
     this.vault = vault;
-  }
-  get baseUrl() {
-    return this.vault.baseUrl.prefix('/v1/sys');
+    // this.health = this.health.bind(this);
+    // this.fetch = this.fetch.bind(this);
   }
   fetch(url, init = {}) {
-    return this.fetch(this.baseUrl.segment(url).toString(), init);
+    return this.vault.fetch(url.prefixPath('/v1/sys'), init);
   }
   /**
    * Discover the health of the Vault server
@@ -25,14 +25,13 @@ export class UnauthenticatedSysApi {
    * @param {int} options.uninitcode - status to return when ininitialised
    */
   health(options = {}) {
-    const url = this.baseUrl.segment('/health').query(options);
-    return fetch(url.toString());
+    return this.fetch(new UrlSpec('/health', options));
   }
   sealStatus() {
-    return this.fetch('/seal-status');
+    return this.fetch(new UrlSpec('/seal-status'));
   }
   unseal(key) {
-    return this.fetch('/unseal', {
+    return this.fetch(new UrlSpec('/unseal'), {
       method: 'PUT',
       body: JSON.stringify({ key }),
     });
@@ -40,10 +39,7 @@ export class UnauthenticatedSysApi {
 }
 
 export class SysApi extends UnauthenticatedSysApi {
-  authFetch(url, init) {
-    return this.vault.authFetch(url, init);
-  }
   mounts() {
-    return this.authFetch(this.baseUrl.segment('/mounts').toString());
+    return this.fetch(new UrlSpec('/mounts'));
   }
 }

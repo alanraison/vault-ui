@@ -1,11 +1,11 @@
-import UrlAssembler from 'url-assembler';
 import { SysApi, UnauthenticatedSysApi } from './sys';
 import Vault, { UnauthenticatedVault } from './vault';
 
+import UrlSpec from './url-spec';
+
 jest.mock('./vault');
-const addr = 'http://foo';
 UnauthenticatedVault.mockImplementation(() => ({
-  baseUrl: new UrlAssembler(addr),
+  fetch: jest.fn(),
 }));
 
 describe('The Unauthenticated Vault Sys API', () => {
@@ -13,7 +13,7 @@ describe('The Unauthenticated Vault Sys API', () => {
   let sys;
 
   beforeEach(() => {
-    vault = new UnauthenticatedVault(addr);
+    vault = new UnauthenticatedVault();
     sys = new UnauthenticatedSysApi(vault);
   });
 
@@ -22,28 +22,23 @@ describe('The Unauthenticated Vault Sys API', () => {
     expect(sys.vault).toBe(vault);
   });
   it('should build urls under /v1/sys', () => {
-    expect(sys.baseUrl.toString()).toEqual('http://foo/v1/sys');
+    const spec = new UrlSpec('/api');
+    sys.fetch(spec);
+    expect(vault.fetch).toHaveBeenCalledWith(spec.prefixPath('/v1/sys'), {});
   });
   describe('health', () => {
-    beforeEach(() => {
-      fetch.mockResponse(JSON.stringify({ testResponse: true }));
+    it('should call the health API', () => {
+      sys.health();
+      expect(vault.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/sys/health', {}), {});
     });
-    afterEach(() => {
-      fetch.resetMocks();
-    });
-    it('should call the health API', () => (
-      sys.health().then(() => {
-        expect(fetch).toHaveBeenCalledWith(`${addr}/v1/sys/health`);
-      })
-    ));
-    it('should accept parameters to change the return codes', () => (
-      sys.health({
+    it('should accept parameters to change the return codes', () => {
+      const options = {
         sealcode: 300,
         standbyok: true,
         activecode: 418,
-      }).then(() => {
-        expect(fetch).toHaveBeenCalledWith(`${addr}/v1/sys/health?sealcode=300&standbyok=true&activecode=418`);
-      })
-    ));
+      };
+      sys.health(options);
+      expect(vault.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/sys/health', options), {});
+    });
   });
 });

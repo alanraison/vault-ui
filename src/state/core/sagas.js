@@ -13,19 +13,26 @@ import * as selectors from './reducers';
 function* healthCheck() {
   try {
     const vault = yield select(selectors.getVault);
-    yield call(vault.health); // Throws an error if unhealthy
-    yield put(actions.healthCheckResponse());
-    return true;
+    const resp = yield call(vault.sys.health, { sealedcode: 200 });
+    if (resp.status === 200) {
+      yield put(actions.healthCheckResponse());
+      return true;
+    }
+    throw new Error(`response status code ${resp.status}`);
   } catch (e) {
     yield put(actions.error(e, 'connecting to Vault'));
-    return false;
   }
+  return false;
 }
 
 function* initialise() {
   if (yield call(healthCheck)) {
     yield put(actions.sealStatus.getUnsealStatusStart());
   }
+}
+
+function* debug(action) {
+  yield console.log(`DEBUG ACTION: ${JSON.stringify(action.payload)}`);
 }
 
 const routesMap = ({
@@ -35,6 +42,7 @@ const routesMap = ({
   [actions.sealStatus.START_UNSEAL]: sealStatus.callUnseal,
   [actions.sealStatus.UNSEAL_COMPLETE]: login.startLogin,
   [actions.login.LOGIN_START]: login.login,
+  [actions.DEBUG]: debug,
 });
 
 function* handleRouteChange(action) {

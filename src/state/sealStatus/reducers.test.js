@@ -6,19 +6,19 @@ describe('Seal Status reducer', () => {
     const oldState = {
       foo: 'bar',
     };
-    const newState = reducer(oldState, actions.sealStatus.getUnsealStatusStart());
+    const newState = reducer(oldState, actions.sealStatus.unsealStatusRequest());
     expect(newState).toEqual({ ...oldState, loading: true });
   });
-  it('should finish loading when UNSEAL_STATUS_UPDATED', () => {
-    const newState = reducer({ loading: true }, actions.sealStatus.getUnsealStatusResult({}));
+  it('should finish loading when UNSEAL_STATUS_RESPONSE', () => {
+    const newState = reducer({ loading: true }, actions.sealStatus.unsealStatusResponse({}));
     expect(newState.loading).toBeFalsy();
   });
-  it('should set the unseal status when UNSEAL_STATUS_UPDATED', () => {
+  it('should set the unseal status when UNSEAL_STATUS_RESPONSE', () => {
     const unsealStatus = {
       test: true,
       foo: 'bar',
     };
-    const newState = reducer({}, actions.sealStatus.getUnsealStatusResult(unsealStatus));
+    const newState = reducer({}, actions.sealStatus.unsealStatusResponse(unsealStatus));
     expect(newState).toEqual({ sealInfo: unsealStatus, loading: false });
   });
   it('should stop loading on ERROR', () => {

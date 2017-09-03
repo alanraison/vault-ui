@@ -5,7 +5,7 @@ import * as api from '../../api';
 export function* callGetSealStatus() {
   try {
     const status = yield call(api.sys.sealStatus);
-    yield put(actions.sealStatus.getUnsealStatusResult(status));
+    yield put(actions.sealStatus.unsealStatusResponse(status));
   } catch (e) {
     yield put(actions.error(e, 'getting unseal status'));
   }
@@ -25,7 +25,7 @@ export function* callUnseal(action) {
     if (status.errors) {
       yield put(actions.error(status.errors, 'unsealing vault'));
     } else {
-      yield put(actions.sealStatus.getUnsealStatusResult(status));
+      yield put(actions.sealStatus.unsealStatusResponse(status));
     }
   } catch (e) {
     yield put(actions.error(e, 'unsealing vault'));

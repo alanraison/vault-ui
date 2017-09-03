@@ -23,3 +23,9 @@ export const HEALTH_CHECK_RESPONSE = 'vault-ui/core/HEALTH_CHECK_RESPONSE';
 export const healthCheckResponse = () => ({
   type: HEALTH_CHECK_RESPONSE,
 });
+
+export const DEBUG = 'vault-ui/core/debug';
+export const debug = payload => ({
+  type: DEBUG,
+  payload,
+});

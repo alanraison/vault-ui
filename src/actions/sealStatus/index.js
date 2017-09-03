@@ -1,11 +1,11 @@
-export const GET_UNSEAL_STATUS_START = 'vault-ui/sealStatus/GET_UNSEAL_STATUS_START';
-export const getUnsealStatusStart = () => ({
-  type: GET_UNSEAL_STATUS_START,
+export const UNSEAL_STATUS_REQUEST = 'vault-ui/sealStatus/UNSEAL_STATUS_REQUEST';
+export const unsealStatusRequest = () => ({
+  type: UNSEAL_STATUS_REQUEST,
 });
 
-export const GET_UNSEAL_STATUS_RESULT = 'vault-ui/sealStatus/GET_UNSEAL_STATUS_RESULT';
-export const getUnsealStatusResult = status => ({
-  type: GET_UNSEAL_STATUS_RESULT,
+export const UNSEAL_STATUS_RESPONSE = 'vault-ui/sealStatus/UNSEAL_STATUS_RESPONSE';
+export const unsealStatusResponse = status => ({
+  type: UNSEAL_STATUS_RESPONSE,
   payload: { status },
 });
 
@@ -24,9 +24,9 @@ export const editUnsealKey = key => ({
   type: EDIT_UNSEAL_KEY,
   payload: { key },
 });
-export const START_UNSEAL = 'vault-ui/sealStatus/START_UNSEAL';
-export const startUnseal = key => ({
-  type: START_UNSEAL,
+export const UNSEAL_REQUEST = 'vault-ui/sealStatus/UNSEAL_REQUEST';
+export const unsealRequest = key => ({
+  type: UNSEAL_REQUEST,
   payload: { key },
 });
 export const UNSEAL_ERROR = 'vault-ui/sealStatus/UNSEAL_ERROR';

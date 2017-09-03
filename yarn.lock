@@ -2765,10 +2765,6 @@ express@^4.13.3:
     utils-merge "1.0.0"
     vary "~1.1.1"
 
-extend@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/extend/-/extend-2.0.1.tgz#1ee8010689e7395ff9448241c98652bc759a8260"
-
 extend@~3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
@@ -5880,10 +5876,6 @@ q@^1.1.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.0.tgz#dd01bac9d06d30e6f219aecb8253ee9ebdc308f1"
 
-qs@^2.3.3:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-2.4.2.tgz#f7ce788e5777df0b5010da7f7c4e73ba32470f5a"
-
 qs@~6.3.0:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.2.tgz#e75bd5f6e268122a2a0e0bda630b2550c166502c"
@@ -7372,13 +7364,6 @@ upper-case@^1.1.1:
 urijs@^1.16.1:
   version "1.18.10"
   resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.18.10.tgz#b94463eaba59a1a796036a467bb633c667f221ab"
-
-url-assembler:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/url-assembler/-/url-assembler-1.2.8.tgz#eaaf2c5abec31986139333d8598d4fc4449a2d70"
-  dependencies:
-    extend "^2.0.0"
-    qs "^2.3.3"
 
 url-loader@0.5.8:
   version "0.5.8"
