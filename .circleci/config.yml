@@ -17,6 +17,7 @@ jobs:
         key: depedency-cache-{{ checksum "package.json" }}
         paths:
         - node_modules
+        - ~/.cache/yarn
   test:
     docker:
     - image: circleci/node:6
