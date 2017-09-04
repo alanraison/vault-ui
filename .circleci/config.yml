@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: circleci/node:6
+    steps:
+    - checkout
+    - run:
+        name: Update yarn
+        command: 'sudo npm install -g yarn@latest'
+    - restore_cache:
+        key: dependency-cache-{{ checksum "package.json" }}
+    - run:
+        name: yarn
+        command: yarn
+    - save_cache:
+        key: depedency-cache-{{ checksum "package.json" }}
+        paths:
+        - node_modules
+  test:
+    docker:
+    - image: circleci/node:6
+    steps:
+    - checkout
+    - run:
+        command: yarn test -- --coverage
+    - run:
+        command: cat coverage/lcov.info | node_modules/.bin/coveralls
+
+workflows:
+  version: 2
+  jobs:
+  - build
+  - test:
+      requires: build
