@@ -19,14 +19,14 @@ import Page from './view/core/page';
 import app from './state/core/reducers';
 import sagas from './state/core/sagas';
 import actions from './actions';
-import { UnauthenticatedVault } from './api/vault';
+import { UnauthenticatedVault } from './vault-api';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const history = createHistory();
 const routesMap = {
+  [actions.HOME]: '/',
   [actions.ERROR]: '/error',
-  [actions.CLEAR_ERROR]: '/',
   [actions.INITIALISE]: '/loading',
   [actions.sealStatus.UNSEAL_KEY_REQUIRED]: '/unseal',
   [actions.login.START_CHOOSE_LOGIN_METHOD]: '/login',

@@ -1,4 +1,4 @@
-import Vault, { UnauthenticatedVault } from './vault';
+import Vault, { UnauthenticatedVault } from '.';
 import UrlSpec from './url-spec';
 
 describe('Unauthenticated Vault', () => {

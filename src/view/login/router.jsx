@@ -15,7 +15,7 @@ Router.propTypes = ({
 });
 
 const mapStateToProps = state => ({
-  method: state.router.payload.method,
+  method: state.location.payload.method,
 });
 
 export default connect(mapStateToProps)(Router);

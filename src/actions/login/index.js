@@ -19,7 +19,7 @@ export const loginError = err => ({
   payload: { err },
 });
 export const LOGIN_SUCCESS = 'vault-ui/login/LOGIN_SUCCESS';
-export const loginSuccess = auth => ({
+export const loginSuccess = vault => ({
   type: LOGIN_SUCCESS,
-  payload: { auth },
+  payload: { vault },
 });

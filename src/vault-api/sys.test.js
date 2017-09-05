@@ -1,9 +1,9 @@
-import { SysApi, UnauthenticatedSysApi } from './sys';
-import Vault, { UnauthenticatedVault } from './vault';
+import { UnauthenticatedSysApi } from './sys';
+import { UnauthenticatedVault } from '.';
 
 import UrlSpec from './url-spec';
 
-jest.mock('./vault');
+jest.mock('.');
 UnauthenticatedVault.mockImplementation(() => ({
   fetch: jest.fn(),
 }));

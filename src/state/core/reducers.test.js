@@ -42,16 +42,6 @@ describe('Core reducers:', () => {
       expect(newState.connected).toEqual('test');
     });
   });
-  describe('Auth token reducer', () => {
-    it('should update the auth token on LOGIN_SUCCESS', () => {
-      const newState = reducer({ authToken: 'bar' }, actions.login.loginSuccess('baz'));
-      expect(newState.authToken).toEqual('baz');
-    });
-    it('should not respond to other actions', () => {
-      const newState = reducer({ authToken: 'alan' }, { type: 'ANY_OLD_ACTION', data: 'foo' });
-      expect(newState.authToken).toEqual('alan');
-    });
-  });
   describe('AppState selector', () => {
     it('should select the app state', () => {
       const appState = uuid();
@@ -64,6 +54,10 @@ describe('Core reducers:', () => {
       const vault = uuid();
       const state = { app: { foo: uuid(), vault, bar: uuid() } };
       expect(getVault(state)).toBe(vault);
+    });
+    it('should update the vault on LOGIN_SUCCESS', () => {
+      const newState = reducer({ vault: 'bar' }, actions.login.loginSuccess('baz'));
+      expect(newState.vault).toEqual('baz');
     });
   });
 });

@@ -1,11 +1,14 @@
-import { call, put } from 'redux-saga/effects';
+import { call, select, put } from 'redux-saga/effects';
 import actions from '../../actions';
-import * as api from '../../api';
+import * as core from '../core/reducers';
+import { checkResponse } from '../../vault-api';
 
 export function* callGetSealStatus() {
   try {
-    const status = yield call(api.sys.sealStatus);
-    yield put(actions.sealStatus.unsealStatusResponse(status));
+    const vault = yield select(core.getVault);
+    const response = yield call(vault.sys.sealStatus);
+    const body = yield checkResponse(response, 200);
+    yield put(actions.sealStatus.unsealStatusResponse(body));
   } catch (e) {
     yield put(actions.error(e, 'getting unseal status'));
   }
@@ -21,12 +24,10 @@ export function* isSealed(action) {
 
 export function* callUnseal(action) {
   try {
-    const status = yield call(api.sys.unseal, action.payload.key);
-    if (status.errors) {
-      yield put(actions.error(status.errors, 'unsealing vault'));
-    } else {
-      yield put(actions.sealStatus.unsealStatusResponse(status));
-    }
+    const vault = yield select(core.getVault);
+    const response = yield call(vault.sys.unseal, { key: action.payload.key });
+    const body = yield checkResponse(response, 200);
+    yield put(actions.sealStatus.unsealStatusResponse(body));
   } catch (e) {
     yield put(actions.error(e, 'unsealing vault'));
   }

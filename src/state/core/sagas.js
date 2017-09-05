@@ -9,16 +9,15 @@ import * as sealStatus from '../sealStatus/sagas';
 import * as login from '../login/sagas';
 import actions from '../../actions';
 import * as selectors from './reducers';
+import { checkResponse } from '../../vault-api';
 
 function* healthCheck() {
   try {
     const vault = yield select(selectors.getVault);
     const resp = yield call(vault.sys.health, { sealedcode: 200 });
-    if (resp.status === 200) {
-      yield put(actions.healthCheckResponse());
-      return true;
-    }
-    throw new Error(`response status code ${resp.status}`);
+    yield checkResponse(resp, 200);
+    yield put(actions.healthCheckResponse());
+    return true;
   } catch (e) {
     yield put(actions.error(e, 'connecting to Vault'));
   }
@@ -27,7 +26,7 @@ function* healthCheck() {
 
 function* initialise() {
   if (yield call(healthCheck)) {
-    yield put(actions.sealStatus.getUnsealStatusStart());
+    yield put(actions.sealStatus.unsealStatusRequest());
   }
 }
 
@@ -37,9 +36,9 @@ function* debug(action) {
 
 const routesMap = ({
   [actions.INITIALISE]: initialise,
-  [actions.sealStatus.GET_UNSEAL_STATUS_START]: sealStatus.callGetSealStatus,
-  [actions.sealStatus.GET_UNSEAL_STATUS_RESULT]: sealStatus.isSealed,
-  [actions.sealStatus.START_UNSEAL]: sealStatus.callUnseal,
+  [actions.sealStatus.UNSEAL_STATUS_REQUEST]: sealStatus.callGetSealStatus,
+  [actions.sealStatus.UNSEAL_STATUS_RESPONSE]: sealStatus.isSealed,
+  [actions.sealStatus.UNSEAL_REQUEST]: sealStatus.callUnseal,
   [actions.sealStatus.UNSEAL_COMPLETE]: login.startLogin,
   [actions.login.LOGIN_START]: login.login,
   [actions.DEBUG]: debug,

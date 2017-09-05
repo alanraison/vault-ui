@@ -28,18 +28,10 @@ const connected = (state = false, action) => {
   }
 };
 
-const authToken = (state = '', action) => {
-  switch (action.type) {
-    case actions.login.LOGIN_SUCCESS:
-      return action.payload.auth;
-    default:
-      return state;
-  }
-};
-
 const vault = (state = null, action) => {
   switch (action.type) {
-    case actions.INITIALISE: {
+    case actions.INITIALISE:
+    case actions.login.LOGIN_SUCCESS: {
       return action.payload.vault;
     }
     default:
@@ -48,7 +40,6 @@ const vault = (state = null, action) => {
 };
 
 export default combineReducers({
-  authToken,
   connected,
   error,
   login,

@@ -4,6 +4,7 @@ import * as login from './login';
 import * as sealStatus from './sealStatus';
 
 export default {
+  HOME: 'HOME',
   ...core,
   methods,
   login,

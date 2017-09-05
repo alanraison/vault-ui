@@ -13,6 +13,7 @@ export function TokenEntryComponent({
     <TextField
       id="token-input"
       label="Token"
+      fullWidth
       onChange={(e) => onChange(e.target.value)}
       value={value}
     />
