@@ -12,6 +12,6 @@ describe('token login', () => {
     const auth = new AuthApi(null);
     const t = new TokenApi(auth);
     t.create();
-    expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/create'), undefined);
+    expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/create'), { method: 'POST' });
   });
 });
