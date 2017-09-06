@@ -14,7 +14,7 @@ import Workspace from '../workspace';
 
 const NotFound = () => <div>Path not found.</div>;
 
-const routesMap = ({
+export const routesMap = ({
   [actions.HOME]: null,
   [actions.ERROR]: ShowError,
   [NOT_FOUND]: NotFound,
