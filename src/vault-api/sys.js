@@ -9,7 +9,7 @@ export class UnauthenticatedSysApi {
     this.sealStatus = this.sealStatus.bind(this);
     this.unseal = this.unseal.bind(this);
   }
-  fetch(url, init = {}) {
+  fetch(url, init) {
     return this.vault.fetch(url.prefixPath('/v1/sys'), init);
   }
   /**

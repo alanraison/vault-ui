@@ -34,6 +34,21 @@ describe('Unauthenticated Vault', () => {
         expect(e.message).toMatch('Short and stout');
       });
     });
+    it('should allow a list of acceptable return statuses', () => {
+      fetch.mockResponse('"Short and stout"', { status: 418, statusText: "I'm a teapot" });
+      return v.fetch(new UrlSpec(), undefined, [200, 418]).then((resp) => {
+        expect(fetch).toHaveBeenCalledWith('http://foo.bar', {});
+        expect(resp).toEqual('Short and stout');
+      });
+    });
+    it('should throw an error if the response body contains errors', () => {
+      const errorResponse = JSON.stringify({ errors: 'not quite right' });
+      fetch.mockResponse(errorResponse);
+      expect.assertions(1);
+      return v.fetch(new UrlSpec()).catch((e) => {
+        expect(e.message).toEqual(errorResponse);
+      });
+    });
   });
 });
 describe('Authenticated Vault', () => {
