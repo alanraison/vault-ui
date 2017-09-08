@@ -27,11 +27,11 @@ describe('Unauthenticated Vault', () => {
       });
     });
     it('should throw on unsuccessful return statuses', () => {
-      fetch.mockResponse(false, { status: 418, statusText: "I'm a teapot" });
-      expect.assertions(1);
+      fetch.mockResponse('Short and stout', { status: 418, statusText: "I'm a teapot" });
+      expect.assertions(2);
       return v.fetch(new UrlSpec()).catch((e) => {
         expect(e.message).toMatch('418');
-        // expect(e).toMatch('Short and stout');
+        expect(e.message).toMatch('Short and stout');
       });
     });
   });
