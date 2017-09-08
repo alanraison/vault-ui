@@ -1,6 +1,9 @@
 import UrlSpec from './url-spec';
 
 describe('UrlSpec', () => {
+  it('should allow a blank spec', () => {
+    expect(new UrlSpec().build()).toEqual('');
+  });
   it('should build up URL paths right to left', () => {
     const spec = new UrlSpec('a').prefixPath('b');
     expect(spec.build()).toEqual('ba');

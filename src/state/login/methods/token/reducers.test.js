@@ -10,4 +10,7 @@ describe('Token login method reducer', () => {
     const newState = reducer('foo', { type: 'EDIT_TOKEN', payload: 'baz' });
     expect(newState).toEqual('foo');
   });
+  it('should set the initial state as the empty string', () => {
+    expect(reducer(undefined, { type: 'EDIT_TOKEN' })).toEqual('');
+  });
 });

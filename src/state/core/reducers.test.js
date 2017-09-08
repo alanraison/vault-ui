@@ -59,5 +59,9 @@ describe('Core reducers:', () => {
       const newState = reducer({ vault: 'bar' }, actions.login.loginSuccess('baz'));
       expect(newState.vault).toEqual('baz');
     });
+    it('should update the vault on INITIALISE', () => {
+      const newState = reducer({ vault: 'bar' }, actions.initialise('bax'));
+      expect(newState.vault).toEqual('bax');
+    });
   });
 });
