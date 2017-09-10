@@ -28,6 +28,12 @@ export class UnauthenticatedSysApi {
   health(options) {
     return this.fetch(new UrlSpec('/health', options));
   }
+  /**
+   * Discover whether the server is in a sealed state, and if so, how many keys are required to
+   * unseal.
+   *
+   * @see {@link https://www.vaultproject.io/api/system/seal-status.html}
+   */
   sealStatus() {
     return this.fetch(new UrlSpec('/seal-status'));
   }
@@ -48,11 +54,19 @@ export class UnauthenticatedSysApi {
   }
 }
 
+/**
+ * The System API containing all authenticated requests.
+ */
 export default class SysApi extends UnauthenticatedSysApi {
   constructor(vault) {
     super(vault);
     this.mounts.bind(this);
   }
+  /**
+   * Discover all the vault mounts
+   *
+   * @see {@link https://www.vaultproject.io/api/system/mounts.html}
+   */
   mounts() {
     return this.fetch(new UrlSpec('/mounts'));
   }

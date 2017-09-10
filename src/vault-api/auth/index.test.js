@@ -1,15 +1,17 @@
-import uuid from 'uuid/v4';
-import { login } from '.';
-import token from './token';
+import AuthApi from '.';
+import UrlSpec from '../url-spec';
+import Vault from '..';
 
-jest.mock('./token');
+jest.mock('..');
+Vault.mockImplementation(() => ({
+  fetch: jest.fn(),
+}));
 
-xdescribe('Login handler', () => {
-  describe('with token login', () => {
-    it('should call the token handler', () => {
-      const data = uuid();
-      login('token', data);
-      expect(token).toBeCalledWith(data);
-    });
+describe('Auth API', () => {
+  it('is mounted at /v1/auth', () => {
+    const v = new Vault('url', 'token');
+    const auth = new AuthApi(v);
+    auth.fetch(new UrlSpec());
+    expect(v.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/auth'), undefined);
   });
 });
