@@ -9,13 +9,11 @@ import * as sealStatus from '../sealStatus/sagas';
 import * as login from '../login/sagas';
 import actions from '../../actions';
 import * as selectors from './reducers';
-import { checkResponse } from '../../vault-api';
 
 function* healthCheck() {
   try {
     const vault = yield select(selectors.getVault);
-    const resp = yield call(vault.sys.health, { sealedcode: 200 });
-    yield checkResponse(resp, 200);
+    yield call(vault.sys.health, { sealedcode: 200 });
     yield put(actions.healthCheckResponse());
     return true;
   } catch (e) {
