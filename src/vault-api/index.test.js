@@ -8,8 +8,6 @@ describe('Unauthenticated Vault', () => {
     expect(v.vaultAddr).toBe(vaultAddr);
   });
   describe('fetch method', () => {
-    beforeEach(() => {
-    });
     afterEach(() => {
       fetch.resetMocks();
     });
@@ -36,7 +34,7 @@ describe('Unauthenticated Vault', () => {
     });
     it('should allow a list of acceptable return statuses', () => {
       fetch.mockResponse('"Short and stout"', { status: 418, statusText: "I'm a teapot" });
-      return v.fetch(new UrlSpec(), undefined, [200, 418]).then((resp) => {
+      return v.fetch(new UrlSpec(), { okCodes: [200, 418] }).then((resp) => {
         expect(fetch).toHaveBeenCalledWith('http://foo.bar', {});
         expect(resp).toEqual('Short and stout');
       });

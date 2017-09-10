@@ -24,7 +24,8 @@ export class UnauthenticatedVault {
     this.vaultAddr = vaultAddr;
     this.sys = new UnauthenticatedSysApi(this);
   }
-  fetch(url, init = {}, okCodes = 200) {
+  fetch(url, options) {
+    const { okCodes, ...init } = { okCodes: 200, ...options };
     return fetch(url.prefixPath(this.vaultAddr).build(), init).then(checkResponse(okCodes));
   }
 }
@@ -37,12 +38,12 @@ export default class Vault extends UnauthenticatedVault {
     this.auth = new AuthApi(this);
   }
 
-  fetch(url, init, okCodes) {
+  fetch(url, init) {
     const headers = init && init.headers ? init.headers : new Headers();
     headers.set('X-Vault-Token', this.token);
     return super.fetch(url, {
       ...init,
       headers,
-    }, okCodes);
+    });
   }
 }
