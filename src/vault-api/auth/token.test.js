@@ -49,6 +49,14 @@ describe('token API', () => {
       });
     });
   });
+  describe('listAccessors', () => {
+    it('should call the list-accessors API', () => {
+      token.listAccessors();
+      expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/list-accessors'), {
+        method: 'LIST',
+      });
+    });
+  });
   describe('lookup', () => {
     it('should call lookup for a given token', () => {
       token.lookup('the-token');
@@ -97,7 +105,6 @@ describe('token API', () => {
       expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/revoke'), {
         method: 'POST',
         body: JSON.stringify({ token: 'token' }),
-        okCodes: 204,
       });
     });
   });
@@ -106,7 +113,6 @@ describe('token API', () => {
       token.revokeSelf();
       expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/revoke-self'), {
         method: 'POST',
-        okCodes: 204,
       });
     });
   });
@@ -116,7 +122,57 @@ describe('token API', () => {
       expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/revoke-accessor'), {
         method: 'POST',
         body: JSON.stringify({ accessor: 'accessor' }),
-        okCodes: 204,
+      });
+    });
+  });
+  describe('revokeOrphan', () => {
+    it('should call the revoke-orphan API', () => {
+      token.revokeOrphan('abcde');
+      expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/revoke-orphan'), {
+        method: 'POST',
+        body: JSON.stringify({ token: 'abcde' }),
+      });
+    });
+  });
+  describe('getRole', () => {
+    it('should call the roles resource for the role id', () => {
+      token.getRole('id');
+      expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/roles/').suffixPathParam('id'), undefined);
+    });
+  });
+  describe('getRoles', () => {
+    it('should list the roles resource', () => {
+      token.getRoles();
+      expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/roles'), {
+        method: 'LIST',
+      });
+    });
+  });
+  describe('updateRole', () => {
+    it('should post to the roles resource', () => {
+      token.updateRole({
+        role_name: 'alan',
+        disallowed_policies: 'default',
+      });
+      expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/roles/alan'), {
+        body: JSON.stringify({ disallowed_policies: 'default' }),
+        method: 'POST',
+      });
+    });
+  });
+  describe('deleteRole', () => {
+    it('should delete a role resource', () => {
+      token.deleteRole('alan');
+      expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/roles/alan'), {
+        method: 'DELETE',
+      });
+    });
+  });
+  describe('tidy', () => {
+    it('should call the tidy API', () => {
+      token.tidy();
+      expect(auth.fetch).toHaveBeenCalledWith(new UrlSpec('/token/tidy'), {
+        method: 'POST',
       });
     });
   });

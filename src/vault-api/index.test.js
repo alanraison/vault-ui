@@ -14,7 +14,7 @@ describe('Unauthenticated Vault', () => {
     it('should fetch paths from the vault address', () => {
       fetch.mockResponse(JSON.stringify({ testResponse: 1 }));
       return v.fetch(new UrlSpec('/foo')).then(() => {
-        expect(fetch).toHaveBeenCalledWith('http://foo.bar/foo', {});
+        expect(fetch).toHaveBeenCalledWith('http://foo.bar/foo', undefined);
       });
     });
     it('should include the specified options', () => {
@@ -30,13 +30,6 @@ describe('Unauthenticated Vault', () => {
       return v.fetch(new UrlSpec()).catch((e) => {
         expect(e.message).toMatch('418');
         expect(e.message).toMatch('Short and stout');
-      });
-    });
-    it('should allow a list of acceptable return statuses', () => {
-      fetch.mockResponse('"Short and stout"', { status: 418, statusText: "I'm a teapot" });
-      return v.fetch(new UrlSpec(), { okCodes: [200, 418] }).then((resp) => {
-        expect(fetch).toHaveBeenCalledWith('http://foo.bar', {});
-        expect(resp).toEqual('Short and stout');
       });
     });
     it('should throw an error if the response body contains errors', () => {

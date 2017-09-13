@@ -8,9 +8,18 @@ describe('UrlSpec', () => {
     const spec = new UrlSpec('a').prefixPath('b');
     expect(spec.build()).toEqual('ba');
   });
+  it('should be able to suffix a value to the path', () => {
+    const spec = new UrlSpec('a').suffixPathParam('b');
+    expect(spec.build()).toEqual('ab');
+  });
+  it('should URL encode suffixes', () => {
+    const spec = new UrlSpec('trusted-part/').suffixPathParam('<script/>');
+    expect(spec.build()).toEqual('trusted-part/%3Cscript%2F%3E');
+  });
   it('should create a new object for each modification of the path', () => {
     const original = new UrlSpec('a');
     expect(original.prefixPath('b')).not.toBe(original);
+    expect(original.suffixPathParam('b')).not.toBe(original);
   });
   describe('with query parameters', () => {
     it('should add query parameters to the end of the url', () => {
@@ -44,6 +53,12 @@ describe('UrlSpec', () => {
     it('should start the query parameters with \'?\'', () => {
       const actual = new UrlSpec('path', { param: 'foo' }).build();
       expect(actual).toEqual('path?param=foo');
+    });
+    it('should URL encode query parameters', () => {
+      const spec = new UrlSpec('x', {
+        '<script>alert("pwned!")</script>': '<script>alert("and again")</script>',
+      });
+      expect(spec.build()).not.toMatch(/<script>/);
     });
     it('should return a new object on each modification to the query params', () => {
       const original = new UrlSpec('path', { param: 'foo' });

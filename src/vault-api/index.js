@@ -1,12 +1,8 @@
 import Sys, { UnauthenticatedSysApi } from './sys';
 import AuthApi from './auth';
 
-/* eslint no-confusing-arrow: off */
-const isStatusOk = (status, okCodes) =>
-  Array.isArray(okCodes) ? okCodes.includes(status) : okCodes === status;
-
-const checkResponse = okCodes => (response) => {
-  if (!isStatusOk(response.status, okCodes)) {
+const checkResponse = (response) => {
+  if (!response.ok) {
     return response.text().then((text) => {
       throw new Error(`received status code ${response.status}\n${text}`);
     });
@@ -25,8 +21,7 @@ export class UnauthenticatedVault {
     this.sys = new UnauthenticatedSysApi(this);
   }
   fetch(url, options) {
-    const { okCodes, ...init } = { okCodes: 200, ...options };
-    return fetch(url.prefixPath(this.vaultAddr).build(), init).then(checkResponse(okCodes));
+    return fetch(url.prefixPath(this.vaultAddr).build(), options).then(checkResponse);
   }
 }
 

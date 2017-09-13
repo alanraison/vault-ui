@@ -10,7 +10,7 @@ export default class TokenApi {
     return this.authApi.fetch(url.prefixPath('/token'), init);
   }
   /**
-   * Create a new token
+   * Create a new token.
    *
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#create-token}
    *
@@ -25,7 +25,7 @@ export default class TokenApi {
     });
   }
   /**
-   * Create a new orphan token
+   * Create a new orphan token.
    *
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#create-token}
    */
@@ -33,6 +33,16 @@ export default class TokenApi {
     return this.fetch(new UrlSpec('/create-orphan'), {
       method: 'POST',
       body: JSON.stringify(options),
+    });
+  }
+  /**
+   * List accessors of the current token.
+   *
+   * @see {@link https://www.vaultproject.io/api/auth/token/index.html#list-accessors}
+   */
+  listAccessors() {
+    return this.fetch(new UrlSpec('/list-accessors'), {
+      method: 'LIST',
     });
   }
   /**
@@ -49,7 +59,7 @@ export default class TokenApi {
     });
   }
   /**
-   * Lookup information about the current token
+   * Lookup information about the current token.
    *
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#lookup-a-token-self-}
    */
@@ -103,7 +113,6 @@ export default class TokenApi {
     return this.fetch(new UrlSpec('/revoke'), {
       method: 'POST',
       body: JSON.stringify({ token }),
-      okCodes: 204,
     });
   }
   /**
@@ -114,7 +123,6 @@ export default class TokenApi {
   revokeSelf() {
     return this.fetch(new UrlSpec('/revoke-self'), {
       method: 'POST',
-      okCodes: 204,
     });
   }
   /**
@@ -127,7 +135,68 @@ export default class TokenApi {
     return this.fetch(new UrlSpec('/revoke-accessor'), {
       method: 'POST',
       body: JSON.stringify(options),
-      okCodes: 204,
+    });
+  }
+  /**
+   * Revoke a token but not its child tokens.
+   *
+   * @see {@link https://www.vaultproject.io/api/auth/token/index.html#revoke-token-and-orphan-children}
+   *
+   * @param {string} token - the token to revoke
+   */
+  revokeOrphan(token) {
+    return this.fetch(new UrlSpec('/revoke-orphan'), {
+      method: 'POST',
+      body: JSON.stringify({ token }),
+    });
+  }
+  /**
+   * Lookup the named role.
+   *
+   * @see {@link https://www.vaultproject.io/api/auth/token/index.html#read-token-role}
+   */
+  getRole(name) {
+    return this.fetch(new UrlSpec('/roles/').suffixPathParam(name));
+  }
+  /**
+   * List roles.
+   *
+   * @see {@link https://www.vaultproject.io/api/auth/token/index.html#list-token-roles}
+   */
+  getRoles() {
+    return this.fetch(new UrlSpec('/roles'), {
+      method: 'LIST',
+    });
+  }
+  /**
+   * Create/Update a role.
+   *
+   * @see {@link https://www.vaultproject.io/api/auth/token/index.html#create-update-token-role}
+   */
+  updateRole(options) {
+    const { role_name, ...params } = options;
+    return this.fetch(new UrlSpec('/roles/').suffixPathParam(role_name), {
+      method: 'POST',
+      body: JSON.stringify(params),
+    });
+  }
+  /**
+   * Delete a role.
+   * @param {string} role - the role name
+   *
+   * @see {@link https://www.vaultproject.io/api/auth/token/index.html#delete-token-role}
+   */
+  deleteRole(role) {
+    return this.fetch(new UrlSpec('/roles/').suffixPathParam(role), {
+      method: 'DELETE',
+    });
+  }
+  /**
+   * Clean up tokens.
+   */
+  tidy() {
+    return this.fetch(new UrlSpec('/tidy'), {
+      method: 'POST',
     });
   }
 }
