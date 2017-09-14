@@ -1,7 +1,12 @@
 import * as actions from '../../actions/login';
 import methods from './methods';
 
-export default (state = { method: null }, action) => {
+const initialState = {
+  method: null,
+  policies: new Set(['secrets_read', 'secrets_write']),
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case actions.SELECT_LOGIN_METHOD:
       return {
@@ -13,6 +18,28 @@ export default (state = { method: null }, action) => {
         ...state,
         error: action.payload.err,
       };
+    case actions.ADD_POLICY: {
+      if (!state.policies.has(action.payload.policy)) {
+        const policies = new Set(state.policies);
+        policies.add(action.payload.policy);
+        return {
+          ...state,
+          policies,
+        };
+      }
+      return state;
+    }
+    case actions.REMOVE_POLICY: {
+      if (state.policies.has(action.payload.policy)) {
+        const policies = new Set(state.policies);
+        policies.delete(action.payload.policy);
+        return {
+          ...state,
+          policies,
+        };
+      }
+      return state;
+    }
     default:
       if (state.method) {
         const currentMethodState = state[state.method];

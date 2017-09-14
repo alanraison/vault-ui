@@ -23,3 +23,13 @@ export const loginSuccess = vault => ({
   type: LOGIN_SUCCESS,
   payload: { vault },
 });
+export const ADD_POLICY = 'vault-ui/login/ADD_POLICY';
+export const addPolicy = policy => ({
+  type: ADD_POLICY,
+  payload: { policy },
+});
+export const REMOVE_POLICY = 'vault-ui/login/REMOVE_POLICY';
+export const removePolicy = policy => ({
+  type: REMOVE_POLICY,
+  payload: { policy },
+});

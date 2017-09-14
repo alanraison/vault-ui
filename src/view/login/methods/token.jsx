@@ -14,7 +14,7 @@ export function TokenEntryComponent({
       id="token-input"
       label="Token"
       fullWidth
-      onChange={(e) => onChange(e.target.value)}
+      onChange={e => onChange(e.target.value)}
       value={value}
     />
   );

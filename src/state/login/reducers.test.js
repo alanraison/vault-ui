@@ -11,6 +11,26 @@ describe('Login reducer', () => {
     expect(newState.method).toEqual('myMethod');
   });
 
+  it('should remove policies when REMOVE_POLICY action received', () => {
+    const state = { policies: new Set(['policy-a', 'policy-b']) };
+    const newState = loginReducer(state, actions.login.removePolicy('policy-b'));
+    expect(newState).toEqual({ policies: new Set(['policy-a']) });
+  });
+  it('should not remove anything if the policy is not in the list of policies', () => {
+    const state = { policies: new Set(['policy-a', 'policy-b']) };
+    const newState = loginReducer(state, actions.login.removePolicy('policy-c'));
+    expect(newState).toEqual({ policies: new Set(['policy-a', 'policy-b']) });
+  });
+  it('should add a policy whe ADD_POLICY action received', () => {
+    const state = { policies: new Set(['policy-a', 'policy-b']) };
+    const newState = loginReducer(state, actions.login.addPolicy('policy-c'));
+    expect(newState).toEqual({ policies: new Set(['policy-a', 'policy-b', 'policy-c']) });
+  });
+  it('should not add the same policy twice', () => {
+    const state = { policies: new Set(['policy-a']) };
+    const newState = loginReducer(state, actions.login.addPolicy('policy-a'));
+    expect(newState).toEqual({ policies: new Set(['policy-a']) });
+  });
   describe('with a login method set', () => {
     const myMethodState = { key: 'test' };
     const state = { method: 'myMethod', myMethod: myMethodState };

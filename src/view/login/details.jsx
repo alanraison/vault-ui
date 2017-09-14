@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Card, { CardActions, CardHeader, CardContent } from 'material-ui/Card';
 
-import LoginRouter from './router';
+import LoginForm from './optionsform';
 import { loginStart } from '../../actions/login';
 
 function DetailsComponent({
@@ -16,7 +16,7 @@ function DetailsComponent({
     <Card className={className}>
       <CardHeader title="Login to Vault." />
       <CardContent>
-        <LoginRouter />
+        <LoginForm />
       </CardContent>
       <CardActions>
         <Button onClick={() => doLogin(method)}>Login</Button>
