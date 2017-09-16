@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Chip from 'material-ui/Chip';
 import { FormGroup } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
-import Chip from 'material-ui/Chip';
+import Typography from 'material-ui/Typography';
 
 import * as actions from '../../actions/login';
 
@@ -22,14 +23,17 @@ export class PoliciesComponent extends React.Component {
     return (
       <div>
         <FormGroup row>
-          <TextField
-            id="policy-input"
-            label="Add Policy"
-            fullWidth
-            onChange={e => this.setState({ policy: e.target.value })}
-            onKeyUp={this.handleKeyPress}
-            value={this.state.policy}
-          />
+          <Typography type="display1">
+            Policies
+            <TextField
+              id="policy-input"
+              label="Add Policy"
+              fullWidth
+              onChange={e => this.setState({ policy: e.target.value })}
+              onKeyUp={this.handleKeyPress}
+              value={this.state.policy}
+            />
+          </Typography>
         </FormGroup>
         <FormGroup row>
           {

@@ -3,36 +3,48 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Card, { CardActions, CardHeader, CardContent } from 'material-ui/Card';
+import Collapse from 'material-ui/transitions/Collapse';
+import { FormGroup } from 'material-ui/Form';
 
-import LoginForm from './optionsform';
+import AdvancedLoginOptions from './optionsform';
+import LoginRouter from './router';
 import { loginStart } from '../../actions/login';
 
-function DetailsComponent({
-  method,
-  doLogin,
-  className,
-}) {
-  return (
-    <Card className={className}>
-      <CardHeader title="Login to Vault." />
-      <CardContent>
-        <LoginForm />
-      </CardContent>
-      <CardActions>
-        <Button onClick={() => doLogin(method)}>Login</Button>
-      </CardActions>
-    </Card>
-  );
+class DetailsComponent extends React.Component {
+  state = { advanced: false };
+  
+  render() {
+    return (
+      <Card>
+        <CardHeader title="Login to Vault." />
+        <CardContent>
+          <FormGroup row>
+            <LoginRouter />
+          </FormGroup>
+          <Collapse
+            in={this.state.advanced}
+            transitionDuration="auto"
+            unmountOnExit
+          >
+            <CardContent>
+              <AdvancedLoginOptions />
+            </CardContent>
+          </Collapse>
+        </CardContent>
+        <CardActions>
+          <Button raised color="primary" onClick={() => this.props.doLogin(this.props.method)}>Login</Button>
+        </CardActions>
+      </Card>
+    );
+  }
 }
 
 DetailsComponent.propTypes = ({
   method: PropTypes.string.isRequired,
   doLogin: PropTypes.func.isRequired,
-  className: PropTypes.string,
 });
 
 DetailsComponent.defaultProps = ({
-  className: undefined,
 });
 
 const mapStateToProps = state => ({
