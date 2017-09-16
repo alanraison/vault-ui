@@ -6,8 +6,6 @@ import Button from 'material-ui/Button';
 import { UnsealComponent } from '.';
 import UnsealCount from './count';
 
-// jest.mock('./count');
-// UnsealCountComponent.mockImplementation(() => () => <div />);
 const store = {
   dispatch: jest.fn(),
   subscribe: jest.fn(),

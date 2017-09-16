@@ -24,12 +24,11 @@ LoginChoiceItem.propTypes = ({
 });
 
 function LoginChooserComponent({
-  className,
   methodList,
   onSelect,
 }) {
   return (
-    <Card className={className}>
+    <Card>
       <CardHeader title="Login to Vault." />
       <CardContent>
         <List>
@@ -48,13 +47,11 @@ function LoginChooserComponent({
 }
 
 LoginChooserComponent.propTypes = ({
-  className: PropTypes.string,
   methodList: PropTypes.arrayOf(PropTypes.string),
   onSelect: PropTypes.func.isRequired,
 });
 
 LoginChooserComponent.defaultProps = ({
-  className: '',
   methodList: [],
 });
 

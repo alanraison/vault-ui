@@ -1,17 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Slide from 'material-ui/transitions/Slide';
 import LoginChooser from './chooser';
 import LoginDetails from './details';
-import './login.css';
 
 function LoginComponent({
   chosenMethod,
 }) {
   return (
-    <div className="slider">
-      <LoginChooser className={`slider--panel slider--panel__left ${!chosenMethod ? 'active' : ''}`} />
-      <LoginDetails className={`slider--panel slider--panel__right ${chosenMethod ? 'active' : ''}`} />
+    <div>
+      <Slide direction="left" in={!chosenMethod}>
+        <LoginChooser />
+      </Slide>
+      <Slide direction="left" in={chosenMethod}>
+        <LoginDetails />
+      </Slide>
     </div>
   );
 }
