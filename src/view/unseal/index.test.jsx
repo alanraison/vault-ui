@@ -42,4 +42,8 @@ describe('Unseal component', () => {
     wrapper.find(Button).simulate('click');
     expect(onClick).toHaveBeenCalledWith('key');
   });
+  it('should update the state when the input value changes', () => {
+    wrapper.find(TextField).simulate('change', { target: { value: 'wibble' } });
+    expect(wrapper.state().unseal).toEqual('wibble');
+  });
 });
