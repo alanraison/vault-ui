@@ -8,7 +8,10 @@ import UnsealCount from './count';
 import * as actions from '../../actions/sealStatus';
 
 export class UnsealComponent extends React.Component {
-  state = { unseal: '' };
+  constructor(props) {
+    super(props);
+    this.state = { unseal: '' };
+  }
 
   render() {
     return (
@@ -37,6 +40,6 @@ UnsealComponent.propTypes = ({
 
 const mapDispatchToProps = {
   onSubmit: actions.unsealRequest,
-}
+};
 
 export default connect(null, mapDispatchToProps)(UnsealComponent);

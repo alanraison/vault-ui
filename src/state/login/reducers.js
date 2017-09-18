@@ -4,6 +4,7 @@ import methods from './methods';
 const initialState = {
   method: null,
   policies: new Set(['secrets_read', 'secrets_write']),
+  loggedIn: false,
 };
 
 export default (state = initialState, action) => {
@@ -12,6 +13,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         method: action.payload.method,
+        [action.payload.method]: '',
+      };
+    case actions.LOGIN_SUCCESS:
+      return {
+        ...state,
+        loggedIn: true,
       };
     case actions.LOGIN_ERROR:
       return {

@@ -11,8 +11,11 @@ import LoginRouter from './router';
 import { loginStart } from '../../actions/login';
 
 class DetailsComponent extends React.Component {
-  state = { advanced: false };
-  
+  constructor(props) {
+    super(props);
+    this.state = { advanced: false };
+  }
+
   render() {
     return (
       <Card>
@@ -32,7 +35,9 @@ class DetailsComponent extends React.Component {
           </Collapse>
         </CardContent>
         <CardActions>
-          <Button raised color="primary" onClick={() => this.props.doLogin(this.props.method)}>Login</Button>
+          <Button raised color="primary" onClick={() => this.props.doLogin(this.props.method)}>
+            Login
+          </Button>
         </CardActions>
       </Card>
     );

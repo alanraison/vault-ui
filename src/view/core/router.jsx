@@ -11,6 +11,7 @@ import Unseal from '../unseal';
 import LoginChooser from '../login/chooser';
 import LoginDetails from '../login/details';
 import Workspace from '../workspace';
+import ServerSettings from '../serverSettings';
 
 const NotFound = () => <div>Path not found.</div>;
 
@@ -23,6 +24,7 @@ export const routesMap = ({
   [actions.login.START_CHOOSE_LOGIN_METHOD]: LoginChooser,
   [actions.login.SELECT_LOGIN_METHOD]: LoginDetails,
   [actions.login.LOGIN_SUCCESS]: Workspace,
+  [actions.admin.SETTINGS]: ServerSettings,
 });
 
 export function RouteContainer({

@@ -1,10 +1,18 @@
+import * as admin from './admin';
 import * as core from './core';
 import * as methods from './methods';
 import * as login from './login';
 import * as sealStatus from './sealStatus';
 
+const HOME = 'vault-ui/HOME';
+const home = () => ({
+  type: HOME,
+});
+
 export default {
-  HOME: 'HOME',
+  HOME,
+  home,
+  admin,
   ...core,
   methods,
   login,

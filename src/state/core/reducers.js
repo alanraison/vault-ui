@@ -1,6 +1,4 @@
-import {
-  combineReducers,
-} from 'redux';
+import { combineReducers } from 'redux';
 import actions from '../../actions';
 import sealStatus from '../sealStatus/reducers';
 import login from '../login/reducers';

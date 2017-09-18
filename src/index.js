@@ -26,12 +26,13 @@ const sagaMiddleware = createSagaMiddleware();
 const history = createHistory();
 const routesMap = {
   [actions.HOME]: '/',
+  [actions.login.LOGIN_SUCCESS]: '/',
   [actions.ERROR]: '/error',
   [actions.INITIALISE]: '/loading',
   [actions.sealStatus.UNSEAL_KEY_REQUIRED]: '/unseal',
   [actions.login.START_CHOOSE_LOGIN_METHOD]: '/login',
   [actions.login.SELECT_LOGIN_METHOD]: '/login/:method',
-  [actions.login.LOGIN_SUCCESS]: '/workspace',
+  [actions.admin.SETTINGS]: '/settings',
 };
 const { reducer: location, middleware: routingMiddleware, enhancer } =
   connectRoutes(history, routesMap);
