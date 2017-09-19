@@ -21,13 +21,17 @@ export class UnsealComponent extends React.Component {
           <TextField
             id="unseal-key-input"
             fullWidth
-            onChange={e => this.setState({ unseal: e.target.value }) }
+            onChange={e => this.setState({ unseal: e.target.value })}
             value={this.state.unseal}
             label="Unseal Key"
           />
         </CardContent>
         <CardActions>
-          <Button onClick={() => this.props.onSubmit(this.state.unseal)}>Unseal</Button>
+          <Button
+            raised
+            color="primary"
+            onClick={() => this.props.onSubmit(this.state.unseal)}
+          >Unseal</Button>
         </CardActions>
       </Card>
     );
