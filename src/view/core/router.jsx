@@ -32,9 +32,8 @@ export function RouteContainer({
 }) {
   const Route = routesMap[route] ? routesMap[route] : routesMap[NOT_FOUND];
   return (
-    <Grid item xs>
-      <Route />
-    </Grid>);
+    <Route />
+  );
 }
 
 RouteContainer.propTypes = ({
