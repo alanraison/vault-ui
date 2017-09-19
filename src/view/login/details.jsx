@@ -10,7 +10,7 @@ import AdvancedLoginOptions from './optionsform';
 import LoginRouter from './router';
 import { loginStart } from '../../actions/login';
 
-class DetailsComponent extends React.Component {
+export class DetailsComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = { advanced: false };
