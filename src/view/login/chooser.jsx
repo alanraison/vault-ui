@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Card, { CardHeader, CardContent } from 'material-ui/Card';
 import List, { ListItem, ListItemText } from 'material-ui/List';
-
+import ViewCard from '../core/view-card';
 import { selectLoginMethod } from '../../actions/login';
 import methods from './methods';
 
@@ -28,7 +28,7 @@ function LoginChooserComponent({
   onSelect,
 }) {
   return (
-    <Card>
+    <ViewCard>
       <CardHeader title="Login to Vault." />
       <CardContent>
         <List>
@@ -42,7 +42,7 @@ function LoginChooserComponent({
           }
         </List>
       </CardContent>
-    </Card>
+    </ViewCard>
   );
 }
 

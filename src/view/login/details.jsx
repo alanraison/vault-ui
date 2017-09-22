@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
-import Card, { CardActions, CardHeader, CardContent } from 'material-ui/Card';
+import { CardActions, CardHeader, CardContent } from 'material-ui/Card';
 import Collapse from 'material-ui/transitions/Collapse';
 import { FormGroup } from 'material-ui/Form';
 
+import ViewCard from '../core/view-card';
 import AdvancedLoginOptions from './optionsform';
 import LoginRouter from './router';
 import { loginStart } from '../../actions/login';
@@ -18,7 +19,7 @@ export class DetailsComponent extends React.Component {
 
   render() {
     return (
-      <Card>
+      <ViewCard>
         <CardHeader title="Login to Vault." />
         <CardContent>
           <FormGroup row>
@@ -39,7 +40,7 @@ export class DetailsComponent extends React.Component {
             Login
           </Button>
         </CardActions>
-      </Card>
+      </ViewCard>
     );
   }
 }

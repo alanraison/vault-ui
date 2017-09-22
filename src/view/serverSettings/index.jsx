@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card, { CardHeader, CardContent } from 'material-ui/Card';
+import { CardHeader, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import List, {
   ListItem,
@@ -11,10 +11,11 @@ import List, {
 } from 'material-ui/List';
 import Switch from 'material-ui/Switch';
 import PermIdentity from 'material-ui-icons/PermIdentity';
+import ViewCard from '../core/view-card';
 
 export default function Settings() {
   return (
-    <Card>
+    <ViewCard>
       <CardHeader title="Settings" />
       <CardContent>
         <List subheader={<ListSubheader>Login Methods</ListSubheader>}>
@@ -29,7 +30,7 @@ export default function Settings() {
           </ListItem>
         </List>
       </CardContent>
-    </Card>
+    </ViewCard>
   );
 }
 

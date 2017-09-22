@@ -1,11 +1,14 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
+import { CardContent } from 'material-ui/Card';
+import ViewCard from '../core/view-card';
 
 function Workspace() {
   return (
-    <Paper>
-      Workspace
-    </Paper>
+    <ViewCard md={12}>
+      <CardContent>
+        Workspace
+      </CardContent>
+    </ViewCard>
   );
 }
 

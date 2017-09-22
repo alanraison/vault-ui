@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { NOT_FOUND } from 'redux-first-router';
+import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 
 import actions from '../../actions';
+import NotFound from './not-found';
 import ShowError from './error';
 import Loading from './loading';
 import Unseal from '../unseal';
@@ -13,7 +15,14 @@ import LoginDetails from '../login/details';
 import Workspace from '../workspace';
 import ServerSettings from '../serverSettings';
 
-const NotFound = () => <div>Path not found.</div>;
+const styles = theme => ({
+  header: {
+    flexGrow: 1,
+  },
+  content: {
+    margin: theme.spacing.unit,
+  },
+});
 
 export const routesMap = ({
   [actions.HOME]: null,
@@ -28,20 +37,29 @@ export const routesMap = ({
 });
 
 export function RouteContainer({
+  classes,
   route,
 }) {
   const Route = routesMap[route] ? routesMap[route] : routesMap[NOT_FOUND];
   return (
-    <Route />
+    <Grid container className={classes.header} justify="center">
+      <Route />
+    </Grid>
   );
 }
 
 RouteContainer.propTypes = ({
+  // eslint-disable-next-line react/forbid-prop-types
+  classes: PropTypes.object,
   route: PropTypes.string.isRequired,
+});
+
+RouteContainer.defaultProps = ({
+  classes: '',
 });
 
 const mapStateToProps = state => ({
   route: state.location.type,
 });
 
-export default connect(mapStateToProps)(RouteContainer);
+export default connect(mapStateToProps)(withStyles(styles)(RouteContainer));

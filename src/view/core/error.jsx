@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
-import Card, { CardHeader, CardContent, CardActions } from 'material-ui/Card';
+import { CardHeader, CardContent, CardActions } from 'material-ui/Card';
+import ViewCard from './view-card';
 import { clearError } from '../../actions/core';
 
 export function ErrorComponent({
@@ -11,15 +12,15 @@ export function ErrorComponent({
   onDismiss,
 }) {
   return (
-    <Card>
-      <CardHeader title={Error}/>
+    <ViewCard>
+      <CardHeader title={Error} />
       <CardContent>
         Error {source}: {error.toString()}
       </CardContent>
       <CardActions>
         <Button className="dismiss" onClick={onDismiss}>Dismiss</Button>
       </CardActions>
-    </Card>
+    </ViewCard>
   );
 }
 

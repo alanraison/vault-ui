@@ -1,14 +1,15 @@
 import React from 'react';
-import Card, { CardHeader, CardContent } from 'material-ui/Card';
+import { CardHeader, CardContent } from 'material-ui/Card';
 import { CircularProgress } from 'material-ui/Progress';
+import ViewCard from './view-card';
 
 export default function LoadingComponent() {
   return (
-    <Card>
+    <ViewCard>
       <CardHeader title="Loading..." />
       <CardContent>
         <CircularProgress />
       </CardContent>
-    </Card>
+    </ViewCard>
   );
 }

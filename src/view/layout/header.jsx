@@ -7,7 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Lock from 'material-ui-icons/Lock';
-import SettingsMenu from './settings';
+import SettingsMenu from '../core/settings';
 
 const styles = () => ({
   flex: {
