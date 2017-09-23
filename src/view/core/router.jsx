@@ -49,13 +49,12 @@ export function RouteContainer({
 }
 
 RouteContainer.propTypes = ({
-  // eslint-disable-next-line react/forbid-prop-types
-  classes: PropTypes.object,
+  classes: PropTypes.shape(),
   route: PropTypes.string.isRequired,
 });
 
 RouteContainer.defaultProps = ({
-  classes: '',
+  classes: { header: '' },
 });
 
 const mapStateToProps = state => ({

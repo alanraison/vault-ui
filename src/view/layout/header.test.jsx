@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import { HeaderComponent } from './header';
-import Settings from './settings';
+import Settings from '../core/settings';
 
 const store = {
   dispatch: jest.fn(),

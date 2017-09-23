@@ -22,7 +22,7 @@ export function ViewCardComponent(props) {
 }
 
 ViewCardComponent.propTypes = {
-  classes: PropTypes.string,
+  classes: PropTypes.shape(),
   children: PropTypes.node,
   xs: PropTypes.number,
   md: PropTypes.number,
