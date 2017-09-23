@@ -19,6 +19,7 @@ jobs:
         - node_modules
         - ~/.cache/yarn
     - run:
-        command: yarn test -- --coverage --coveragePathIgnorePatterns=src/setupTests.js,src/actions/testhelper.js
+        command: yarn test -- --coverage --coveragePathIgnorePatterns=src/setupTests.js \
+            --coveragePathIgnorePatterns=src/actions/testhelper.js
     - run:
         command: cat coverage/lcov.info | node_modules/.bin/coveralls
