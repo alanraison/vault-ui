@@ -10,8 +10,13 @@ const style = theme => ({
   },
 });
 
-export function ViewCardComponent(props) {
-  const { children, classes, xs = 12, md = 6, ...childProps } = props;
+export function ViewCardComponent({
+  children,
+  classes,
+  xs = 12,
+  md = 6,
+  ...childProps
+}) {
   return (
     <Grid item xs={xs} md={md} className={classes.card} {...childProps}>
       <Card>
@@ -22,7 +27,9 @@ export function ViewCardComponent(props) {
 }
 
 ViewCardComponent.propTypes = {
-  classes: PropTypes.shape(),
+  classes: PropTypes.shape({
+    card: PropTypes.string,
+  }),
   children: PropTypes.node,
   xs: PropTypes.number,
   md: PropTypes.number,
@@ -30,7 +37,7 @@ ViewCardComponent.propTypes = {
 
 ViewCardComponent.defaultProps = {
   children: null,
-  classes: {},
+  classes: { card: '' },
   xs: 12,
   md: 6,
 };

@@ -28,4 +28,12 @@ describe('A View Card', () => {
     </ViewCardComponent>);
     expect(wrapper.find(Card)).toContainReact(<a href="https://github.com/alanraison/vault-ui">Vault UI</a>);
   });
+  it('should accept css styles in the classes prop', () => {
+    const wrapper = shallow(<ViewCardComponent classes={{ card: 'class-name-for-card' }} />);
+    expect(wrapper.find(Grid)).toHaveProp('className', 'class-name-for-card');
+  });
+  it('should spread all other props on to Grid component', () => {
+    const wrapper = shallow(<ViewCardComponent foo="bar" />);
+    expect(wrapper.find(Grid)).toHaveProp('foo', 'bar');
+  });
 });
