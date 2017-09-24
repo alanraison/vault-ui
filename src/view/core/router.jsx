@@ -10,7 +10,7 @@ import NotFound from './not-found';
 import ShowError from './error';
 import Loading from './loading';
 import Unseal from '../unseal';
-import LoginChooser from '../login/chooser';
+import LoginChooser from '../login';
 import LoginDetails from '../login/details';
 import Workspace from '../workspace';
 import ServerSettings from '../serverSettings';

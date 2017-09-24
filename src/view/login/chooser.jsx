@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Card, { CardHeader, CardContent } from 'material-ui/Card';
 import List, { ListItem, ListItemText } from 'material-ui/List';
-import ViewCard from '../core/view-card';
 import { selectLoginMethod } from '../../actions/login';
 import methods from './methods';
 
-function LoginChoiceItem({
+export function LoginChoiceItem({
   method,
   onClick,
 }) {
@@ -18,41 +16,42 @@ function LoginChoiceItem({
   );
 }
 
-LoginChoiceItem.propTypes = ({
-  method: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-});
+LoginChoiceItem.propTypes = {
+  method: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
-function LoginChooserComponent({
+LoginChoiceItem.defaultProps = {
+  method: '',
+  onClick: () => null,
+};
+
+export function LoginChooserComponent({
   methodList,
   onSelect,
 }) {
   return (
-    <ViewCard>
-      <CardHeader title="Login to Vault." />
-      <CardContent>
-        <List>
-          {
-            methodList.map(method => (
-              <LoginChoiceItem
-                key={method}
-                method={method}
-                onClick={() => onSelect(method)}
-              />))
-          }
-        </List>
-      </CardContent>
-    </ViewCard>
+    <List>
+      {
+        methodList.map(method => (
+          <LoginChoiceItem
+            key={method}
+            method={method}
+            onClick={() => onSelect(method)}
+          />))
+      }
+    </List>
   );
 }
 
 LoginChooserComponent.propTypes = ({
   methodList: PropTypes.arrayOf(PropTypes.string),
-  onSelect: PropTypes.func.isRequired,
+  onSelect: PropTypes.func,
 });
 
 LoginChooserComponent.defaultProps = ({
   methodList: [],
+  onSelect: () => null,
 });
 
 const mapStateToProps = () => ({
