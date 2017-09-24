@@ -42,15 +42,22 @@ export class SettingsMenuComponent extends React.Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <MenuItem onClick={
-            (e) => {
-              this.handleClose(e);
-              this.props.onSettingsClick();
-            }}
+          <MenuItem
+            id="server-settings"
+            onClick={
+              (e) => {
+                this.handleClose(e);
+                this.props.onSettingsClick();
+              }}
           >
             Server Settings
           </MenuItem>
-          <MenuItem onClick={this.handleClose}>User Settings</MenuItem>
+          <MenuItem
+            id="user-settings"
+            onClick={this.handleClose}
+          >
+            User Settings
+          </MenuItem>
         </Menu>
       </div>
     );

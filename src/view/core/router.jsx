@@ -15,12 +15,9 @@ import LoginDetails from '../login/details';
 import Workspace from '../workspace';
 import ServerSettings from '../serverSettings';
 
-const styles = theme => ({
+const styles = () => ({
   header: {
     flexGrow: 1,
-  },
-  content: {
-    margin: theme.spacing.unit,
   },
 });
 
