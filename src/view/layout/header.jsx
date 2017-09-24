@@ -16,7 +16,7 @@ const styles = () => ({
 });
 
 export function HeaderComponent({
-  loggedIn = false,
+  loggedIn,
   classes,
 }) {
   return (
@@ -36,20 +36,14 @@ export function HeaderComponent({
 
 HeaderComponent.propTypes = {
   loggedIn: PropTypes.bool,
-  // eslint-disable-next-line react/forbid-prop-types
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.shape({
+    flex: PropTypes.string,
+  }),
 };
 
 HeaderComponent.defaultProps = {
   loggedIn: false,
-};
-
-HeaderComponent.contextTypes = {
-  state: PropTypes.shape({
-    dispatch: PropTypes.func,
-    subscribe: PropTypes.func,
-    getState: PropTypes.func,
-  }),
+  classes: { flex: '' },
 };
 
 const mapStateToProps = state => ({
