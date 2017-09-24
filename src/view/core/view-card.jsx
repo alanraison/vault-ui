@@ -30,7 +30,7 @@ ViewCardComponent.propTypes = {
 
 ViewCardComponent.defaultProps = {
   children: null,
-  classes: '',
+  classes: {},
   xs: 12,
   md: 6,
 };
