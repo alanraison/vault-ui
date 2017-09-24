@@ -13,8 +13,8 @@ const style = theme => ({
 export function ViewCardComponent({
   children,
   classes,
-  xs = 12,
-  md = 6,
+  xs,
+  md,
   ...childProps
 }) {
   return (
