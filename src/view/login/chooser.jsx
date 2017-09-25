@@ -18,12 +18,11 @@ export function LoginChoiceItem({
 
 LoginChoiceItem.propTypes = {
   method: PropTypes.string,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 };
 
 LoginChoiceItem.defaultProps = {
   method: '',
-  onClick: () => null,
 };
 
 export function LoginChooserComponent({
@@ -46,12 +45,11 @@ export function LoginChooserComponent({
 
 LoginChooserComponent.propTypes = ({
   methodList: PropTypes.arrayOf(PropTypes.string),
-  onSelect: PropTypes.func,
+  onSelect: PropTypes.func.isRequired,
 });
 
 LoginChooserComponent.defaultProps = ({
   methodList: [],
-  onSelect: () => null,
 });
 
 const mapStateToProps = () => ({

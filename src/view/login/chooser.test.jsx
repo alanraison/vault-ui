@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import List, { ListItem, ListItemText } from 'material-ui/List';
+import List, { ListItemText } from 'material-ui/List';
 import { LoginChooserComponent, LoginChoiceItem } from './chooser';
 
 describe('The Login Chooser Component', () => {
@@ -15,7 +15,7 @@ describe('The Login Chooser Component', () => {
   it('should invoke the onSelect function when a method is selected', () => {
     const onSelect = jest.fn();
     const wrapper = shallow(<LoginChooserComponent methodList={['foo', 'bar', 'baz']} onSelect={onSelect} />);
-    
+
     wrapper.find(LoginChoiceItem).find({ method: 'baz' }).simulate('click');
     expect(onSelect).toHaveBeenCalledWith('baz');
   });
