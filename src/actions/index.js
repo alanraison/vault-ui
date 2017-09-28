@@ -3,6 +3,7 @@ import * as core from './core';
 import * as methods from './methods';
 import * as login from './login';
 import * as sealStatus from './sealStatus';
+import * as serverSettings from './serverSettings';
 
 const HOME = 'vault-ui/HOME';
 const home = () => ({
@@ -17,4 +18,5 @@ export default {
   methods,
   login,
   sealStatus,
+  serverSettings,
 };
