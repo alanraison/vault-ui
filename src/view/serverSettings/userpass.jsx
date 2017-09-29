@@ -15,7 +15,9 @@ export function UserPassSettingsComponent({
       enabled={enabled}
       onEnable={onEnable}
       onDisable={onDisable}
-    />
+    >
+      <div>Stuff</div>
+    </ToggleableSettings>
   );
 }
 

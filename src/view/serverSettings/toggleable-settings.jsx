@@ -47,7 +47,7 @@ export class ToggleableSettingsComponent extends React.Component {
         </ListItem>
         <Collapse in={this.state.open} transitionDuration="auto">
           <Paper className={this.props.classes.detail}>
-          The settings
+            {this.props.children}
           </Paper>
         </Collapse>
       </div>
@@ -60,6 +60,7 @@ ToggleableSettingsComponent.propTypes = {
   classes: PropTypes.shape({
     detail: PropTypes.string,
   }),
+  children: PropTypes.node,
   enabled: PropTypes.bool,
   onEnable: PropTypes.func.isRequired,
   onDisable: PropTypes.func.isRequired,
@@ -68,6 +69,7 @@ ToggleableSettingsComponent.propTypes = {
 ToggleableSettingsComponent.defaultProps = {
   iconComponent: <div />,
   classes: { detail: '' },
+  children: null,
   enabled: false,
 };
 
