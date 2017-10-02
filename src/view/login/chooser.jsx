@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import List, { ListItem, ListItemText } from 'material-ui/List';
+import IconButton from 'material-ui/IconButton';
+import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
+import ChevronRight from 'material-ui-icons/ChevronRight';
 import { selectLoginMethod } from '../../actions/login';
 import methods from './methods';
 
@@ -12,17 +14,23 @@ export function LoginChoiceItem({
   return (
     <ListItem button onClick={onClick}>
       <ListItemText primary={method} />
+      <ListItemSecondaryAction>
+        <IconButton>
+          <ChevronRight />
+        </IconButton>
+      </ListItemSecondaryAction>
     </ListItem>
   );
 }
 
 LoginChoiceItem.propTypes = {
   method: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 LoginChoiceItem.defaultProps = {
   method: '',
+  onClick: () => null,
 };
 
 export function LoginChooserComponent({
@@ -45,11 +53,12 @@ export function LoginChooserComponent({
 
 LoginChooserComponent.propTypes = ({
   methodList: PropTypes.arrayOf(PropTypes.string),
-  onSelect: PropTypes.func.isRequired,
+  onSelect: PropTypes.func,
 });
 
 LoginChooserComponent.defaultProps = ({
   methodList: [],
+  onSelect: () => null,
 });
 
 const mapStateToProps = () => ({
