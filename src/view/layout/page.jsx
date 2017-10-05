@@ -10,9 +10,6 @@ const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
-    // height: 430,
-    // width: '100%',
-    // marginTop: 3 * theme.spacing.unit,
     overflow: 'hidden',
   },
   appFrame: {
@@ -46,7 +43,7 @@ const styles = theme => ({
     marginLeft: -drawerWidth,
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit,
     transition: theme.transitions.create(['margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -55,7 +52,7 @@ const styles = theme => ({
     marginTop: '56px',
     [theme.breakpoints.up('sm')]: {
       content: {
-        height: 'calc(100% - 64px',
+        height: 'calc(100% - 64px)',
         marginTop: '64px',
       },
     },
