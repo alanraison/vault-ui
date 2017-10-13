@@ -79,7 +79,10 @@ export class PageComponent extends React.Component {
       <div className={classes.root}>
         <div className={classes.appFrame}>
           <Header
-            classes={{ appBar: classes.appBar, appBarShift: this.state.drawerOpen && classes.appBarShift }}
+            classes={{
+              appBar: classes.appBar,
+              appBarShift: this.state.drawerOpen && classes.appBarShift,
+            }}
             menuDrawerOpen={this.state.drawerOpen}
             onMenuClick={() => this.setState({ drawerOpen: true })}
           />
@@ -88,7 +91,9 @@ export class PageComponent extends React.Component {
             open={this.state.drawerOpen}
             onClose={() => this.setState({ drawerOpen: false })}
           />
-          <main className={classNames(classes.content, this.state.drawerOpen && classes.contentShift)}>
+          <main className={
+            classNames(classes.content, this.state.drawerOpen && classes.contentShift)}
+          >
             <Router />
           </main>
         </div>

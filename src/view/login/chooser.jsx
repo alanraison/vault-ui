@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
 import ChevronRight from 'material-ui-icons/ChevronRight';
-import { selectLoginMethod } from '../../actions/login';
 import methods from './methods';
+import actions from '../../actions';
 
 export function LoginChoiceItem({
   method,
@@ -14,11 +14,6 @@ export function LoginChoiceItem({
   return (
     <ListItem button onClick={onClick}>
       <ListItemText primary={method} />
-      <ListItemSecondaryAction>
-        <IconButton>
-          <ChevronRight />
-        </IconButton>
-      </ListItemSecondaryAction>
     </ListItem>
   );
 }
@@ -66,7 +61,7 @@ const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = {
-  onSelect: selectLoginMethod,
+  onSelect: actions.login.selectLoginMethod,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginChooserComponent);

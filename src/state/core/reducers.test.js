@@ -1,5 +1,6 @@
 import uuid from 'uuid/v4';
-import reducer, { getAppState, getVault } from './reducers';
+import reducer from './reducers';
+import { getAppState, getVault } from './selectors';
 import actions from '../../actions';
 
 describe('Core reducers:', () => {

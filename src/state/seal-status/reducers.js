@@ -4,6 +4,7 @@ const initialState = {
   sealed: null,
   sealInfo: null,
   loading: false,
+  unsealKey: '',
 };
 
 export default (state = initialState, action) => {
@@ -29,10 +30,16 @@ export default (state = initialState, action) => {
         ...state,
         sealed: true,
       };
+    case actions.sealStatus.EDIT_UNSEAL_KEY:
+      return {
+        ...state,
+        unsealKey: action.payload.value,
+      };
     case actions.sealStatus.UNSEAL_COMPLETE:
       return {
         ...state,
         sealed: false,
+        unsealKey: '',
       };
     default:
       return state;

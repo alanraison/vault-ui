@@ -9,11 +9,16 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case actions.START_CHOOSE_LOGIN_METHOD:
+      return {
+        ...state,
+        method: null,
+      };
     case actions.SELECT_LOGIN_METHOD:
       return {
         ...state,
         method: action.payload.method,
-        [action.payload.method]: '',
+        [action.payload.method]: methods[action.payload.method](undefined, action),
       };
     case actions.LOGIN_SUCCESS:
       return {
@@ -47,18 +52,20 @@ export default (state = initialState, action) => {
       }
       return state;
     }
-    default:
-      if (state.method) {
-        const currentMethodState = state[state.method];
-        const newMethodState = methods[state.method](state[state.method], action);
+    default: {
+      const { method } = state;
+      if (method) {
+        const currentMethodState = state[method];
+        const newMethodState = methods[method](state[method], action);
 
         if (currentMethodState !== newMethodState) {
           return {
             ...state,
-            [state.method]: newMethodState,
+            [method]: newMethodState,
           };
         }
       }
       return state;
+    }
   }
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
-
+import { getLogin } from '../../../state/login/selectors';
 import { changeToken } from '../../../actions/methods/token';
 
 export function TokenEntryComponent({
@@ -22,15 +22,11 @@ export function TokenEntryComponent({
 
 TokenEntryComponent.propTypes = ({
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-});
-
-TokenEntryComponent.defaultProps = ({
-  onChange: () => {},
+  onChange: PropTypes.func.isRequired,
 });
 
 const mapStateToProps = state => ({
-  value: state.app.login.tokenEntry,
+  value: getLogin(state).token,
 });
 
 const mapDispatchToProps = {

@@ -29,9 +29,17 @@ describe('Seal Status reducer', () => {
     const newState = reducer(undefined, actions.sealStatus.unsealKeyRequired());
     expect(newState.sealed).toBeTruthy();
   });
-  it('should clear sealed flag whne UNSEAL_COMPLETE', () => {
+  it('should update the unseal key on EDIT_UNSEAL_KEY', () => {
+    const newState = reducer({ unsealKey: 'a' }, actions.sealStatus.editUnsealKey('bcd'));
+    expect(newState.unsealKey).toEqual('bcd');
+  });
+  it('should clear sealed flag when UNSEAL_COMPLETE', () => {
     const newState = reducer({ sealed: true }, actions.sealStatus.unsealComplete());
     expect(newState.sealed).toBeFalsy();
+  });
+  it('should clear the unseal key when UNSEAL_COMPLETE', () => {
+    const newState = reducer({ unsealKey: 'foo-bar-baz' }, actions.sealStatus.unsealComplete());
+    expect(newState.unsealKey).toBeFalsy();
   });
   it('should not respond to other actions', () => {
     const oldState = { foo: 'bar' };

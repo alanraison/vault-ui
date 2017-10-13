@@ -5,9 +5,7 @@ import { FormGroup } from 'material-ui/Form';
 
 import Policies from './policies';
 
-export function AdvancedLoginOptionsForm({
-  // value,
-}) {
+export function AdvancedLoginOptionsComponent() {
   return (
     <div>
       <FormGroup row>
@@ -17,12 +15,9 @@ export function AdvancedLoginOptionsForm({
   );
 }
 
-AdvancedLoginOptionsForm.propTypes = ({
-  // value: PropTypes.string.isRequired,
+AdvancedLoginOptionsComponent.propTypes = ({
 });
 
-const mapStateToProps = (state) => ({
-  // value: '',
-});
+const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps)(AdvancedLoginOptionsForm);
+export default connect(mapStateToProps)(AdvancedLoginOptionsComponent);

@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Chooser from './chooser';
 import methods from './methods';
 
 export function RouterComponent({
   method,
+  onChange,
 }) {
-  const Login = method != null && methods[method] ? methods[method] : Chooser;
-  return <Login />;
+  const Login = methods[method];
+  return <Login onChange={onChange} value="" />;
 }
 
 RouterComponent.propTypes = ({
   method: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
 });
 
 RouterComponent.defaultProps = ({

@@ -2,8 +2,8 @@ import * as admin from './admin';
 import * as core from './core';
 import * as methods from './methods';
 import * as login from './login';
-import * as sealStatus from './sealStatus';
-import * as serverSettings from './serverSettings';
+import * as sealStatus from './seal-status';
+import * as serverSettings from './server-settings';
 
 const HOME = 'vault-ui/HOME';
 const home = () => ({

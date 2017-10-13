@@ -8,7 +8,7 @@ import {
 import * as sealStatus from '../sealStatus/sagas';
 import * as login from '../login/sagas';
 import actions from '../../actions';
-import * as selectors from './reducers';
+import * as selectors from './selectors';
 
 function* healthCheck() {
   try {

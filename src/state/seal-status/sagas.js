@@ -1,10 +1,10 @@
 import { call, select, put } from 'redux-saga/effects';
 import actions from '../../actions';
-import * as core from '../core/reducers';
+import { getVault } from '../core/selectors';
 
 export function* callGetSealStatus() {
   try {
-    const vault = yield select(core.getVault);
+    const vault = yield select(getVault);
     const body = yield call(vault.sys.sealStatus);
     yield put(actions.sealStatus.unsealStatusResponse(body));
   } catch (e) {
@@ -22,7 +22,7 @@ export function* isSealed(action) {
 
 export function* callUnseal(action) {
   try {
-    const vault = yield select(core.getVault);
+    const vault = yield select(getVault);
     const body = yield call(vault.sys.unseal, { key: action.payload.key });
     yield put(actions.sealStatus.unsealStatusResponse(body));
   } catch (e) {

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import actions from '../../actions';
-import sealStatus from '../sealStatus/reducers';
+import sealStatus from '../seal-status/reducers';
 import login from '../login/reducers';
 
 const error = (state = null, action) => {
@@ -45,6 +45,3 @@ export default combineReducers({
   vault,
 });
 
-// selectors
-export const getAppState = state => state.app;
-export const getVault = state => getAppState(state).vault;

@@ -37,10 +37,13 @@ const routesMap = {
 const { reducer: location, middleware: routingMiddleware, enhancer } =
   connectRoutes(history, routesMap);
 
+console.log(Object.keys(app));
+
 const middlewares = applyMiddleware(sagaMiddleware, routingMiddleware, logger);
 const store = createStore(
   combineReducers({ location, app }),
-  compose(enhancer, middlewares));
+  compose(enhancer, middlewares)
+);
 
 sagaMiddleware.run(sagas);
 

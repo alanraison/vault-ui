@@ -14,6 +14,12 @@ export const unsealKeyRequired = () => ({
   type: UNSEAL_KEY_REQUIRED,
 });
 
+export const EDIT_UNSEAL_KEY = 'vault-ui/sealStatus/EDIT_UNSEAL_KEY';
+export const editUnsealKey = value => ({
+  type: EDIT_UNSEAL_KEY,
+  payload: { value },
+});
+
 export const UNSEAL_COMPLETE = 'vault-ui/sealStatus/UNSEAL_COMPLETE';
 export const unsealComplete = () => ({
   type: UNSEAL_COMPLETE,

@@ -10,10 +10,9 @@ import NotFound from './not-found';
 import ShowError from './error';
 import Loading from './loading';
 import Unseal from '../unseal';
-import LoginChooser from '../login';
-import LoginDetails from '../login/details';
+import Login from '../login';
 import Workspace from '../workspace';
-import ServerSettings from '../serverSettings';
+import ServerSettings from '../server-settings';
 
 const styles = () => ({
   header: {
@@ -27,8 +26,8 @@ export const routesMap = ({
   [NOT_FOUND]: NotFound,
   [actions.INITIALISE]: Loading,
   [actions.sealStatus.UNSEAL_KEY_REQUIRED]: Unseal,
-  [actions.login.START_CHOOSE_LOGIN_METHOD]: LoginChooser,
-  [actions.login.SELECT_LOGIN_METHOD]: LoginDetails,
+  [actions.login.START_CHOOSE_LOGIN_METHOD]: Login,
+  [actions.login.SELECT_LOGIN_METHOD]: Login,
   [actions.login.LOGIN_SUCCESS]: Workspace,
   [actions.admin.SETTINGS]: ServerSettings,
 });
