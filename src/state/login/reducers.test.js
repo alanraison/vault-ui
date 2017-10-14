@@ -10,7 +10,11 @@ describe('Login reducer', () => {
     const newState = loginReducer(state, actions.login.selectLoginMethod('myMethod'));
     expect(newState.method).toEqual('myMethod');
   });
-
+  it('should unset the login method on START_CHOOSE_LOGIN_METHOD action', () => {
+    const state = { method: 'magic' };
+    const newState = loginReducer(state, actions.login.startChooseLoginMethod());
+    expect(newState.method).toBeNull();
+  });
   it('should remove policies when REMOVE_POLICY action received', () => {
     const state = { policies: new Set(['policy-a', 'policy-b']) };
     const newState = loginReducer(state, actions.login.removePolicy('policy-b'));

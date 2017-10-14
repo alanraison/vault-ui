@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import IconButton from 'material-ui/IconButton';
-import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
-import ChevronRight from 'material-ui-icons/ChevronRight';
+import List, { ListItem, ListItemText } from 'material-ui/List';
 import methods from './methods';
 import actions from '../../actions';
 
@@ -19,13 +17,8 @@ export function LoginChoiceItem({
 }
 
 LoginChoiceItem.propTypes = {
-  method: PropTypes.string,
-  onClick: PropTypes.func,
-};
-
-LoginChoiceItem.defaultProps = {
-  method: '',
-  onClick: () => null,
+  method: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export function LoginChooserComponent({
@@ -47,13 +40,8 @@ export function LoginChooserComponent({
 }
 
 LoginChooserComponent.propTypes = ({
-  methodList: PropTypes.arrayOf(PropTypes.string),
-  onSelect: PropTypes.func,
-});
-
-LoginChooserComponent.defaultProps = ({
-  methodList: [],
-  onSelect: () => null,
+  methodList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onSelect: PropTypes.func.isRequired,
 });
 
 const mapStateToProps = () => ({
