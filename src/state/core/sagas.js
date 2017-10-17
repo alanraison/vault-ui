@@ -5,7 +5,7 @@ import {
   put,
   takeEvery,
 } from 'redux-saga/effects';
-import * as sealStatus from '../sealStatus/sagas';
+import * as sealStatus from '../seal-status/sagas';
 import * as login from '../login/sagas';
 import actions from '../../actions';
 import * as selectors from './selectors';

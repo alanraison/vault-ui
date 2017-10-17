@@ -23,7 +23,6 @@ const styles = () => ({
 
 export function HeaderComponent({
   classes,
-  className: classNameProp,
   menuDrawerOpen,
   onMenuClick,
 }) {

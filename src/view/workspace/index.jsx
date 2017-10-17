@@ -2,7 +2,7 @@ import React from 'react';
 import { CardContent } from 'material-ui/Card';
 import ViewCard from '../core/view-card';
 
-function Workspace() {
+export function WorkspaceComponent() {
   return (
     <ViewCard md={12}>
       <CardContent>
@@ -12,4 +12,4 @@ function Workspace() {
   );
 }
 
-export default Workspace;
+export default WorkspaceComponent;
