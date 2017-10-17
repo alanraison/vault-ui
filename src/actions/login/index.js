@@ -9,9 +9,9 @@ export const selectLoginMethod = method => ({
   payload: { method },
 });
 export const LOGIN_START = 'vault-ui/login/LOGIN_START';
-export const loginStart = method => ({
+export const loginStart = data => ({
   type: LOGIN_START,
-  payload: { method },
+  payload: { data },
 });
 export const LOGIN_ERROR = 'vault-ui/login/LOGIN_ERROR';
 export const loginError = err => ({

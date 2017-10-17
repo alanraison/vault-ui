@@ -6,7 +6,7 @@ const tests = testActionCreators(actions);
 
 describe('login action creators', () => {
   [
-    { method: 'loginStart', action: actions.LOGIN_START, key: 'method' },
+    { method: 'loginStart', action: actions.LOGIN_START, key: 'data' },
     { method: 'loginSuccess', action: actions.LOGIN_SUCCESS, key: 'vault' },
     { method: 'selectLoginMethod', action: actions.SELECT_LOGIN_METHOD, key: 'method' },
     { method: 'addPolicy', action: actions.ADD_POLICY, key: 'policy' },

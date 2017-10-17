@@ -14,7 +14,7 @@ import { loginStart } from '../../actions/login';
 
 export function LoginComponent({
   method,
-  [method]: data,
+  loginData,
   onClick,
 }) {
   return (
@@ -39,7 +39,7 @@ export function LoginComponent({
       </CardContent>
       <Collapse in={!!method}>
         <CardActions>
-          <Button color="primary" raised onClick={() => onClick(data)}>
+          <Button color="primary" raised onClick={() => onClick({ method, loginData })}>
             Log in
           </Button>
         </CardActions>
@@ -50,15 +50,19 @@ export function LoginComponent({
 
 LoginComponent.propTypes = {
   method: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  // eslint-disable-next-line react/forbid-prop-types
+  loginData: PropTypes.any,
   onClick: PropTypes.func.isRequired,
 };
 
 LoginComponent.defaultProps = {
   method: false,
+  loginData: {},
 };
 
 const mapStateToProps = state => ({
   method: getLogin(state).method,
+  loginData: getLogin(state)[getLogin(state).method],
 });
 
 const mapDispatchToProps = {
