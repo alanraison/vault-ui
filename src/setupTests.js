@@ -1,4 +1,5 @@
 /* eslint import/no-extraneous-dependencies: off */
+import 'raf/polyfill';
 import 'jest-enzyme';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
