@@ -14,7 +14,7 @@ export function ErrorComponent({
 }) {
   return (
     <ViewCard>
-      <CardHeader title={Error} />
+      <CardHeader title="Error" />
       <CardContent>
         <Typography>
           Error {source}: {error.toString()}

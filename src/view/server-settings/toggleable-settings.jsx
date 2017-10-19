@@ -41,7 +41,7 @@ export class ToggleableSettingsComponent extends React.Component {
           <ListItemSecondaryAction>
             <Switch
               checked={this.props.enabled}
-              onChange={this.handleSwitchChange}
+              onChange={e => this.handleSwitchChange(e, !this.props.enabled)}
             />
           </ListItemSecondaryAction>
         </ListItem>
