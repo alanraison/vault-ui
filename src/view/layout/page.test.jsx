@@ -2,11 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { PageComponent } from './page';
 import Header from './header';
-import NavDrawer from '../core/nav-drawer';
+import NavDrawer from '../nav-drawer';
 import Router from '../core/router';
 
 jest.mock('../core/router');
-jest.mock('../core/nav-drawer');
+jest.mock('../nav-drawer');
 Router.mockReturnValue(() => <div />);
 NavDrawer.mockReturnValue(() => <div />);
 

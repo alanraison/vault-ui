@@ -37,8 +37,6 @@ const routesMap = {
 const { reducer: location, middleware: routingMiddleware, enhancer } =
   connectRoutes(history, routesMap);
 
-console.log(Object.keys(app));
-
 const middlewares = applyMiddleware(sagaMiddleware, routingMiddleware, logger);
 const store = createStore(
   combineReducers({ location, app }),
@@ -54,4 +52,5 @@ ReactDOM.render(
   <Provider store={store}>
     <Page />
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);

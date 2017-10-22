@@ -5,7 +5,8 @@ import { UserPassSettingsComponent } from './userpass';
 
 describe('Userpass settings', () => {
   it('has title UserPass', () => {
-    const [onEnable, onDisable] = [jest.fn(), jest.fn()];
+    const onEnable = jest.fn();
+    const onDisable = jest.fn();
 
     const wrapper = shallow(
       <UserPassSettingsComponent

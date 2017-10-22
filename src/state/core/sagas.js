@@ -29,6 +29,7 @@ function* initialise() {
 }
 
 function* debug(action) {
+  // eslint-disable-next-line no-console
   yield console.log(`DEBUG ACTION: ${JSON.stringify(action.payload)}`);
 }
 

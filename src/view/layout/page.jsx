@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import Header from './header';
-import NavDrawer from '../core/nav-drawer';
+import NavDrawer from '../nav-drawer';
 import Router from '../core/router';
 
 const drawerWidth = 240;

@@ -13,11 +13,10 @@ describe('The userpass API', () => {
       const auth = new AuthApi(null);
       const userpass = new UserPass(auth);
       userpass.login('scott', 'tiger');
-      expect(auth.fetch).toHaveBeenLastCalledWith(
-        new UrlSpec('/userpass/login/scott'), {
-          method: 'POST',
-          body: JSON.stringify({ password: 'tiger' }),
-        });
+      expect(auth.fetch).toHaveBeenLastCalledWith(new UrlSpec('/userpass/login/scott'), {
+        method: 'POST',
+        body: JSON.stringify({ password: 'tiger' }),
+      });
     });
   });
 });

@@ -51,14 +51,18 @@ describe('The Unauthenticated Vault Sys API', () => {
     it('should call the unseal API', () => {
       const body = { key: 'abcde' };
       sys.unseal(body);
-      expect(vault.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/sys/unseal'),
-        { method: 'PUT', body: JSON.stringify(body) });
+      expect(vault.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/sys/unseal'), {
+        method: 'PUT',
+        body: JSON.stringify(body),
+      });
     });
     it('should reset the unseal process with the reset option', () => {
       const body = { reset: true };
       sys.unseal(body);
-      expect(vault.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/sys/unseal'),
-      { method: 'PUT', body: JSON.stringify(body) });
+      expect(vault.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/sys/unseal'), {
+        method: 'PUT',
+        body: JSON.stringify(body),
+      });
     });
   });
 });

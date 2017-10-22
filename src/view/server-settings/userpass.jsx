@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import PermIdentity from 'material-ui-icons/PermIdentity';
 import ToggleableSettings from './toggleable-settings';
+import * as adminActions from '../../actions/admin';
 
 export function UserPassSettingsComponent({
   enabled,
@@ -31,4 +33,12 @@ UserPassSettingsComponent.defaultProps = {
   enabled: false,
 };
 
-export default UserPassSettingsComponent;
+const mapStateToProps = state => ({
+  enabled: false,
+});
+
+const mapDispatchToProps = {
+  onEnable: adminActions.enableLoginMethod,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserPassSettingsComponent);

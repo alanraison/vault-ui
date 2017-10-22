@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Drawer from 'material-ui/Drawer';
-import { NavDrawerComponent } from './nav-drawer';
+import { NavDrawerComponent } from '.';
 
 describe('NavDrawer component', () => {
   it('should set the open property in the inner Drawer', () => {
