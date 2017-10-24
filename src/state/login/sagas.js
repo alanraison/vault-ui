@@ -1,5 +1,5 @@
 import { put, call, select } from 'redux-saga/effects';
-import * as actions from '../../actions/login';
+import * as actions from '../../state/login/actions';
 import Vault from '../../vault-api';
 import { getVault } from '../core/selectors';
 

@@ -1,5 +1,5 @@
 import uuid from 'uuid/v4';
-import * as actions from '.';
+import * as actions from './actions';
 import testActionCreators from '../testhelper';
 
 const tests = testActionCreators(actions);

@@ -1,5 +1,5 @@
 import reducer from './reducers';
-import actions from '../../actions';
+import * as actions from '../actions';
 
 describe('Seal Status reducer', () => {
   it('should start loading on GET_UNSEAL_STATUS_START', () => {

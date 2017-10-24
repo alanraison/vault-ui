@@ -1,5 +1,5 @@
 import { call, select, put } from 'redux-saga/effects';
-import actions from '../../actions';
+import * as actions from '../actions';
 import { getVault } from '../core/selectors';
 
 export function* callGetSealStatus() {

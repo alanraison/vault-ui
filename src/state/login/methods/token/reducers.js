@@ -1,4 +1,4 @@
-import { CHANGE_TOKEN } from '../../../../actions/methods/token';
+import { CHANGE_TOKEN } from './actions';
 
 export default (state = '', action) => {
   switch (action.type) {

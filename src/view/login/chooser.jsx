@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import List, { ListItem, ListItemText } from 'material-ui/List';
 import methods from './methods';
-import actions from '../../actions';
+import * as actions from '../../state/actions';
 
 export function LoginChoiceItem({
   method,

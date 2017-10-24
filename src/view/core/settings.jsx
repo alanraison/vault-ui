@@ -5,7 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import Settings from 'material-ui-icons/Settings';
 import Menu, { MenuItem } from 'material-ui/Menu';
 
-import { settings } from '../../actions/admin';
+import { openSettings } from '../../state/server-settings/actions';
 
 export class SettingsMenuComponent extends React.Component {
   constructor(props) {
@@ -73,7 +73,7 @@ SettingsMenuComponent.defaultProps = {
 };
 
 const mapDispatchToProps = {
-  onSettingsClick: settings,
+  onSettingsClick: openSettings,
 };
 
 export default connect(null, mapDispatchToProps)(SettingsMenuComponent);

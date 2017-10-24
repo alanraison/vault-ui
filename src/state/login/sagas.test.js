@@ -1,5 +1,5 @@
 import { login } from './sagas';
-import * as actions from '../../actions/login';
+import * as actions from './actions';
 
 describe('login saga handler', () => {
   it('should get the state for the selected login handler', () => {

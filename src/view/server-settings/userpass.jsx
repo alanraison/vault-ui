@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PermIdentity from 'material-ui-icons/PermIdentity';
 import ToggleableSettings from './toggleable-settings';
-import * as adminActions from '../../actions/admin';
+import { enableLoginMethod } from '../../state/server-settings/actions';
 
 export function UserPassSettingsComponent({
   enabled,
@@ -38,7 +38,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onEnable: adminActions.enableLoginMethod,
+  onEnable: enableLoginMethod,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPassSettingsComponent);

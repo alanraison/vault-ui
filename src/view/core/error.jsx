@@ -5,7 +5,7 @@ import Button from 'material-ui/Button';
 import { CardHeader, CardContent, CardActions } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import ViewCard from './view-card';
-import { clearError } from '../../actions/core';
+import { clearError } from '../../state/core/actions';
 
 export function ErrorComponent({
   error,

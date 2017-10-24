@@ -6,7 +6,7 @@ import { CardHeader, CardContent, CardActions } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import UnsealCount from './count';
 import ViewCard from '../core/view-card';
-import * as actions from '../../actions/seal-status';
+import * as actions from '../../state/seal-status/actions';
 import { getUnsealKey } from '../../state/seal-status/selectors';
 
 export function UnsealComponent({

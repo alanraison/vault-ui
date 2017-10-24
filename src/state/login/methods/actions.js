@@ -1,4 +1,4 @@
-import * as token from './token';
+import * as token from './token/actions';
 
 export {
   token,

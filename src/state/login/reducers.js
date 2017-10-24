@@ -1,4 +1,4 @@
-import * as actions from '../../actions/login';
+import * as actions from '../../state/login/actions';
 import methods from './methods';
 
 const initialState = {

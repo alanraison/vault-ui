@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import { getLogin } from '../../../state/login/selectors';
-import { changeToken } from '../../../actions/methods/token';
+import { changeToken } from '../../../state/login/methods/token/actions';
 
 export function TokenEntryComponent({
   value,

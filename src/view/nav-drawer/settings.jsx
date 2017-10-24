@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Settings from 'material-ui-icons/Settings';
-import { settings } from '../../actions/admin';
+import { openSettings } from '../../state/server-settings/actions';
 
 export function SettingsMenuComponent({
   onClick,
@@ -22,7 +22,7 @@ SettingsMenuComponent.propTypes = {
 };
 
 const mapDispatchToProps = {
-  onClick: settings,
+  onClick: openSettings,
 };
 
 export default connect(null, mapDispatchToProps)(SettingsMenuComponent);

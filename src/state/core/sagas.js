@@ -7,7 +7,7 @@ import {
 } from 'redux-saga/effects';
 import * as sealStatus from '../seal-status/sagas';
 import * as login from '../login/sagas';
-import actions from '../../actions';
+import * as actions from '../actions';
 import * as selectors from './selectors';
 
 function* healthCheck() {

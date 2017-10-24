@@ -6,7 +6,7 @@ import { FormGroup } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
 
-import * as actions from '../../actions/login';
+import * as actions from '../../state/login/actions';
 
 export class PoliciesComponent extends React.Component {
   constructor(props) {

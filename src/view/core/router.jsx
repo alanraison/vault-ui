@@ -5,7 +5,7 @@ import { NOT_FOUND } from 'redux-first-router';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 
-import actions from '../../actions';
+import * as actions from '../../state/actions';
 import NotFound from './not-found';
 import ShowError from './error';
 import Loading from './loading';
@@ -29,7 +29,7 @@ export const routesMap = ({
   [actions.login.START_CHOOSE_LOGIN_METHOD]: Login,
   [actions.login.SELECT_LOGIN_METHOD]: Login,
   [actions.login.LOGIN_SUCCESS]: Workspace,
-  [actions.admin.SETTINGS]: ServerSettings,
+  [actions.serverSettings.OPEN_SETTINGS]: ServerSettings,
 });
 
 export function RouteContainer({

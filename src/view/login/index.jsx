@@ -10,7 +10,7 @@ import Chooser from './chooser';
 import AdvancedLoginOptions from './advanced-login-options';
 import methods from './methods';
 import { getLogin } from '../../state/login/selectors';
-import { loginStart } from '../../actions/login';
+import { loginStart } from '../../state/login/actions';
 
 export function LoginComponent({
   method,

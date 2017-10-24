@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import actions from '../../actions';
+import * as actions from '../actions';
 import sealStatus from '../seal-status/reducers';
 import login from '../login/reducers';
 
