@@ -1,12 +1,18 @@
+// @flow
 import UrlSpec from '../url-spec';
+import type AuthApi from '.';
 
 export default class TokenApi {
-  constructor(authApi) {
+  authApi: AuthApi;
+  create: () => Promise<string>;
+  lookup: () => Promise<string>;
+
+  constructor(authApi: AuthApi) {
     this.authApi = authApi;
     this.create = this.create.bind(this);
     this.lookup = this.lookup.bind(this);
   }
-  fetch(url, init) {
+  fetch(url: UrlSpec, init: any) {
     return this.authApi.fetch(url.prefixPath('/token'), init);
   }
   /**
@@ -18,7 +24,7 @@ export default class TokenApi {
    * @param {string} options.id - the ID to give to the new token (can only be specified by root
    *  tokens)
    */
-  create(options) {
+  create(options: { id?: string }) {
     return this.fetch(new UrlSpec('/create'), {
       method: 'POST',
       body: JSON.stringify(options),
@@ -29,7 +35,7 @@ export default class TokenApi {
    *
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#create-token}
    */
-  createOrphan(options) {
+  createOrphan(options: any) {
     return this.fetch(new UrlSpec('/create-orphan'), {
       method: 'POST',
       body: JSON.stringify(options),
@@ -52,7 +58,7 @@ export default class TokenApi {
    *
    * @param {string} token - optional token
    */
-  lookup(token) {
+  lookup(token: string) {
     return this.fetch(new UrlSpec('/lookup'), {
       method: 'POST',
       body: JSON.stringify({ token }),
@@ -71,7 +77,7 @@ export default class TokenApi {
    *
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#lookup-a-token-accessor}
    */
-  lookupAccessor(accessor) {
+  lookupAccessor(accessor: mixed) {
     return this.fetch(new UrlSpec('/lookup-accessor'), {
       method: 'POST',
       body: JSON.stringify({ accessor }),
@@ -85,7 +91,7 @@ export default class TokenApi {
    * @param {string} options.increment - An optional requested lease increment can be provided.
    *    This increment may be ignored.
    */
-  renew(options) {
+  renew(options: { token?: string, increment?: string }) {
     return this.fetch(new UrlSpec('/renew'), {
       method: 'POST',
       body: JSON.stringify(options),
@@ -98,7 +104,7 @@ export default class TokenApi {
    * @param {string} options.increment - An optional requested lease increment can be provided.
    *    This increment may be ignored.
    */
-  renewSelf(options) {
+  renewSelf(options: { increment?: string }) {
     return this.fetch(new UrlSpec('/renew-self'), {
       method: 'POST',
       body: JSON.stringify(options),
@@ -109,7 +115,7 @@ export default class TokenApi {
    *
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#revoke-a-token}
    */
-  revoke(token) {
+  revoke(token: string) {
     return this.fetch(new UrlSpec('/revoke'), {
       method: 'POST',
       body: JSON.stringify({ token }),
@@ -131,7 +137,7 @@ export default class TokenApi {
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#revoke-a-token-accessor}
    * @param {string} options.accessor - accessor of the token
    */
-  revokeAccessor(options) {
+  revokeAccessor(options: { accessor: string }) {
     return this.fetch(new UrlSpec('/revoke-accessor'), {
       method: 'POST',
       body: JSON.stringify(options),
@@ -144,7 +150,7 @@ export default class TokenApi {
    *
    * @param {string} token - the token to revoke
    */
-  revokeOrphan(token) {
+  revokeOrphan(token: string) {
     return this.fetch(new UrlSpec('/revoke-orphan'), {
       method: 'POST',
       body: JSON.stringify({ token }),
@@ -155,7 +161,7 @@ export default class TokenApi {
    *
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#read-token-role}
    */
-  getRole(name) {
+  getRole(name: string) {
     return this.fetch(new UrlSpec('/roles/').suffixPathParam(name));
   }
   /**
@@ -173,7 +179,7 @@ export default class TokenApi {
    *
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#create-update-token-role}
    */
-  updateRole(options) {
+  updateRole(options: { role_name: string, params: mixed[] }) {
     const { role_name, ...params } = options;
     return this.fetch(new UrlSpec('/roles/').suffixPathParam(role_name), {
       method: 'POST',
@@ -186,7 +192,7 @@ export default class TokenApi {
    *
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#delete-token-role}
    */
-  deleteRole(role) {
+  deleteRole(role: string) {
     return this.fetch(new UrlSpec('/roles/').suffixPathParam(role), {
       method: 'DELETE',
     });

@@ -1,15 +1,19 @@
+// @flow
 export default class UrlSpec {
-  constructor(prefix = '', queryParams = {}) {
+  prefix: string;
+  queryParams: { [string]: mixed };
+
+  constructor(prefix: string = '', queryParams: { [string]: mixed } = {}) {
     this.prefix = prefix;
     this.queryParams = queryParams;
   }
-  prefixPath(prefix) {
+  prefixPath(prefix: string) {
     return new UrlSpec(`${prefix}${this.prefix}`, this.queryParams);
   }
-  suffixPathParam(suffix) {
+  suffixPathParam(suffix: string) {
     return new UrlSpec(`${this.prefix}${encodeURIComponent(suffix)}`, this.queryParams);
   }
-  addParams(params) {
+  addParams(params: { [string]: string }) {
     return new UrlSpec(this.prefix, {
       ...this.queryParams,
       ...params,

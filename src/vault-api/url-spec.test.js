@@ -1,3 +1,4 @@
+// @flow
 import UrlSpec from './url-spec';
 
 describe('UrlSpec', () => {

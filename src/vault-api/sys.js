@@ -1,15 +1,30 @@
+// @flow
 import UrlSpec from './url-spec';
+import type Vault, { UnauthenticatedVault } from '.';
 /**
  * The Vault API calls under the /sys mount which do not require authentication
  */
 export class UnauthenticatedSysApi {
-  constructor(vault) {
+  vault: UnauthenticatedVault;
+  health: ({
+    standbyok?: boolean,
+    activecode?: number,
+    sealedcode?: number,
+    standbycode?: number,
+  }) => Promise<string>;
+  sealStatus: () => Promise<string>;
+  unseal: ({
+    key?: string,
+    reset?: boolean,
+  }) => Promise<string>;
+
+  constructor(vault: UnauthenticatedVault) {
     this.vault = vault;
     this.health = this.health.bind(this);
     this.sealStatus = this.sealStatus.bind(this);
     this.unseal = this.unseal.bind(this);
   }
-  fetch(url, init) {
+  fetch(url: UrlSpec, init: any) {
     return this.vault.fetch(url.prefixPath('/v1/sys'), init);
   }
   /**
@@ -25,7 +40,12 @@ export class UnauthenticatedSysApi {
    * @param {int} options.sealedcode - status to return when sealed
    * @param {int} options.uninitcode - status to return when ininitialised
    */
-  health(options) {
+  health(options: {
+    standbyok?: boolean,
+    activecode?: number,
+    sealedcode?: number,
+    uninitcode?: number,
+  }) {
     return this.fetch(new UrlSpec('/health', options));
   }
   /**
@@ -46,7 +66,7 @@ export class UnauthenticatedSysApi {
    * @param {string} options.key - the unseal key to use
    * @param {bool} options.reset - true if the unseal process is to be reset
    */
-  unseal({ key, reset }) {
+  unseal({ key, reset }: { key?: string, reset?: boolean }) {
     return this.fetch(new UrlSpec('/unseal'), {
       method: 'PUT',
       body: JSON.stringify({ key, reset }),
@@ -58,9 +78,11 @@ export class UnauthenticatedSysApi {
  * The System API containing all authenticated requests.
  */
 export default class SysApi extends UnauthenticatedSysApi {
-  constructor(vault) {
+  mounts: () => Promise<string>;
+
+  constructor(vault: Vault) {
     super(vault);
-    this.mounts.bind(this);
+    this.mounts = this.mounts.bind(this);
   }
   /**
    * Discover all the vault mounts
