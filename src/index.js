@@ -18,7 +18,7 @@ import { connectRoutes } from 'redux-first-router';
 import Page from './view/layout/page';
 import app from './state/core/reducers';
 import sagas from './state/core/sagas';
-import actions from './actions';
+import * as actions from './state/actions';
 import { UnauthenticatedVault } from './vault-api';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -32,7 +32,7 @@ const routesMap = {
   [actions.sealStatus.UNSEAL_KEY_REQUIRED]: '/unseal',
   [actions.login.START_CHOOSE_LOGIN_METHOD]: '/login',
   [actions.login.SELECT_LOGIN_METHOD]: '/login/:method',
-  [actions.admin.SETTINGS]: '/settings',
+  [actions.serverSettings.SETTINGS]: '/settings',
 };
 const { reducer: location, middleware: routingMiddleware, enhancer } =
   connectRoutes(history, routesMap);
@@ -40,7 +40,7 @@ const { reducer: location, middleware: routingMiddleware, enhancer } =
 const middlewares = applyMiddleware(sagaMiddleware, routingMiddleware, logger);
 const store = createStore(
   combineReducers({ location, app }),
-  compose(enhancer, middlewares)
+  compose(enhancer, middlewares),
 );
 
 sagaMiddleware.run(sagas);
