@@ -1,4 +1,6 @@
 # vault-ui
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/alanraison/vault-ui.svg)](https://greenkeeper.io/)
 A Free UI for Vault
 
 [![CircleCI](https://circleci.com/gh/alanraison/vault-ui.svg?style=svg)](https://circleci.com/gh/alanraison/vault-ui)
