@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { CardContent } from 'material-ui/Card';
 import ViewCard from '../core/view-card';

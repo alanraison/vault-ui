@@ -1,5 +1,8 @@
+// @flow
+import type { UnauthenticatedVault } from '../../vault-api';
+
 export const ERROR = 'vault-ui/core/ERROR';
-export const error = (err, source) => ({
+export const error = (err: Error, source: string) => ({
   type: ERROR,
   payload: { err, source },
 });
@@ -10,7 +13,7 @@ export const clearError = () => ({
 });
 
 export const INITIALISE = 'vault-ui/core/INITIALISE';
-export const initialise = vault => ({
+export const initialise = (vault: UnauthenticatedVault) => ({
   type: INITIALISE,
   payload: { vault },
 });

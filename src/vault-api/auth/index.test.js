@@ -1,3 +1,4 @@
+// @flow
 import AuthApi from '.';
 import UrlSpec from '../url-spec';
 import Vault from '..';
