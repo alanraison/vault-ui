@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "flow": "^0.2.3",
     "history": "^4.6.3",
     "material-ui": "^1.0.0-beta.19",
     "material-ui-icons": "^1.0.0-beta.17",

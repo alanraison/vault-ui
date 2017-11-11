@@ -6,11 +6,12 @@ import {
   takeEvery,
 } from 'redux-saga/effects';
 import * as sealStatus from '../seal-status/sagas';
+import * as workspace from '../workspace/sagas';
 import * as login from '../login/sagas';
 import * as actions from '../actions';
 import * as selectors from './selectors';
 
-function* healthCheck() {
+export function* healthCheck() {
   try {
     const vault = yield select(selectors.getVault);
     yield call(vault.sys.health, { sealedcode: 200 });
@@ -22,13 +23,13 @@ function* healthCheck() {
   return false;
 }
 
-function* initialise() {
+export function* initialise() {
   if (yield call(healthCheck)) {
     yield put(actions.sealStatus.unsealStatusRequest());
   }
 }
 
-function* debug(action) {
+export function* debug(action) {
   // eslint-disable-next-line no-console
   yield console.log(`DEBUG ACTION: ${JSON.stringify(action.payload)}`);
 }
@@ -40,6 +41,7 @@ const routesMap = ({
   [actions.sealStatus.UNSEAL_REQUEST]: sealStatus.callUnseal,
   [actions.sealStatus.UNSEAL_COMPLETE]: login.startLogin,
   [actions.login.LOGIN_START]: login.login,
+  [actions.login.LOGIN_SUCCESS]: workspace.initialise,
   [actions.DEBUG]: debug,
 });
 
