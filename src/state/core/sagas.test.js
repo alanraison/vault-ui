@@ -52,3 +52,24 @@ describe('healthCheck', () => {
     expect(returned.done).toBeTruthy();
   });
 });
+
+describe('initialise', () => {
+  let gen;
+  beforeEach(() => {
+    gen = initialise();
+  });
+  it('should call the healthcheck', () => {
+    const next = gen.next();
+    expect(next.value).toEqual(call(healthCheck));
+  });
+  it('should put an unsealStatusRequest action if the healthcheck returned ok', () => {
+    gen.next();
+    const putEffect = gen.next(true);
+    expect(putEffect.value).toEqual(put(actions.sealStatus.unsealStatusRequest()));
+    expect(gen.next().done).toBeTruthy();
+  });
+  it('should finish if the healthcheck returned false', () => {
+    gen.next();
+    expect(gen.next(false).done).toBeTruthy();
+  });
+});
