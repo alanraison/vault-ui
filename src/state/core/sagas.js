@@ -6,7 +6,7 @@ import {
   takeEvery,
 } from 'redux-saga/effects';
 import * as sealStatus from '../seal-status/sagas';
-import * as workspace from '../workspace/sagas';
+// import * as workspace from '../workspace/sagas';
 import * as login from '../login/sagas';
 import * as actions from '../actions';
 import * as selectors from './selectors';
@@ -41,7 +41,7 @@ const routesMap = ({
   [actions.sealStatus.UNSEAL_REQUEST]: sealStatus.callUnseal,
   [actions.sealStatus.UNSEAL_COMPLETE]: login.startLogin,
   [actions.login.LOGIN_START]: login.login,
-  [actions.login.LOGIN_SUCCESS]: workspace.initialise,
+  // [actions.login.LOGIN_SUCCESS]: workspace.initialise,
   [actions.DEBUG]: debug,
 });
 
