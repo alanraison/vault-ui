@@ -79,10 +79,15 @@ export class UnauthenticatedSysApi {
  */
 export default class SysApi extends UnauthenticatedSysApi {
   mounts: () => Promise<string>;
+  policies: () => Promise<string>;
+  policy: (_: string) => Promise<string>;
+  vault: Vault;
 
   constructor(vault: Vault) {
     super(vault);
     this.mounts = this.mounts.bind(this);
+    this.policies = this.policies.bind(this);
+    this.policy = this.policy.bind(this);
   }
   /**
    * Discover all the vault mounts
@@ -91,5 +96,19 @@ export default class SysApi extends UnauthenticatedSysApi {
    */
   mounts() {
     return this.fetch(new UrlSpec('/mounts'));
+  }
+  /**
+   * Discover all policies available
+   *
+   * @see {@link https://www.vaultproject.io/api/system/policy.html}
+   */
+  policies() {
+    return this.fetch(new UrlSpec('/policy'));
+  }
+  /**
+   * Look up a named policy
+   */
+  policy(name: string) {
+    return this.fetch(new UrlSpec(`/policy/${name}`));
   }
 }

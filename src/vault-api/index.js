@@ -33,6 +33,7 @@ export class UnauthenticatedVault {
 export default class Vault extends UnauthenticatedVault {
   token: string;
   auth: AuthApi;
+  sys: Sys;
 
   constructor(vaultAddr: string, token: string) {
     super(vaultAddr);

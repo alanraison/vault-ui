@@ -85,4 +85,16 @@ describe('The Authenticated Sys API', () => {
       expect(vault.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/sys/mounts'), undefined);
     });
   });
+  describe('policies', () => {
+    it('should call the policy API', () => {
+      sys.policies();
+      expect(vault.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/sys/policy'), undefined);
+    });
+  });
+  describe('policy', () => {
+    it('should call the policy API with the policy name', () => {
+      sys.policy('foo');
+      expect(vault.fetch).toHaveBeenCalledWith(new UrlSpec('/v1/sys/policy/foo'), undefined);
+    });
+  });
 });
