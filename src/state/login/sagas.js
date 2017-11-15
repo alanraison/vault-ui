@@ -1,10 +1,10 @@
 import { put, call, select } from 'redux-saga/effects';
-import * as actions from '../../state/login/actions';
+import * as actions from './actions';
 import Vault from '../../vault-api';
 import { getVault } from '../core/selectors';
 
 export function* startLogin() {
-  const vault = yield select(state => state.app.vault);
+  const vault = yield select(getVault);
   if (!vault.token) {
     yield put(actions.startChooseLoginMethod());
   } else {

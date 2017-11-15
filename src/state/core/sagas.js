@@ -5,11 +5,9 @@ import {
   put,
   takeEvery,
 } from 'redux-saga/effects';
-import * as sealStatus from '../seal-status/sagas';
-// import * as workspace from '../workspace/sagas';
-import * as login from '../login/sagas';
 import * as actions from '../actions';
 import * as selectors from './selectors';
+import routesMap from './routes';
 
 export function* healthCheck() {
   try {
@@ -34,18 +32,7 @@ export function* debug(action) {
   yield console.log(`DEBUG ACTION: ${JSON.stringify(action.payload)}`);
 }
 
-const routesMap = ({
-  [actions.INITIALISE]: initialise,
-  [actions.sealStatus.UNSEAL_STATUS_REQUEST]: sealStatus.callGetSealStatus,
-  [actions.sealStatus.UNSEAL_STATUS_RESPONSE]: sealStatus.isSealed,
-  [actions.sealStatus.UNSEAL_REQUEST]: sealStatus.callUnseal,
-  [actions.sealStatus.UNSEAL_COMPLETE]: login.startLogin,
-  [actions.login.LOGIN_START]: login.login,
-  // [actions.login.LOGIN_SUCCESS]: workspace.initialise,
-  [actions.DEBUG]: debug,
-});
-
-function* handleRouteChange(action) {
+export function* handleRouteChange(action) {
   yield spawn(routesMap[action.type], action);
 }
 

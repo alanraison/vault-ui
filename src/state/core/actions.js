@@ -28,7 +28,7 @@ export const healthCheckResponse = () => ({
 });
 
 export const DEBUG = 'vault-ui/core/debug';
-export const debug = payload => ({
+export const debug = (payload: any) => ({
   type: DEBUG,
   payload,
 });
