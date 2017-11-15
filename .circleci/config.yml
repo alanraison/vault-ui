@@ -8,6 +8,12 @@ jobs:
     - run:
         name: Update yarn
         command: 'sudo npm install -g yarn@latest'
+    - run:
+        name: Install greenkeeper-lockfile
+        command: 'sudo yarn global add greenkeeper-lockfile@1'
+    - run:
+        name: Update lockfile
+        command: greenkeeper-lockfile-update
     - restore_cache:
         key: dependency-cache-{{ arch }}-{{ checksum "yarn.lock" }}
     - run:
@@ -23,3 +29,6 @@ jobs:
             --coveragePathIgnorePatterns=src/actions/testhelper.js
     - run:
         command: cat coverage/lcov.info | node_modules/.bin/coveralls
+    - run:
+        name: Upload lockfile
+        command: greenkeeper-lockfile-upload
