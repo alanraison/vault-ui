@@ -30,5 +30,6 @@ describe('token login saga', () => {
     expect(Vault.mock.instances).toHaveLength(2);
     expect(Vault.mock.instances[1].token).toEqual('child-token');
     expect(result.addr).toEqual('http://vault');
+    expect(result.token).toEqual('child-token');
   });
 });
