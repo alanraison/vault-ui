@@ -1,9 +1,10 @@
-import { CHANGE_TOKEN, TokenAction } from './actions';
+// @flow
+import * as actions from './actions';
 
 export type TokenState = string;
-export default (state: TokenState = '', action: TokenAction): TokenState => {
+export default (state: TokenState = '', action: actions.TokenAction): TokenState => {
   switch (action.type) {
-    case CHANGE_TOKEN:
+    case actions.CHANGE_TOKEN:
       return action.payload.token;
     default:
       return state;
