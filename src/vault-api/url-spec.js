@@ -21,7 +21,7 @@ export default class UrlSpec {
   }
   build() {
     const queryParams = Object.entries(this.queryParams).map(e =>
-      `${encodeURIComponent(e[0])}=${encodeURIComponent(e[1])}`).join('&');
+      `${encodeURIComponent(e[0])}=${encodeURIComponent(String(e[1]))}`).join('&');
     return this.prefix + (queryParams ? '?' : '') + queryParams;
   }
 }

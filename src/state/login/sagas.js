@@ -1,9 +1,12 @@
+// @flow
 import { put, call, select } from 'redux-saga/effects';
+import type { Generator } from 'flow';
+import type { Effect } from 'redux-saga/effects';
 import * as actions from './actions';
 import * as methods from './methods/sagas';
 import { getVault } from '../core/selectors';
 
-export function* startLogin() {
+export function* startLogin(): Generator<Effect, void, void> {
   const vault = yield select(getVault);
   if (!vault.token) {
     yield put(actions.startChooseLoginMethod());
@@ -12,7 +15,7 @@ export function* startLogin() {
   }
 }
 
-export function* login(action) {
+export function* login(action: LoginAction): Generator<Effect, void, {type: string, payload: any}> {
   const {
     method: loginMethod,
     loginData,

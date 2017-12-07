@@ -1,9 +1,18 @@
+// @flow
 import { combineReducers } from 'redux';
 import * as actions from '../actions';
 import sealStatus from '../seal-status/reducers';
 import login from '../login/reducers';
+import { UnauthenticatedVault } from '../../vault-api/index';
 
-const error = (state = null, action) => {
+export type ErrorState = {
+  err?: Error,
+  source?: string,
+};
+const error = (
+  state: ErrorState = {},
+  action: actions.ErrorAction | actions.ClearErrorAction,
+): ErrorState => {
   switch (action.type) {
     case actions.ERROR:
       return {
@@ -11,13 +20,17 @@ const error = (state = null, action) => {
         source: action.payload.source,
       };
     case actions.CLEAR_ERROR:
-      return null;
+      return {};
     default:
       return state;
   }
 };
 
-const connected = (state = false, action) => {
+export type ConnectedState = boolean;
+const connected = (
+  state: ConnectedState = false,
+  action: actions.HealthCheckResponseAction,
+): ConnectedState => {
   switch (action.type) {
     case actions.HEALTH_CHECK_RESPONSE:
       return true;
@@ -26,7 +39,11 @@ const connected = (state = false, action) => {
   }
 };
 
-const vault = (state = null, action) => {
+export type VaultState = UnauthenticatedVault | null;
+const vault = (
+  state: VaultState = null,
+  action: actions.InitialiseAction | actions.login.LoginSuccessAction,
+): VaultState => {
   switch (action.type) {
     case actions.INITIALISE:
     case actions.login.LOGIN_SUCCESS: {

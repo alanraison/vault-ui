@@ -5,7 +5,7 @@ import type Vault, { UnauthenticatedVault } from '.';
  * The Vault API calls under the /sys mount which do not require authentication
  */
 export class UnauthenticatedSysApi {
-  vault: UnauthenticatedVault;
+  +vault: UnauthenticatedVault;
   health: ({
     standbyok?: boolean,
     activecode?: number,
@@ -80,7 +80,7 @@ export class UnauthenticatedSysApi {
 export default class SysApi extends UnauthenticatedSysApi {
   mounts: () => Promise<string>;
   policies: () => Promise<string>;
-  policy: (_: string) => Promise<string>;
+  policy: (p: string) => Promise<string>;
   vault: Vault;
 
   constructor(vault: Vault) {

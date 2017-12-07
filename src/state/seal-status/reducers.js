@@ -1,13 +1,24 @@
+// @flow
 import * as actions from '../actions';
 
-const initialState = {
+export type SealStatusState = {
+  sealed: boolean | null,
+  sealInfo: {} | null,
+  loading: boolean,
+  unsealKey: string,
+};
+
+const initialState: SealStatusState = {
   sealed: null,
   sealInfo: null,
   loading: false,
   unsealKey: '',
 };
 
-export default (state = initialState, action) => {
+export default (
+  state: SealStatusState = initialState,
+  action: actions.sealStatus.SealStatusAction | actions.ErrorAction,
+) => {
   switch (action.type) {
     case actions.sealStatus.UNSEAL_STATUS_REQUEST:
       return {

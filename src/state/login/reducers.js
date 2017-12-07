@@ -1,13 +1,20 @@
+// @flow
 import * as actions from '../../state/login/actions';
 import methods from './methods';
 
-const initialState = {
+export type LoginState = {
+  method: string | null,
+  policies: Set<string>,
+  loggedIn: boolean,
+}
+
+const initialState: LoginState = {
   method: null,
   policies: new Set(['secrets_read', 'secrets_write']),
   loggedIn: false,
 };
 
-export default (state = initialState, action) => {
+export default (state: LoginState = initialState, action: actions.LoginAction) => {
   switch (action.type) {
     case actions.START_CHOOSE_LOGIN_METHOD:
       return {
@@ -32,7 +39,7 @@ export default (state = initialState, action) => {
       };
     case actions.ADD_POLICY: {
       if (!state.policies.has(action.payload.policy)) {
-        const policies = new Set(state.policies);
+        const policies: Set<string> = new Set(state.policies);
         policies.add(action.payload.policy);
         return {
           ...state,
@@ -43,7 +50,7 @@ export default (state = initialState, action) => {
     }
     case actions.REMOVE_POLICY: {
       if (state.policies.has(action.payload.policy)) {
-        const policies = new Set(state.policies);
+        const policies: Set<string> = new Set(state.policies);
         policies.delete(action.payload.policy);
         return {
           ...state,

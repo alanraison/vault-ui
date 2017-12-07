@@ -1,7 +1,9 @@
+// @flow
 import * as token from './token/actions';
 
 export {
   token,
 };
 
-export default {};
+export type MethodAction =
+  token.TokenAction;

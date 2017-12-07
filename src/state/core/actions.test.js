@@ -1,3 +1,4 @@
+// @flow
 import * as actions from './actions';
 import testActionCreators from '../testhelper';
 

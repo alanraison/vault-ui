@@ -1,7 +1,9 @@
+// @flow
 import uuid from 'uuid/v4';
 import reducer from './reducers';
 import { getAppState, getVault } from './selectors';
 import * as actions from '../actions';
+import { UnauthenticatedVault } from '../../vault-api/index';
 
 describe('Core reducers:', () => {
   describe('Error reducer', () => {
@@ -20,7 +22,7 @@ describe('Core reducers:', () => {
         },
       };
       const newState = reducer(oldState, actions.clearError());
-      expect(newState.error).toBeNull();
+      expect(newState.error).toEqual({});
     });
     it('should leave the error on all other actions', () => {
       const oldState = {
@@ -57,12 +59,16 @@ describe('Core reducers:', () => {
       expect(getVault(state)).toBe(vault);
     });
     it('should update the vault on LOGIN_SUCCESS', () => {
-      const newState = reducer({ vault: 'bar' }, actions.login.loginSuccess('baz'));
-      expect(newState.vault).toEqual('baz');
+      const one = new UnauthenticatedVault('bar');
+      const two = new UnauthenticatedVault('baz');
+      const newState = reducer({ vault: one }, actions.login.loginSuccess(two));
+      expect(newState.vault).toEqual(two);
     });
     it('should update the vault on INITIALISE', () => {
-      const newState = reducer({ vault: 'bar' }, actions.initialise('bax'));
-      expect(newState.vault).toEqual('bax');
+      const one = new UnauthenticatedVault('bar');
+      const two = new UnauthenticatedVault('bax');
+      const newState = reducer({ vault: one }, actions.initialise(two));
+      expect(newState.vault).toEqual(two);
     });
   });
 });
