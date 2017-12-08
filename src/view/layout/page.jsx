@@ -15,7 +15,7 @@ const styles = theme => ({
   appFrame: {
     position: 'relative',
     display: 'flex',
-    height: '100%',
+    height: `calc(100vh - 2 * ${theme.spacing.unit}px)`,
     width: '100%',
   },
   appBar: {
