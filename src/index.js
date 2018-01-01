@@ -52,5 +52,5 @@ ReactDOM.render(
   <Provider store={store}>
     <Page />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

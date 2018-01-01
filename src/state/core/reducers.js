@@ -1,8 +1,8 @@
 // @flow
 import { combineReducers } from 'redux';
 import * as actions from '../actions';
-import sealStatus from '../seal-status/reducers';
-import login from '../login/reducers';
+import sealStatus, { type SealStatusState } from '../seal-status/reducers';
+import login, { type LoginState } from '../login/reducers';
 import { UnauthenticatedVault } from '../../vault-api/index';
 
 export type ErrorState = {
@@ -62,3 +62,10 @@ export default combineReducers({
   vault,
 });
 
+export type AppState = {
+  connected: ConnectedState,
+  error: ErrorState,
+  login: LoginState,
+  sealStatus: SealStatusState,
+  vault: VaultState,
+};

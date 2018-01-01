@@ -1,46 +1,61 @@
-import {
-  call,
-  put,
-  select,
-} from 'redux-saga/effects';
+// @flow
+import { runSaga } from 'redux-saga';
 import { login, startLogin } from './sagas';
 import * as actions from './actions';
-import { getVault } from '../core/selectors';
+import * as methods from './methods/sagas';
+
+jest.mock('./methods/sagas');
 
 describe('login saga handler', () => {
-  it('should get the current vault API instance', () => {
-    const gen = login(actions.loginStart('myMethod'));
-    const next = gen.next().value;
-    expect(next).toEqual(select(getVault));
+  afterEach(() => {
+    methods.myMethod.mockReset();
   });
-  it('should call the relevant function for the login method', () => {
-    // TODO
+  it('should call the relevant function for the login method', async () => {
+    const dispatched = [];
+    methods.myMethod = jest.fn();
+    await runSaga({
+      getState: () => ({ app: { vault: {} } }),
+      dispatch: action => dispatched.push(action),
+    }, login, actions.loginStart({ method: 'myMethod' })).done;
+    expect(methods.myMethod).toHaveBeenCalled();
+    expect(dispatched).toHaveLength(1);
+    expect(dispatched[0]).toEqual(actions.loginSuccess(undefined));
+  });
+  it('should dispatch an error on error', async () => {
+    const dispatched = [];
+    const error = new Error('test error');
+    methods.myMethod = jest.fn(() => { throw error; });
+    await runSaga({
+      getState: () => ({ app: { vault: {} } }),
+      dispatch: action => dispatched.push(action),
+    }, login, actions.loginStart({ method: 'myMethod' })).done;
+    expect(methods.myMethod).toHaveBeenCalled();
+    expect(dispatched).toHaveLength(1);
+    expect(dispatched[0]).toEqual(actions.loginError(error));
   });
 });
 
 describe('startLogin saga', () => {
-  let saga;
-  beforeEach(() => {
-    saga = startLogin();
-  });
-  it('should fetch the current Vault API instance', () => {
-    const vault = saga.next();
-    expect(vault.value).toEqual(select(getVault));
-  });
-  describe('with an unauthenticated session', () => {
-    it('should put a startChooseLoginMethod action', () => {
-      saga.next();
-      const putEffect = saga.next({ token: false });
-      expect(putEffect.value).toEqual(put(actions.startChooseLoginMethod()));
-      expect(saga.next().done).toBeTruthy();
+  describe('when there is no token in the store', () => {
+    it('should dispatch a startChooseLoginMethod action', async () => {
+      const dispatched = [];
+      await runSaga({
+        getState: () => ({ app: { vault: {} } }),
+        dispatch: action => dispatched.push(action),
+      }, startLogin).done;
+      expect(dispatched).toHaveLength(1);
+      expect(dispatched[0]).toEqual(actions.startChooseLoginMethod());
     });
   });
-  describe('with an authenticated session', () => {
-    it('should put a loginSuccess action', () => {
-      saga.next();
-      const putEffect = saga.next({ token: true });
-      expect(putEffect.value).toEqual(put(actions.loginSuccess()));
-      expect(saga.next().done).toBeTruthy();
+  describe('when there is an existing token in the store', () => {
+    it('should dispatch a loginSuccess action', async () => {
+      const dispatched = [];
+      await runSaga({
+        getState: () => ({ app: { vault: { token: true } } }),
+        dispatch: action => dispatched.push(action),
+      }, startLogin).done;
+      expect(dispatched).toHaveLength(1);
+      expect(dispatched[0]).toEqual(actions.loginSuccess({ token: true }));
     });
   });
 });

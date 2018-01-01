@@ -24,13 +24,14 @@ export const selectLoginMethod = (method: string): SelectLoginMethodAction => ({
 export const LOGIN_START = 'vault-ui/login/LOGIN_START';
 export type LoginStartAction = {
   +type: 'vault-ui/login/LOGIN_START',
-  +payload: {
-    data: any,
+  payload: {
+    method: string,
+    [string]: mixed,
   },
 };
-export const loginStart = (data: any): LoginStartAction => ({
+export const loginStart = (data: { method: string }): LoginStartAction => ({
   type: LOGIN_START,
-  payload: { data },
+  payload: { ...data },
 });
 export const LOGIN_ERROR = 'vault-ui/login/LOGIN_ERROR';
 export type LoginErrorAction = {
@@ -50,6 +51,7 @@ export type LoginSuccessAction = {
     +vault: Vault,
   }
 }
+// TODO rename to login completed to indicate that we may already have a token
 export const loginSuccess = (vault: Vault): LoginSuccessAction => ({
   type: LOGIN_SUCCESS,
   payload: { vault },
@@ -58,7 +60,7 @@ export const ADD_POLICY = 'vault-ui/login/ADD_POLICY';
 export type AddPolicyAction = {
   +type: 'vault-ui/login/ADD_POLICY',
   +payload: {
-    policy: any,
+    +policy: any,
   },
 };
 export const addPolicy = (policy: any): AddPolicyAction => ({
@@ -69,7 +71,7 @@ export const REMOVE_POLICY = 'vault-ui/login/REMOVE_POLICY';
 export type RemovePolicyAction = {
   +type: 'vault-ui/login/REMOVE_POLICY',
   +payload: {
-    policy: string,
+    +policy: string,
   },
 };
 export const removePolicy = (policy: string): RemovePolicyAction => ({
