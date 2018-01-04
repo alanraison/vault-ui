@@ -25,7 +25,7 @@ jobs:
         name: Update lockfile
         command: greenkeeper-lockfile-update
     - run:
-        command: yarn test -- --coverage --coveragePathIgnorePatterns=src/setupTests.js \
+        command: yarn test --coverage --coveragePathIgnorePatterns=src/setupTests.js \
             --coveragePathIgnorePatterns=src/actions/testhelper.js
     - run:
         name: Upload lockfile
