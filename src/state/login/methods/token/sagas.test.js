@@ -12,9 +12,9 @@ describe('token login saga', () => {
     Vault.mockImplementation(function mock(addr, tok) {
       this.addr = addr;
       this.token = tok;
-      this.auth = { token: { create: jest.fn(() => Promise.resolve('child-token')) } };
+      this.auth = { token: { create: jest.fn(() => Promise.resolve({ auth: { client_token: 'child-token' } })) } };
     });
-    result = await runSaga({}, tokenSaga, vault, token).done;
+    result = await runSaga({}, tokenSaga, vault, { loginData: token }).done;
   });
   afterEach(() => {
     Vault.mockReset();
