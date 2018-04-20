@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import Card from 'material-ui/Card';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
@@ -11,13 +11,23 @@ const style = theme => ({
   },
 });
 
+type Props = {
+  children: React.Node,
+  classes?: {
+    card: string,
+  },
+  xs?: number,
+  md?: number,
+  childProps: mixed,
+};
+
 export function ViewCardComponent({
   children,
   classes,
   xs,
   md,
   ...childProps
-}) {
+}: Props) {
   return (
     <Grid item xs={xs} md={md} className={classes.card} {...childProps}>
       <Card>
@@ -27,17 +37,16 @@ export function ViewCardComponent({
   );
 }
 
-ViewCardComponent.propTypes = {
-  classes: PropTypes.shape({
-    card: PropTypes.string,
-  }),
-  children: PropTypes.node,
-  xs: PropTypes.number,
-  md: PropTypes.number,
-};
+// ViewCardComponent.propTypes = {
+//   classes: PropTypes.shape({
+//     card: PropTypes.string,
+//   }),
+//   children: PropTypes.node,
+//   xs: PropTypes.number,
+//   md: PropTypes.number,
+// };
 
 ViewCardComponent.defaultProps = {
-  children: null,
   classes: {},
   xs: 12,
   md: 6,

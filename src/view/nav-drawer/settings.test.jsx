@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Settings from 'material-ui-icons/Settings';
+import Settings from '@material-ui/icons/Settings';
 import { SettingsMenuComponent } from './settings';
 
 describe('Settings menu component', () => {

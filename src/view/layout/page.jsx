@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import Header from './header';
@@ -7,6 +7,70 @@ import NavDrawer from '../nav-drawer';
 import Router from '../core/router';
 
 const drawerWidth = 240;
+
+type Props = {
+  classes: {
+    root: string,
+    appFrame: string,
+    appBar: string,
+    appBarShift: string,
+    content: string,
+    contentShift: string,
+    drawerPaper: string,
+    drawerWidth: string,
+  },
+};
+
+type State = {
+  drawerOpen: bool,
+};
+
+export class PageComponent extends React.Component<Props, State> {
+  static defaultProps = {
+    classes: {
+      root: '',
+      appFrame: '',
+      appBar: '',
+      appBarShift: '',
+      drawerPaper: '',
+      content: '',
+      contentShift: '',
+    },
+  };
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      drawerOpen: false,
+    };
+  }
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <div className={classes.appFrame}>
+          <Header
+            classes={{
+              appBar: classes.appBar,
+              appBarShift: this.state.drawerOpen && classes.appBarShift,
+            }}
+            menuDrawerOpen={this.state.drawerOpen}
+            onMenuClick={() => this.setState({ drawerOpen: true })}
+          />
+          <NavDrawer
+            classes={{ drawerWidth: classes.drawerWidth, drawerPaper: classes.drawerPaper }}
+            open={this.state.drawerOpen}
+            onClose={() => this.setState({ drawerOpen: false })}
+          />
+          <main className={
+            classNames(classes.content, this.state.drawerOpen && classes.contentShift)}
+          >
+            <Router />
+          </main>
+        </div>
+      </div>
+    );
+  }
+}
 
 const styles = theme => ({
   root: {
@@ -65,49 +129,5 @@ const styles = theme => ({
     }),
   },
 });
-
-export class PageComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerOpen: false,
-    };
-  }
-  render() {
-    const { classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <div className={classes.appFrame}>
-          <Header
-            classes={{
-              appBar: classes.appBar,
-              appBarShift: this.state.drawerOpen && classes.appBarShift,
-            }}
-            menuDrawerOpen={this.state.drawerOpen}
-            onMenuClick={() => this.setState({ drawerOpen: true })}
-          />
-          <NavDrawer
-            classes={{ drawerWidth: classes.drawerWidth, drawerPaper: classes.drawerPaper }}
-            open={this.state.drawerOpen}
-            onClose={() => this.setState({ drawerOpen: false })}
-          />
-          <main className={
-            classNames(classes.content, this.state.drawerOpen && classes.contentShift)}
-          >
-            <Router />
-          </main>
-        </div>
-      </div>
-    );
-  }
-}
-
-PageComponent.propTypes = {
-  classes: PropTypes.shape(),
-};
-
-PageComponent.defaultProps = {
-  classes: {},
-};
 
 export default withStyles(styles, { name: 'VaultUIPage' })(PageComponent);

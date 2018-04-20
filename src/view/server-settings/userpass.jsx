@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PermIdentity from 'material-ui-icons/PermIdentity';
+import PermIdentity from '@material-ui/icons/PermIdentity';
 import ToggleableSettings from './toggleable-settings';
 import { enableLoginMethod } from '../../state/server-settings/actions';
 
@@ -33,7 +33,7 @@ UserPassSettingsComponent.defaultProps = {
   enabled: false,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = () => ({
   enabled: false,
 });
 

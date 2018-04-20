@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import ChevronLeft from 'material-ui-icons/ChevronLeft';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import Settings from './settings';
 import Logout from './logout';
 

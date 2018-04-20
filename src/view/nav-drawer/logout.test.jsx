@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ExitToApp from 'material-ui-icons/ExitToApp';
+import ExitToApp from '@material-ui/icons/ExitToApp';
 import { LogoutMenuComponent } from './logout';
 
 describe('Logout menu component', () => {

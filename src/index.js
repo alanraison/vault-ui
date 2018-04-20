@@ -1,5 +1,5 @@
 /* eslint react/jsx-filename-extension: off */
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import {
   applyMiddleware,
@@ -7,9 +7,7 @@ import {
   combineReducers,
   compose,
 } from 'redux';
-import {
-  Provider,
-} from 'react-redux';
+import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import createHistory from 'history/createBrowserHistory';
@@ -49,8 +47,10 @@ const vault = new UnauthenticatedVault('http://localhost:3000');
 store.dispatch(actions.initialise(vault));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Page />
-  </Provider>,
+  <StrictMode>
+    <Provider store={store}>
+      <Page />
+    </Provider>
+  </StrictMode>,
   document.getElementById('root'),
 );

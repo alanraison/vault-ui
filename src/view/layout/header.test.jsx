@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MenuIcon from 'material-ui-icons/Menu';
+import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import classNames from 'classnames';

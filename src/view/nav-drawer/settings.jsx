@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Settings from 'material-ui-icons/Settings';
+import Settings from '@material-ui/icons/Settings';
 import { openSettings } from '../../state/server-settings/actions';
 
 export function SettingsMenuComponent({

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Logout from 'material-ui-icons/ExitToApp';
+import Logout from '@material-ui/icons/ExitToApp';
 
 export function LogoutMenuComponent({
   classes,
