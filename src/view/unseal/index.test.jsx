@@ -21,13 +21,13 @@ describe('Unseal component', () => {
   });
   it('should contain a count of the outstanding unseal keys required', () => {
     const mounted = mount(<UnsealComponent unsealKey="" onChangeKey={onChange} onSubmit={onClick} />);
-    expect(mounted.find(UnsealCount)).toBePresent();
+    expect(mounted.find(UnsealCount)).toExist();
   });
   it('should contain an input field for an unseal key', () => {
-    expect(wrapper.find(TextField)).toBePresent();
+    expect(wrapper.find(TextField)).toExist();
   });
   it('should contain an action button', () => {
-    expect(wrapper.find(Button)).toBePresent();
+    expect(wrapper.find(Button)).toExist();
   });
   it('should invoke onSubmit handler with key prop', () => {
     wrapper.find(Button).simulate('click');

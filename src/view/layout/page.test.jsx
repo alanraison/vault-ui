@@ -16,10 +16,10 @@ describe('Page Component', () => {
     wrapper = shallow(<PageComponent store={{}} />);
   });
   it('should contain a Header', () => {
-    expect(wrapper.find(Header)).toBePresent();
+    expect(wrapper.find(Header)).toExist();
   });
   it('should contain a Router component', () => {
-    expect(wrapper.find(Router)).toBePresent();
+    expect(wrapper.find(Router)).toExist();
   });
   it('should not have the NavDrawer open by default', () => {
     expect(wrapper.state().drawerOpen).toBeFalsy();

@@ -1,6 +1,7 @@
 /* eslint react/jsx-filename-extension: off */
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+import CssBaseline from 'material-ui/CssBaseline';
 import {
   applyMiddleware,
   createStore,
@@ -49,7 +50,9 @@ store.dispatch(actions.initialise(vault));
 ReactDOM.render(
   <StrictMode>
     <Provider store={store}>
-      <Page />
+      <CssBaseline>
+        <Page />
+      </CssBaseline>
     </Provider>
   </StrictMode>,
   document.getElementById('root'),

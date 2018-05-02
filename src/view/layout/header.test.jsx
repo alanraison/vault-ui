@@ -16,7 +16,7 @@ describe('The Header component', () => {
   });
   it('should contain a menu icon', () => {
     const wrapper = shallow(<HeaderComponent />);
-    expect(wrapper.find(MenuIcon)).toBePresent();
+    expect(wrapper.find(MenuIcon)).toExist();
   });
   it('should call onMenuClick when the menu button is pressed', () => {
     const onMenuClick = jest.fn();
