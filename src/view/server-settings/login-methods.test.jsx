@@ -9,6 +9,6 @@ describe('The login methods settings component', () => {
   it('should have a header indicating that it is the Login method configuration', () => {
     const wrapper = shallow(<LoginMethodsComponent />);
     expect(wrapper
-      .find({ subheader: <ListSubheader>Login Methods</ListSubheader> })).toBePresent();
+      .find({ subheader: <ListSubheader>Login Methods</ListSubheader> })).toExist();
   });
 });

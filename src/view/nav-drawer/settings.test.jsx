@@ -6,7 +6,7 @@ import { SettingsMenuComponent } from './settings';
 describe('Settings menu component', () => {
   it('should use a Settings icon', () => {
     const wrapper = shallow(<SettingsMenuComponent onClick={() => null} />);
-    expect(wrapper.find(Settings)).toBePresent();
+    expect(wrapper.find(Settings)).toExist();
   });
   it('should call onClick handler on click action', () => {
     const onClick = jest.fn();
