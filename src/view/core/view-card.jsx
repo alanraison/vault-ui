@@ -37,15 +37,6 @@ export function ViewCardComponent({
   );
 }
 
-// ViewCardComponent.propTypes = {
-//   classes: PropTypes.shape({
-//     card: PropTypes.string,
-//   }),
-//   children: PropTypes.node,
-//   xs: PropTypes.number,
-//   md: PropTypes.number,
-// };
-
 ViewCardComponent.defaultProps = {
   classes: {},
   xs: 12,

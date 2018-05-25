@@ -6,6 +6,6 @@ import { LogoutMenuComponent } from './logout';
 describe('Logout menu component', () => {
   it('should contain the ExitToApp icon', () => {
     const wrapper = shallow(<LogoutMenuComponent />);
-    expect(wrapper.find(ExitToApp)).toBePresent();
+    expect(wrapper.find(ExitToApp)).toExist();
   });
 });

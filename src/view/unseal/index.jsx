@@ -28,7 +28,7 @@ export function UnsealComponent({
       </CardContent>
       <CardActions>
         <Button
-          raised
+          variant="raised"
           color="primary"
           onClick={() => onSubmit(unsealKey)}
         >

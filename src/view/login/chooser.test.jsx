@@ -6,7 +6,7 @@ import { LoginChooserComponent, LoginChoiceItem } from './chooser';
 describe('The Login Chooser Component', () => {
   it('should not contain any login choices if the list of available methods is empty', () => {
     const wrapper = shallow(<LoginChooserComponent methodList={[]} onSelect={() => null} />);
-    expect(wrapper.find(List).children()).toBeEmpty();
+    expect(wrapper.find(List).children()).toHaveLength(0);
   });
   it('should contain a LoginChoiceItem for each value in methodList', () => {
     const wrapper = shallow(<LoginChooserComponent methodList={['foo', 'bar', 'baz']} onSelect={() => null} />);

@@ -8,8 +8,8 @@ import { ViewCardComponent } from './view-card';
 describe('A View Card', () => {
   it('should have a card element inside a grid item', () => {
     const wrapper = shallow(<ViewCardComponent />);
-    expect(wrapper.find(Grid).find({ item: true })).toBePresent();
-    expect(wrapper.find(Grid).find(Card)).toBePresent();
+    expect(wrapper.find(Grid).find({ item: true })).toExist();
+    expect(wrapper.find(Grid).find(Card)).toExist();
   });
   it('should default to half with for md viewports and full width for xs', () => {
     const wrapper = shallow(<ViewCardComponent />);
@@ -23,9 +23,10 @@ describe('A View Card', () => {
     expect(wrapper.find(Grid)).toHaveProp('xl', 12);
   });
   it('should render children inside the Card element', () => {
-    const wrapper = shallow(<ViewCardComponent>
-      <a href="https://github.com/alanraison/vault-ui">Vault UI</a>
-    </ViewCardComponent>);
+    const wrapper = shallow(
+      <ViewCardComponent>
+        <a href="https://github.com/alanraison/vault-ui">Vault UI</a>
+      </ViewCardComponent>);
     expect(wrapper.find(Card)).toContainReact(<a href="https://github.com/alanraison/vault-ui">Vault UI</a>);
   });
   it('should accept css styles in the classes prop', () => {

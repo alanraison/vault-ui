@@ -40,7 +40,7 @@ export function HeaderComponent({
         >
           <MenuIcon />
         </IconButton>
-        <Typography type="title" color="inherit">
+        <Typography variant="title" color="inherit">
           Vault
         </Typography>
       </Toolbar>
