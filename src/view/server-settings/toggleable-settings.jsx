@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Collapse from 'material-ui/transitions/Collapse';
-import Paper from 'material-ui/Paper';
-import { ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
-import Switch from 'material-ui/Switch';
+import { withStyles } from '@material-ui/core/styles';
+import Collapse from '@material-ui/core/Collapse';
+import Paper from '@material-ui/core/Paper';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import Switch from '@material-ui/core/Switch';
 
 const styles = theme => ({
   detail: {

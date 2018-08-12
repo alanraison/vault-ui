@@ -1,6 +1,7 @@
 import React from 'react';
-import { CardHeader, CardContent } from 'material-ui/Card';
-import { CircularProgress } from 'material-ui/Progress';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import ViewCard from './view-card';
 
 export default function LoadingComponent() {

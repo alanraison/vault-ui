@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Chip from 'material-ui/Chip';
+import Chip from '@material-ui/core/Chip';
 
 import { PoliciesComponent } from './policies';
 

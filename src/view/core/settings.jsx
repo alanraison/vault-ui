@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import IconButton from 'material-ui/IconButton';
-import Settings from '@material-ui/icons/Settings';
-import Menu, { MenuItem } from 'material-ui/Menu';
+import IconButton from '@material-ui/core/IconButton';
+import Settings from '@material-ui/icons/SettingsSharp';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import { openSettings } from '../../state/server-settings/actions';
 

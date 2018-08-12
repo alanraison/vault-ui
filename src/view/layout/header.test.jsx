@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import MenuIcon from '@material-ui/icons/Menu';
-import IconButton from 'material-ui/IconButton';
-import Typography from 'material-ui/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 
 import { HeaderComponent } from './header';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ListSubheader } from 'material-ui/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import { LoginMethodsComponent } from './login-methods';
 
 jest.mock('./userpass');

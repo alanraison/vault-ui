@@ -1,6 +1,7 @@
 import React from 'react';
-import { CardHeader, CardContent } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import ViewCard from './view-card';
 
 const NotFound = () => (

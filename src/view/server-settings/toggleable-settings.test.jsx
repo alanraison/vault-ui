@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Switch from 'material-ui/Switch';
-import { ListItemText } from 'material-ui/List';
+import Switch from '@material-ui/core/Switch';
+import ListItemText from '@material-ui/core/ListItemText';
 import { ToggleableSettingsComponent } from './toggleable-settings';
 
 describe('A toggleable setting', () => {

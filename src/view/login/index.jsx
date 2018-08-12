@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Button from 'material-ui/Button';
-import { CardHeader, CardActions, CardContent } from 'material-ui/Card';
-import Slide from 'material-ui/transitions/Slide';
-import Collapse from 'material-ui/transitions/Collapse';
+import Button from '@material-ui/core/Button';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Slide from '@material-ui/core/Slide';
+import Collapse from '@material-ui/core/Collapse';
 import ViewCard from '../core/view-card';
 import Chooser from './chooser';
 import AdvancedLoginOptions from './advanced-login-options';

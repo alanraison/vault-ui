@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Chip from 'material-ui/Chip';
-import { FormGroup } from 'material-ui/Form';
-import TextField from 'material-ui/TextField';
-import Typography from 'material-ui/Typography';
+import Chip from '@material-ui/core/Chip';
+import FormGroup from '@material-ui/core/FormGroup';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
 import * as actions from '../../state/login/actions';
 

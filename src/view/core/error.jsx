@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Button from 'material-ui/Button';
-import { CardHeader, CardContent, CardActions } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
+import Button from '@material-ui/core/Button';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Typography from '@material-ui/core/Typography';
 import ViewCard from './view-card';
 import { clearError } from '../../state/core/actions';
 

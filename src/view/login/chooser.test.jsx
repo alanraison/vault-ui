@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import List, { ListItemText } from 'material-ui/List';
+import List from '@material-ui/core/List';
+import ListItemText from '@material-ui/core/ListItemText';
 import { LoginChooserComponent, LoginChoiceItem } from './chooser';
 
 describe('The Login Chooser Component', () => {

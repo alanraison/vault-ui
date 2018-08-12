@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FormGroup } from 'material-ui/Form';
+import FormGroup from '@material-ui/core/FormGroup';
 
 import Policies from './policies';
 

@@ -1,7 +1,7 @@
 /* eslint react/jsx-filename-extension: off */
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
-import CssBaseline from 'material-ui/CssBaseline';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   applyMiddleware,
   createStore,
