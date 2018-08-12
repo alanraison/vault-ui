@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
-import Card from 'material-ui/Card';
-import Grid from 'material-ui/Grid';
-import { withStyles } from 'material-ui/styles';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
 const style = theme => ({
   card: {

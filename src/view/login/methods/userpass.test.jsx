@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 import UserPassLogin from './userpass';
 
 describe('The userpass login component', () => {

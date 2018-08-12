@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Button from 'material-ui/Button';
-import { CardHeader, CardContent, CardActions } from 'material-ui/Card';
-import TextField from 'material-ui/TextField';
+import Button from '@material-ui/core/Button';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import TextField from '@material-ui/core/TextField';
 import UnsealCount from './count';
 import ViewCard from '../core/view-card';
 import * as actions from '../../state/seal-status/actions';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 import { getLogin } from '../../../state/login/selectors';
 import { changeToken } from '../../../state/login/methods/token/actions';
 

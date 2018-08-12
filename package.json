@@ -24,9 +24,10 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.73.0",
+    "flow-bin": "^0.78.0",
     "flow-typed": "^2.4.0",
-    "jest-enzyme": "^6.0.0",
+    "jest-environment-enzyme": "^6.0.3",
+    "jest-enzyme": "~6.0.3",
     "jest-fetch-mock": "^1.4.0",
     "jsdoc": "^3.5.5",
     "uuid": "^3.0.0"
@@ -42,13 +43,13 @@
     "flow": "flow"
   },
   "dependencies": {
-    "@material-ui/icons": "^1.0.0-beta.42",
+    "@material-ui/core": "^1.4.3",
+    "@material-ui/icons": "^2.0.1",
     "classnames": "^2.2.5",
     "history": "^4.6.3",
-    "material-ui": "1.0.0-beta.41",
     "prop-types": "^15.5.7",
-    "react": "~16.4.0",
-    "react-dom": "~16.4.0",
+    "react": "~16.4.2",
+    "react-dom": "~16.4.2",
     "react-redux": "^5.0.5",
     "react-scripts": "1.1.4",
     "redux": "^3.7.0",
@@ -62,5 +63,8 @@
       "text-summary",
       "lcov"
     ]
+  },
+  "peerDependencies": {
+    "jest": "^23.5.0"
   }
 }

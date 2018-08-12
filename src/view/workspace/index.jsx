@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
-import { CardContent } from 'material-ui/Card';
-import Grid from 'material-ui/Grid';
-import TextField from 'material-ui/TextField';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import ViewCard from '../core/view-card';
 
 export function WorkspaceComponent() {

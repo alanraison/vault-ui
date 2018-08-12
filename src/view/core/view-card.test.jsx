@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Grid from 'material-ui/Grid';
-import Card from 'material-ui/Card';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
 
 import { ViewCardComponent } from './view-card';
 
@@ -23,6 +23,7 @@ describe('A View Card', () => {
     expect(wrapper.find(Grid)).toHaveProp('xl', 12);
   });
   it('should render children inside the Card element', () => {
+    // eslint-disable-next-line function-paren-newline
     const wrapper = shallow(
       <ViewCardComponent>
         <a href="https://github.com/alanraison/vault-ui">Vault UI</a>
