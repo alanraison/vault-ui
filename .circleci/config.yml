@@ -6,9 +6,6 @@ jobs:
     steps:
     - checkout
     - run:
-        name: Update yarn
-        command: 'sudo npm install -g yarn@latest'
-    - run:
         name: Install greenkeeper-lockfile
         command: 'sudo yarn global add greenkeeper-lockfile@1'
     - restore_cache:
