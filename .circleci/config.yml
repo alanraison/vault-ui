@@ -29,3 +29,8 @@ jobs:
         command: greenkeeper-lockfile-upload
     - run:
         command: cat coverage/lcov.info | node_modules/.bin/coveralls
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+    - build
