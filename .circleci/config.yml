@@ -51,14 +51,14 @@ workflows:
     jobs:
     - install
     - update_lockfile_greenkeeper:
-      requires:
-      - install
+        requires:
+        - install
     - test:
-      requires:
-      - install
+        requires:
+        - install
     - upload_lockfile:
-      requires:
-      - update_lockfile_greenkeeper
+        requires:
+        - update_lockfile_greenkeeper
     - upload_coverage:
-      requires:
-      - test
+        requires:
+        - test
