@@ -1,8 +1,12 @@
 version: 2
+
+defaults: &defaults
+  docker:
+  - image: circleci/node:8
+
 jobs:
   install:
-    docker:
-    - image: circleci/node:8
+    <<: *defaults
     steps:
     - checkout
     - restore_cache:
@@ -10,10 +14,13 @@ jobs:
     - run:
         name: yarn
         command: yarn
+    - persist_to_workspace:
+      paths:
+      - node_modules
   update_lockfile_greenkeeper:
-    docker:
-    - image: circleci/node:8
+    <<: *defaults
     steps:
+    - attach_workspace
     - run:
         name: Install greenkeeper-lockfile
         command: 'sudo yarn global add greenkeeper-lockfile@1'
@@ -25,26 +32,25 @@ jobs:
         paths:
         - node_modules
         - ~/.cache/yarn
+    - persist_to_workspace:
+      paths:
+      - yarn.lock
   test:
-    docker:
-    - image: circleci/node:8
+    <<: *defaults
     steps:
+    - attach_workspace
     - run:
         command: yarn test --coverage --coveragePathIgnorePatterns=src/setupTests.js \
             --coveragePathIgnorePatterns=src/actions/testhelper.js
+    - run:
+        command: cat coverage/lcov.info | node_modules/.bin/coveralls
   upload_lockfile:
-    docker:
-    - image: circleci/node:8
+    <<: *defaults
     steps:
+    - attach_workspace
     - run:
         name: Upload lockfile
         command: greenkeeper-lockfile-upload
-  upload_coverage:
-    docker:
-    - image: cicleci/node:8
-    steps:
-    - run:
-        command: cat coverage/lcov.info | node_modules/.bin/coveralls
 workflows:
   version: 2
   build_and_test:
@@ -59,6 +65,3 @@ workflows:
     - upload_lockfile:
         requires:
         - update_lockfile_greenkeeper
-    - upload_coverage:
-        requires:
-        - test
