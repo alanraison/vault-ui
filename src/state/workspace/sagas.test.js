@@ -28,7 +28,7 @@ xdescribe('Workspace Sagas', () => {
     it('should resolve all the routes that the user has access to', () => {
       gen.next();
       const policies = jest.fn();
-      gen.next({ sys: { policies } });  
+      gen.next({ sys: { policies } });
     });
   });
 });

@@ -198,8 +198,8 @@ export default class TokenApi {
    * @see {@link https://www.vaultproject.io/api/auth/token/index.html#create-update-token-role}
    */
   updateRole(options: { role_name: string, params: mixed[] }) {
-    const { role_name, ...params } = options;
-    return this.fetch(new UrlSpec('/roles/').suffixPathParam(role_name), {
+    const { role_name: roleName, ...params } = options;
+    return this.fetch(new UrlSpec('/roles/').suffixPathParam(roleName), {
       method: 'POST',
       body: JSON.stringify(params),
     });

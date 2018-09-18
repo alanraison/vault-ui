@@ -13,7 +13,8 @@ describe('Userpass settings', () => {
         enabled={false}
         onEnable={onEnable}
         onDisable={onDisable}
-      />);
+      />,
+    );
     expect(wrapper.find(ToggleableSettings).props().title).toEqual('UserPass');
   });
 });
