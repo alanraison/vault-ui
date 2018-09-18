@@ -7,9 +7,9 @@ import ViewCard from '../core/view-card';
 
 export function WorkspaceComponent() {
   return (
-    <ViewCard md={12}>
+    <ViewCard xs={12} md={9}>
       <CardContent>
-        <Grid container={true}>
+        <Grid container>
           <Grid item xs={12}>
             <TextField
               id="path"

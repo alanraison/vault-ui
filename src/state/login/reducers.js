@@ -1,5 +1,5 @@
 // @flow
-import * as actions from '../../state/login/actions';
+import * as actions from './actions';
 import methods from './methods';
 
 export type LoginState = {

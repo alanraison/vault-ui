@@ -22,25 +22,29 @@ export class SettingsMenuComponent extends React.Component {
   handleOpen(e) {
     this.setState({ open: true, anchorEl: e.target });
   }
+
   handleClose() {
     this.setState({ open: false });
   }
+
   render() {
+    const { open, anchorEl } = this.state;
+    const { onSettingsClick } = this.props;
     return (
       <div>
         <IconButton
           color="contrast"
           aria-label="configure"
           aria-haspopup="true"
-          aria-owns={this.state.open ? 'settings-menu' : null}
+          aria-owns={open ? 'settings-menu' : null}
           onClick={this.handleOpen}
         >
           <Settings />
         </IconButton>
         <Menu
           id="settings-menu"
-          anchorEl={this.state.anchorEl}
-          open={this.state.open}
+          anchorEl={anchorEl}
+          open={open}
           onRequestClose={this.handleClose}
         >
           <MenuItem
@@ -48,7 +52,7 @@ export class SettingsMenuComponent extends React.Component {
             onClick={
               (e) => {
                 this.handleClose(e);
-                this.props.onSettingsClick();
+                onSettingsClick();
               }}
           >
             Server Settings

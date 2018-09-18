@@ -19,7 +19,7 @@ export function ErrorComponent({
       <CardHeader title="Error" />
       <CardContent>
         <Typography>
-          Error {source}: {error.toString()}
+          {`Error ${source}: ${error.toString()}`}
         </Typography>
       </CardContent>
       <CardActions>

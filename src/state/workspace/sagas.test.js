@@ -16,17 +16,19 @@ xdescribe('Workspace Sagas', () => {
         getState: getVault,
       }, initialise).done;
     });
+
     afterEach(() => {
       getVault.mockReset();
-    })
+    });
+
     it("should look up all the user's policies", () => {
       expect();
     });
+
     it('should resolve all the routes that the user has access to', () => {
       gen.next();
       const policies = jest.fn();
-      gen.next({ sys: { policies } });
-      
+      gen.next({ sys: { policies } });  
     });
   });
 });

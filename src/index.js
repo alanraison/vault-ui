@@ -33,8 +33,11 @@ const routesMap = {
   [actions.login.SELECT_LOGIN_METHOD]: '/login/:method',
   [actions.serverSettings.SETTINGS]: '/settings',
 };
-const { reducer: location, middleware: routingMiddleware, enhancer } =
-  connectRoutes(history, routesMap);
+const {
+  reducer: location,
+  middleware: routingMiddleware,
+  enhancer,
+} = connectRoutes(history, routesMap);
 
 const middlewares = applyMiddleware(sagaMiddleware, routingMiddleware, logger);
 const store = createStore(

@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 import TokenApi from './token';
-import AuthApi from './';
+import AuthApi from '.';
 import UrlSpec from '../url-spec';
 
 jest.mock('./');

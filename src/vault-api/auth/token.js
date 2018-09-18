@@ -4,7 +4,9 @@ import type AuthApi from '.';
 
 export default class TokenApi {
   authApi: AuthApi;
+
   create: () => Promise<string>;
+
   lookup: () => Promise<string>;
 
   constructor(authApi: AuthApi) {
@@ -12,9 +14,11 @@ export default class TokenApi {
     this.create = this.create.bind(this);
     this.lookup = this.lookup.bind(this);
   }
+
   fetch(url: UrlSpec, init: any) {
     return this.authApi.fetch(url.prefixPath('/token'), init);
   }
+
   /**
    * Create a new token.
    *
@@ -30,6 +34,7 @@ export default class TokenApi {
       body: JSON.stringify(options),
     });
   }
+
   /**
    * Create a new orphan token.
    *
@@ -41,6 +46,7 @@ export default class TokenApi {
       body: JSON.stringify(options),
     });
   }
+
   /**
    * List accessors of the current token.
    *
@@ -51,6 +57,7 @@ export default class TokenApi {
       method: 'LIST',
     });
   }
+
   /**
    * Lookup information about a token.
    *
@@ -64,6 +71,7 @@ export default class TokenApi {
       body: JSON.stringify({ token }),
     });
   }
+
   /**
    * Lookup information about the current token.
    *
@@ -72,6 +80,7 @@ export default class TokenApi {
   lookupSelf() {
     return this.fetch(new UrlSpec('/lookup-self'));
   }
+
   /**
    * Returns information about the client token from the accessor.
    *
@@ -83,6 +92,7 @@ export default class TokenApi {
       body: JSON.stringify({ accessor }),
     });
   }
+
   /**
    * Renew a token.
    *
@@ -97,6 +107,7 @@ export default class TokenApi {
       body: JSON.stringify(options),
     });
   }
+
   /**
    * Renew the current token.
    *
@@ -110,6 +121,7 @@ export default class TokenApi {
       body: JSON.stringify(options),
     });
   }
+
   /**
    * Revoke a token.
    *
@@ -121,6 +133,7 @@ export default class TokenApi {
       body: JSON.stringify({ token }),
     });
   }
+
   /**
    * Revoke the current token.
    *
@@ -131,6 +144,7 @@ export default class TokenApi {
       method: 'POST',
     });
   }
+
   /**
    * Revoke a token accessor.
    *
@@ -143,6 +157,7 @@ export default class TokenApi {
       body: JSON.stringify(options),
     });
   }
+
   /**
    * Revoke a token but not its child tokens.
    *
@@ -156,6 +171,7 @@ export default class TokenApi {
       body: JSON.stringify({ token }),
     });
   }
+
   /**
    * Lookup the named role.
    *
@@ -164,6 +180,7 @@ export default class TokenApi {
   getRole(name: string) {
     return this.fetch(new UrlSpec('/roles/').suffixPathParam(name));
   }
+
   /**
    * List roles.
    *
@@ -174,6 +191,7 @@ export default class TokenApi {
       method: 'LIST',
     });
   }
+
   /**
    * Create/Update a role.
    *
@@ -186,6 +204,7 @@ export default class TokenApi {
       body: JSON.stringify(params),
     });
   }
+
   /**
    * Delete a role.
    * @param {string} role - the role name
@@ -197,6 +216,7 @@ export default class TokenApi {
       method: 'DELETE',
     });
   }
+
   /**
    * Clean up tokens.
    */

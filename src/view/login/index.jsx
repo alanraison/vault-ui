@@ -30,8 +30,8 @@ export function LoginComponent({
           <div>
             {
               method
-              ? React.createElement(methods[method])
-              : null
+                ? React.createElement(methods[method])
+                : null
             }
             <Collapse>
               <AdvancedLoginOptions />

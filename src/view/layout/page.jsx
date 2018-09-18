@@ -37,32 +37,35 @@ export class PageComponent extends React.Component<Props, State> {
       contentShift: '',
     },
   };
+
   constructor(props: Props) {
     super(props);
     this.state = {
       drawerOpen: false,
     };
   }
+
   render() {
     const { classes } = this.props;
+    const { drawerOpen } = this.state;
     return (
       <div className={classes.root}>
         <div className={classes.appFrame}>
           <Header
             classes={{
               appBar: classes.appBar,
-              appBarShift: this.state.drawerOpen && classes.appBarShift,
+              appBarShift: drawerOpen && classes.appBarShift,
             }}
-            menuDrawerOpen={this.state.drawerOpen}
+            menuDrawerOpen={drawerOpen}
             onMenuClick={() => this.setState({ drawerOpen: true })}
           />
           <NavDrawer
             classes={{ drawerWidth: classes.drawerWidth, drawerPaper: classes.drawerPaper }}
-            open={this.state.drawerOpen}
+            open={drawerOpen}
             onClose={() => this.setState({ drawerOpen: false })}
           />
           <main className={
-            classNames(classes.content, this.state.drawerOpen && classes.contentShift)}
+            classNames(classes.content, drawerOpen && classes.contentShift)}
           >
             <Router />
           </main>
@@ -104,7 +107,6 @@ const styles = theme => ({
   },
   content: {
     width: '100%',
-    marginLeft: -drawerWidth,
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit,

@@ -19,12 +19,14 @@ const checkResponse = (response: Response): Promise<string> => {
 
 export class UnauthenticatedVault {
   vaultAddr: string;
+
   sys: UnauthenticatedSysApi;
 
   constructor(vaultAddr: string) {
     this.vaultAddr = vaultAddr;
     this.sys = new UnauthenticatedSysApi(this);
   }
+
   fetch(url: UrlSpec, options: any): Promise<string> {
     return fetch(url.prefixPath(this.vaultAddr).build(), options).then(checkResponse);
   }
@@ -32,7 +34,9 @@ export class UnauthenticatedVault {
 
 export default class Vault extends UnauthenticatedVault {
   token: string;
+
   auth: AuthApi;
+
   sys: Sys;
 
   constructor(vaultAddr: string, token: string) {

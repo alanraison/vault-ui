@@ -6,13 +6,16 @@ import type Vault, { UnauthenticatedVault } from '.';
  */
 export class UnauthenticatedSysApi {
   +vault: UnauthenticatedVault;
+
   health: ({
     standbyok?: boolean,
     activecode?: number,
     sealedcode?: number,
     standbycode?: number,
   }) => Promise<string>;
+
   sealStatus: () => Promise<string>;
+
   unseal: ({
     key?: string,
     reset?: boolean,
@@ -24,9 +27,11 @@ export class UnauthenticatedSysApi {
     this.sealStatus = this.sealStatus.bind(this);
     this.unseal = this.unseal.bind(this);
   }
+
   fetch(url: UrlSpec, init: any) {
     return this.vault.fetch(url.prefixPath('/v1/sys'), init);
   }
+
   /**
    * Discover the health of the Vault server
    *
@@ -48,6 +53,7 @@ export class UnauthenticatedSysApi {
   }) {
     return this.fetch(new UrlSpec('/health', options));
   }
+
   /**
    * Discover whether the server is in a sealed state, and if so, how many keys are required to
    * unseal.
@@ -57,6 +63,7 @@ export class UnauthenticatedSysApi {
   sealStatus() {
     return this.fetch(new UrlSpec('/seal-status'));
   }
+
   /**
    * Unseal Vault, or reset the unseal progress
    *
@@ -79,8 +86,11 @@ export class UnauthenticatedSysApi {
  */
 export default class SysApi extends UnauthenticatedSysApi {
   mounts: () => Promise<string>;
+
   policies: () => Promise<string>;
+
   policy: (p: string) => Promise<string>;
+
   vault: Vault;
 
   constructor(vault: Vault) {
@@ -89,6 +99,7 @@ export default class SysApi extends UnauthenticatedSysApi {
     this.policies = this.policies.bind(this);
     this.policy = this.policy.bind(this);
   }
+
   /**
    * Discover all the vault mounts
    *
@@ -97,6 +108,7 @@ export default class SysApi extends UnauthenticatedSysApi {
   mounts() {
     return this.fetch(new UrlSpec('/mounts'));
   }
+
   /**
    * Discover all policies available
    *
@@ -105,6 +117,7 @@ export default class SysApi extends UnauthenticatedSysApi {
   policies() {
     return this.fetch(new UrlSpec('/policy'));
   }
+
   /**
    * Look up a named policy
    */

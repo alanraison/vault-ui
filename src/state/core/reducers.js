@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import * as actions from '../actions';
 import sealStatus, { type SealStatusState } from '../seal-status/reducers';
 import login, { type LoginState } from '../login/reducers';
-import { UnauthenticatedVault } from '../../vault-api/index';
+import { UnauthenticatedVault } from '../../vault-api';
 
 export type ErrorState = {
   err?: Error,

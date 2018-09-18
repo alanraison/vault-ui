@@ -1,12 +1,14 @@
 // @flow
 import TokenApi from './token';
 import UserPassApi from './userpass';
-import type Vault from '../';
+import type Vault from '..';
 import type UrlSpec from '../url-spec';
 
 export default class AuthApi {
   vault: Vault;
+
   token: TokenApi;
+
   userpass: UserPassApi;
 
   constructor(vault: Vault) {

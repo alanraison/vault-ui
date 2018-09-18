@@ -3,7 +3,7 @@ import uuid from 'uuid/v4';
 import reducer from './reducers';
 import { getAppState, getVault } from './selectors';
 import * as actions from '../actions';
-import { UnauthenticatedVault } from '../../vault-api/index';
+import Vault, { UnauthenticatedVault } from '../../vault-api';
 
 describe('Core reducers:', () => {
   describe('Error reducer', () => {
@@ -41,8 +41,9 @@ describe('Core reducers:', () => {
       expect(newState.connected).toEqual(true);
     });
     it('should not respond to other actions', () => {
-      const newState = reducer({ connected: 'test' }, actions.clearError());
-      expect(newState.connected).toEqual('test');
+      const oldState = reducer(undefined, { type: 'foo' });
+      const newState = reducer(oldState, actions.clearError());
+      expect(newState).toEqual(oldState);
     });
   });
   describe('AppState selector', () => {
@@ -60,7 +61,7 @@ describe('Core reducers:', () => {
     });
     it('should update the vault on LOGIN_SUCCESS', () => {
       const one = new UnauthenticatedVault('bar');
-      const two = new UnauthenticatedVault('baz');
+      const two = new Vault('baz', '');
       const newState = reducer({ vault: one }, actions.login.loginSuccess(two));
       expect(newState.vault).toEqual(two);
     });
