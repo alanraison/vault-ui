@@ -1,6 +1,6 @@
 // @flow
 import { put, call, select } from 'redux-saga/effects';
-import type { Effect } from 'redux-saga/effects';
+import type { Effect } from 'redux-saga';
 import * as actions from './actions';
 import * as methods from './methods/sagas';
 import { getVault } from '../core/selectors';
