@@ -15,8 +15,8 @@ import createHistory from 'history/createBrowserHistory';
 import { connectRoutes } from 'redux-first-router';
 
 import Page from './view/layout/page';
-import app from './state/core/reducers';
-import sagas from './state/core/sagas';
+import app from './state/core/core-reducers';
+import sagas from './state/core/core-sagas';
 import * as actions from './state/actions';
 import { UnauthenticatedVault } from './vault-api';
 

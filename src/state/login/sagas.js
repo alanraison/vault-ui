@@ -3,8 +3,8 @@ import { put, call, select } from 'redux-saga/effects';
 import type { Effect } from 'redux-saga';
 import * as actions from './actions';
 import * as methods from './methods/sagas';
-import { getVault } from '../core/selectors';
-import Vault from '../../vault-api';
+import { getVault } from '../core/core-selectors';
+import Vault, { UnauthenticatedVault } from '../../vault-api';
 
 export function* startLogin(): Generator<Effect, void, Vault> {
   const vault = yield select(getVault);

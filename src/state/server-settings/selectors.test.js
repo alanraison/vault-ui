@@ -1,8 +1,8 @@
 import uuid from 'uuid/v4';
 import * as selectors from './selectors';
-import { getAppState } from '../core/selectors';
+import { getAppState } from '../core/core-selectors';
 
-jest.mock('../core/selectors');
+jest.mock('../core/core-selectors');
 
 describe('serverSettings selectors', () => {
   describe('getServerSettings', () => {
