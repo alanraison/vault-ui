@@ -6,8 +6,8 @@ import {
   takeEvery,
 } from 'redux-saga/effects';
 import * as actions from '../actions';
-import * as selectors from './selectors';
-import routesMap from './routes';
+import * as selectors from './core-selectors';
+import routesMap from './core-routes';
 
 export function* healthCheck() {
   try {

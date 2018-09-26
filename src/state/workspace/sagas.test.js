@@ -1,7 +1,7 @@
 
 import { runSaga } from 'redux-saga';
 import { initialise } from './sagas';
-import { getVault } from '../core/selectors';
+import { getVault } from '../core/core-selectors';
 
 jest.mock('../core/selectors');
 

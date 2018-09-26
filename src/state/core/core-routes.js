@@ -1,5 +1,5 @@
 import * as actions from '../actions';
-import * as core from './sagas';
+import * as core from './core-sagas';
 import * as sealStatus from '../seal-status/sagas';
 // import * as workspace from '../workspace/sagas';
 import * as login from '../login/sagas';
@@ -11,6 +11,7 @@ export default ({
   [actions.sealStatus.UNSEAL_REQUEST]: sealStatus.callUnseal,
   [actions.sealStatus.UNSEAL_COMPLETE]: login.startLogin,
   [actions.login.LOGIN_START]: login.login,
+  [actions.login.LOGOUT]: login.logout,
   // [actions.login.LOGIN_SUCCESS]: workspace.initialise,
   [actions.DEBUG]: core.debug,
 });

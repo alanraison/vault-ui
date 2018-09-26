@@ -1,7 +1,7 @@
 // @flow
 import uuid from 'uuid/v4';
-import reducer from './reducers';
-import { getAppState, getVault } from './selectors';
+import reducer from './core-reducers';
+import { getAppState, getVault } from './core-selectors';
 import * as actions from '../actions';
 import Vault, { UnauthenticatedVault } from '../../vault-api';
 

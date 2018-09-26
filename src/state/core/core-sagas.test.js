@@ -9,8 +9,8 @@ import {
   healthCheck,
   initialise,
   handleRouteChange,
-} from './sagas';
-import actionRoutes from './routes';
+} from './core-sagas';
+import actionRoutes from './core-routes';
 
 jest.mock('./routes');
 
