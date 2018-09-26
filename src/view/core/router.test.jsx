@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { NOT_FOUND } from 'redux-first-router';
 
 import { RouteContainer, routesMap } from './router';
-import * as actions from '../../state/core/actions';
+import * as actions from '../../state/core/core-actions';
 import Loading from './loading';
 
 describe('The core page router', () => {

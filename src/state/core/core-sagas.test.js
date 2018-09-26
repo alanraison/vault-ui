@@ -12,7 +12,7 @@ import {
 } from './core-sagas';
 import actionRoutes from './core-routes';
 
-jest.mock('./routes');
+jest.mock('./core-routes');
 
 describe('healthCheck', () => {
   it('should call the health API', async () => {
