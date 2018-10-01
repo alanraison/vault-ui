@@ -3,8 +3,10 @@ import * as React from 'react';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import type { Theme } from '@material-ui/core';
+import type { GridSizes } from '@material-ui/core/Grid/Grid';
 
-const style = theme => ({
+const style = (theme: Theme) => ({
   card: {
     overflow: 'hidden',
     margin: theme.spacing.unit,
@@ -14,22 +16,22 @@ const style = theme => ({
 type Props = {
   children: React.Node,
   classes?: {
-    card: string,
+    card?: string,
   },
-  xs?: number,
-  md?: number,
-  childProps: mixed,
+  xs?: GridSizes,
+  md?: GridSizes,
+  other?: mixed,
 };
 
 export function ViewCardComponent({
   children,
-  classes,
+  classes = {},
   xs,
   md,
-  ...childProps
+  ...other
 }: Props) {
   return (
-    <Grid item xs={xs} md={md} className={classes.card} {...childProps}>
+    <Grid item xs={xs} md={md} className={classes.card} {...other}>
       <Card>
         {children}
       </Card>
@@ -38,9 +40,12 @@ export function ViewCardComponent({
 }
 
 ViewCardComponent.defaultProps = {
-  classes: {},
-  xs: 12,
-  md: 6,
+  xs: false,
+  md: false,
+  classes: {
+    card: '',
+  },
+  other: {},
 };
 
 export default withStyles(style)(ViewCardComponent);

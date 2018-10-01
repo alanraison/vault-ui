@@ -1,5 +1,5 @@
 // @flow
-import Sys, { UnauthenticatedSysApi } from './sys';
+import SysApi, { UnauthenticatedSysApi } from './sys';
 import AuthApi from './auth';
 import type UrlSpec from './url-spec';
 
@@ -20,14 +20,14 @@ const checkResponse = (response: Response): Promise<string> => {
 export class UnauthenticatedVault {
   vaultAddr: string;
 
-  sys: UnauthenticatedSysApi;
+  +sys: UnauthenticatedSysApi;
 
   constructor(vaultAddr: string) {
     this.vaultAddr = vaultAddr;
-    this.sys = new UnauthenticatedSysApi(this);
+    this.sys = new UnauthenticatedSysApi(this.fetch);
   }
 
-  fetch(url: UrlSpec, options: any): Promise<string> {
+  fetch(url: UrlSpec, options: any) {
     return fetch(url.prefixPath(this.vaultAddr).build(), options).then(checkResponse);
   }
 }
@@ -37,13 +37,13 @@ export default class Vault extends UnauthenticatedVault {
 
   auth: AuthApi;
 
-  sys: Sys;
+  sys: SysApi;
 
   constructor(vaultAddr: string, token: string) {
     super(vaultAddr);
     this.token = token;
-    this.sys = new Sys(this);
-    this.auth = new AuthApi(this);
+    this.sys = new SysApi(this.fetch);
+    this.auth = new AuthApi(this.fetch);
   }
 
   fetch(url: UrlSpec, init: any) {

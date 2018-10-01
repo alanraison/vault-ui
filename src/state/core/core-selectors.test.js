@@ -1,4 +1,4 @@
-import * as selectors from './selectors';
+import * as selectors from './core-selectors';
 
 describe('Core selectors', () => {
   describe('getAppState', () => {

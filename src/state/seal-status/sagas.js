@@ -1,6 +1,6 @@
 import { call, select, put } from 'redux-saga/effects';
 import * as actions from '../actions';
-import { getVault } from '../core/selectors';
+import { getVault } from '../core/core-selectors';
 
 export function* callGetSealStatus() {
   try {

@@ -5,13 +5,20 @@ import testActionCreators from '../testhelper';
 
 const tests = testActionCreators(actions);
 
+type TestData = {
+  method: string,
+  action: string,
+  key?: string,
+}
+
 describe('login action creators', () => {
   [
     { method: 'loginSuccess', action: actions.LOGIN_SUCCESS, key: 'vault' },
     { method: 'selectLoginMethod', action: actions.SELECT_LOGIN_METHOD, key: 'method' },
+    { method: 'logout', action: actions.LOGOUT },
     { method: 'addPolicy', action: actions.ADD_POLICY, key: 'policy' },
     { method: 'removePolicy', action: actions.REMOVE_POLICY, key: 'policy' },
-  ].map(({ method, action, key }) => tests.actionCreator(method, action, key, uuid()));
+  ].map(({ method, action, key }: TestData) => tests.actionCreator(method, action, key, uuid()));
   tests.errorActionCreator('loginError', actions.LOGIN_ERROR);
 
   describe('loginStart', () => {

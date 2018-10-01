@@ -56,6 +56,13 @@ export const loginSuccess = (vault: Vault): LoginSuccessAction => ({
   type: LOGIN_SUCCESS,
   payload: { vault },
 });
+export type LogoutAction = {
+  +type: 'vault-ui/admin/LOGOUT'
+}
+export const LOGOUT = 'vault-ui/admin/LOGOUT';
+export const logout = (): LogoutAction => ({
+  type: LOGOUT,
+});
 export const ADD_POLICY = 'vault-ui/login/ADD_POLICY';
 export type AddPolicyAction = {
   +type: 'vault-ui/login/ADD_POLICY',
@@ -85,6 +92,7 @@ export type LoginAction =
   LoginStartAction |
   LoginErrorAction |
   LoginSuccessAction |
+  LogoutAction |
   AddPolicyAction |
   RemovePolicyAction |
   methods.MethodAction;

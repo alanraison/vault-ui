@@ -11,13 +11,19 @@ import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import Settings from './settings';
 import Logout from './logout';
 
-const styles = theme => ({
+const styles = (theme: Theme) => ({
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
     ...theme.mixins.toolbar,
   },
+}: {
+  drawerHeader: {
+    display: string,
+    alignItems: string,
+    justifyContent: string,
+  }
 });
 
 export function NavDrawerComponent({
@@ -40,7 +46,7 @@ export function NavDrawerComponent({
         </div>
         <List>
           <Settings />
-          <Logout />
+          <Logout onClick={onClose} />
         </List>
       </div>
     </Drawer>
@@ -48,7 +54,9 @@ export function NavDrawerComponent({
 }
 
 NavDrawerComponent.propTypes = {
-  classes: PropTypes.shape(),
+  classes: PropTypes.shape({
+    drawerPaper: PropTypes.object,
+  }),
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 };

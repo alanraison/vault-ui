@@ -1,5 +1,5 @@
 // @flow
-import * as actions from './actions';
+import * as actions from './core-actions';
 import testActionCreators from '../testhelper';
 
 const tests = testActionCreators(actions);

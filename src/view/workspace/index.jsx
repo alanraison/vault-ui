@@ -3,14 +3,25 @@ import * as React from 'react';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import Hidden from '@material-ui/core/Hidden';
+import Card from '@material-ui/core/Card';
 import ViewCard from '../core/view-card';
 
 export function WorkspaceComponent() {
-  return (
-    <ViewCard xs={12} md={9}>
+  return [
+    <ViewCard xs={12}>
       <CardContent>
         <Grid container>
-          <Grid item xs={12}>
+          <Hidden smDown>
+            <Grid item md={3}>
+              <Card>
+                <CardContent>
+                  Hello
+                </CardContent>
+              </Card>
+            </Grid>
+          </Hidden>
+          <Grid item xs={9}>
             <TextField
               id="path"
               label="Path"
@@ -19,8 +30,8 @@ export function WorkspaceComponent() {
           </Grid>
         </Grid>
       </CardContent>
-    </ViewCard>
-  );
+    </ViewCard>,
+  ];
 }
 
 export default WorkspaceComponent;

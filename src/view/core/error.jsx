@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import ViewCard from './view-card';
-import { clearError } from '../../state/core/actions';
+import { clearError } from '../../state/core/core-actions';
 
 export function ErrorComponent({
   error,
