@@ -13,8 +13,8 @@ describe('A View Card', () => {
   });
   it('should default to half with for md viewports and full width for xs', () => {
     const wrapper = shallow(<ViewCardComponent />);
-    expect(wrapper.find(Grid)).toHaveProp('md', 6);
-    expect(wrapper.find(Grid)).toHaveProp('xs', 12);
+    expect(wrapper.find(Grid)).toHaveProp('md', false);
+    expect(wrapper.find(Grid)).toHaveProp('xs', false);
   });
   it('should be possible to override the default card width', () => {
     const wrapper = shallow(<ViewCardComponent xs={4} md={2} xl={12} />);
@@ -27,7 +27,8 @@ describe('A View Card', () => {
     const wrapper = shallow(
       <ViewCardComponent>
         <a href="https://github.com/alanraison/vault-ui">Vault UI</a>
-      </ViewCardComponent>);
+      </ViewCardComponent>,
+    );
     expect(wrapper.find(Card)).toContainReact(<a href="https://github.com/alanraison/vault-ui">Vault UI</a>);
   });
   it('should accept css styles in the classes prop', () => {

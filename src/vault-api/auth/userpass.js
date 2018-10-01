@@ -1,19 +1,11 @@
 // @flow
 import UrlSpec from '../url-spec';
-import type AuthApi from '.';
 
 export default class UserPassApi {
-  authApi: AuthApi;
+  fetch: (UrlSpec, mixed) => Promise<any>;
 
-  login: (string, string) => Promise<string>;
-
-  constructor(authApi: AuthApi) {
-    this.authApi = authApi;
-    this.login = this.login.bind(this);
-  }
-
-  fetch(url: UrlSpec, init: any) {
-    return this.authApi.fetch(url.prefixPath('/userpass'), init);
+  constructor(fetcher: (UrlSpec, mixed) => Promise<any>) {
+    this.fetch = (url: UrlSpec, init: mixed) => fetcher(url.prefixPath('/userpass'), init);
   }
 
   login(username: string, password: string) {
