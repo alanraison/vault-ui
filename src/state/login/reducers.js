@@ -37,6 +37,11 @@ export default (state: LoginState = initialState, action: actions.LoginAction) =
         ...state,
         error: action.payload.err,
       };
+    case actions.LOGOUT:
+      return {
+        ...state,
+        loggedIn: false,
+      };
     case actions.ADD_POLICY: {
       if (!state.policies.has(action.payload.policy)) {
         const policies: Set<string> = new Set(state.policies);

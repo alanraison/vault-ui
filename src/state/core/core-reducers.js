@@ -4,6 +4,7 @@ import * as actions from '../actions';
 import sealStatus, { type SealStatusState } from '../seal-status/reducers';
 import login, { type LoginState } from '../login/reducers';
 import { UnauthenticatedVault } from '../../vault-api';
+import { Server } from 'tls';
 
 export type ErrorState = {
   err?: Error,
@@ -54,7 +55,39 @@ const vault = (
   }
 };
 
+export type ServerState = {
+  connected: boolean,
+  // sealStatus: SealStatusState,
+  loading: boolean,
+};
+const initialServerState: ServerState = {
+  connected: false,
+  loading: false,
+  // sealStatus: sealStatus(),
+};
+const server = (
+  state: ServerState = initialServerState,
+  action: actions.Action,
+): ServerState => {
+  switch (action.type) {
+    case actions.HEALTH_CHECK_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actions.HEALTH_CHECK_RESPONSE:
+      return {
+        ...state,
+        loading: false,
+        connected: true,
+      };
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
+  server,
   connected,
   error,
   login,
@@ -63,9 +96,8 @@ export default combineReducers({
 });
 
 export type AppState = {
-  connected: ConnectedState,
+  server: ServerState,
   error: ErrorState,
   login: LoginState,
-  sealStatus: SealStatusState,
   vault: VaultState,
 };

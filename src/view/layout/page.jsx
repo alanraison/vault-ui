@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import type { Theme } from '@material-ui/core';
 import classNames from 'classnames';
 import Header from './header';
 import NavDrawer from '../nav-drawer';
@@ -9,7 +10,7 @@ import Router from '../core/router';
 const drawerWidth = 240;
 
 type Props = {
-  classes: {
+  classes?: {
     root: string,
     appFrame: string,
     appBar: string,
@@ -29,12 +30,13 @@ export class PageComponent extends React.Component<Props, State> {
   static defaultProps = {
     classes: {
       root: '',
-      appFrame: '',
       appBar: '',
+      appFrame: '',
       appBarShift: '',
-      drawerPaper: '',
       content: '',
       contentShift: '',
+      drawerPaper: '',
+      drawerWidth: '',
     },
   };
 
@@ -75,7 +77,7 @@ export class PageComponent extends React.Component<Props, State> {
   }
 }
 
-const styles = theme => ({
+const styles = (theme: Theme) => ({
   root: {
     overflow: 'hidden',
   },

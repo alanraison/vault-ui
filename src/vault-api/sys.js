@@ -1,35 +1,14 @@
 // @flow
 import UrlSpec from './url-spec';
-import type Vault, { UnauthenticatedVault } from '.';
+import type Vault from '.';
 /**
  * The Vault API calls under the /sys mount which do not require authentication
  */
 export class UnauthenticatedSysApi {
-  +vault: UnauthenticatedVault;
+  fetch: (UrlSpec, mixed) => Promise<any>
 
-  health: ({
-    standbyok?: boolean,
-    activecode?: number,
-    sealedcode?: number,
-    standbycode?: number,
-  }) => Promise<string>;
-
-  sealStatus: () => Promise<string>;
-
-  unseal: ({
-    key?: string,
-    reset?: boolean,
-  }) => Promise<string>;
-
-  constructor(vault: UnauthenticatedVault) {
-    this.vault = vault;
-    this.health = this.health.bind(this);
-    this.sealStatus = this.sealStatus.bind(this);
-    this.unseal = this.unseal.bind(this);
-  }
-
-  fetch(url: UrlSpec, init: any) {
-    return this.vault.fetch(url.prefixPath('/v1/sys'), init);
+  constructor(fetcher: (UrlSpec, mixed) => Promise<any>) {
+    this.fetch = (urlSpec, init) => fetcher(urlSpec.prefixPath('/v1/sys'), init);
   }
 
   /**
@@ -85,27 +64,12 @@ export class UnauthenticatedSysApi {
  * The System API containing all authenticated requests.
  */
 export default class SysApi extends UnauthenticatedSysApi {
-  mounts: () => Promise<string>;
-
-  policies: () => Promise<string>;
-
-  policy: (p: string) => Promise<string>;
-
-  vault: Vault;
-
-  constructor(vault: Vault) {
-    super(vault);
-    this.mounts = this.mounts.bind(this);
-    this.policies = this.policies.bind(this);
-    this.policy = this.policy.bind(this);
-  }
-
   /**
    * Discover all the vault mounts
    *
    * @see {@link https://www.vaultproject.io/api/system/mounts.html}
    */
-  mounts() {
+  mounts(): Promise<string> {
     return this.fetch(new UrlSpec('/mounts'));
   }
 
@@ -114,14 +78,14 @@ export default class SysApi extends UnauthenticatedSysApi {
    *
    * @see {@link https://www.vaultproject.io/api/system/policy.html}
    */
-  policies() {
+  policies(): Promise<string> {
     return this.fetch(new UrlSpec('/policy'));
   }
 
   /**
    * Look up a named policy
    */
-  policy(name: string) {
+  policy(name: string): Promise<string> {
     return this.fetch(new UrlSpec(`/policy/${name}`));
   }
 }
