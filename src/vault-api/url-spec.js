@@ -2,9 +2,9 @@
 export default class UrlSpec {
   prefix: string;
 
-  queryParams: { [string]: mixed };
+  queryParams: { [string]: any };
 
-  constructor(prefix: string = '', queryParams: { [string]: mixed } = {}) {
+  constructor(prefix: string = '', queryParams: { [string]: any } = {}) {
     this.prefix = prefix;
     this.queryParams = queryParams;
   }

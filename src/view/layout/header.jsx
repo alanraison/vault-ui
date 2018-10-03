@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames';
+import { CircularProgress } from '@material-ui/core';
 import ProfileMenu from './profile-menu';
 
 const styles = () => ({
@@ -35,6 +35,7 @@ type Props = {
     grow?: string,
     hide: string,
   },
+  loading: boolean,
   menuDrawerOpen?: boolean,
   onMenuClick?: () => void,
 };
@@ -46,6 +47,7 @@ export const HeaderComponent = ({
     menuIcon: '',
     hide: '',
   },
+  loading,
   menuDrawerOpen = false,
   onMenuClick,
 }: Props) => (
@@ -55,7 +57,7 @@ export const HeaderComponent = ({
   >
     <Toolbar disableGutters={!menuDrawerOpen}>
       <IconButton
-        color="contrast"
+        color="inherit"
         aria-label="menu"
         className={classNames(classes.menuIcon, menuDrawerOpen && classes.hide)}
         onClick={onMenuClick}
@@ -65,6 +67,7 @@ export const HeaderComponent = ({
       <Typography variant="title" color="inherit" className={classNames(classes.grow)}>
         Vault
       </Typography>
+      { loading ? <CircularProgress variant="indeterminate" /> : null }
       <ProfileMenu />
     </Toolbar>
   </AppBar>
@@ -74,6 +77,7 @@ HeaderComponent.defaultProps = {
   classes: {
     flex: '',
     appBar: '',
+    hide: '',
   },
   menuDrawerOpen: false,
   onMenuClick: () => undefined,

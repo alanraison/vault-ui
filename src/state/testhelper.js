@@ -1,7 +1,7 @@
 // @flow
 import type { Action } from './actions';
 
-export default (actions: Action) => ({
+export default (actions: {[string]: (any, ?any) => Action}) => ({
   actionCreator(action: string, type: string, key?: string, payload: any) {
     describe(action, () => {
       const actual: Action = actions[action](payload);
@@ -18,7 +18,7 @@ export default (actions: Action) => ({
   errorActionCreator(action: string, type: string) {
     describe(action, () => {
       const error = new Error('test error');
-      const actual: Action = actions[action](error);
+      const actual: Action = actions[action](error, 'test');
       it(`should create a ${type} error`, () => {
         expect(actual.type).toEqual(type);
       });

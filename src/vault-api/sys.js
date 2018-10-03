@@ -1,6 +1,6 @@
 // @flow
 import UrlSpec from './url-spec';
-import type Vault from '.';
+
 /**
  * The Vault API calls under the /sys mount which do not require authentication
  */

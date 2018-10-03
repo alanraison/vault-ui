@@ -5,7 +5,7 @@ import { getVault } from '../core/core-selectors';
 export function* callGetSealStatus() {
   try {
     const vault = yield select(getVault);
-    const body = yield call(vault.sys.sealStatus);
+    const body = yield call([vault.sys, vault.sys.sealStatus]);
     yield put(actions.sealStatus.unsealStatusResponse(body));
   } catch (e) {
     yield put(actions.error(e, 'getting unseal status'));
@@ -23,7 +23,7 @@ export function* isSealed(action) {
 export function* callUnseal(action) {
   try {
     const vault = yield select(getVault);
-    const body = yield call(vault.sys.unseal, { key: action.payload.key });
+    const body = yield call([vault.sys, vault.sys.unseal], { key: action.payload.key });
     yield put(actions.sealStatus.unsealStatusResponse(body));
   } catch (e) {
     yield put(actions.error(e, 'unsealing vault'));

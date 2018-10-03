@@ -24,7 +24,7 @@ export class UnauthenticatedVault {
 
   constructor(vaultAddr: string) {
     this.vaultAddr = vaultAddr;
-    this.sys = new UnauthenticatedSysApi(this.fetch);
+    this.sys = new UnauthenticatedSysApi(this.fetch.bind(this));
   }
 
   fetch(url: UrlSpec, options: any) {
@@ -42,8 +42,8 @@ export default class Vault extends UnauthenticatedVault {
   constructor(vaultAddr: string, token: string) {
     super(vaultAddr);
     this.token = token;
-    this.sys = new SysApi(this.fetch);
-    this.auth = new AuthApi(this.fetch);
+    this.sys = new SysApi(this.fetch.bind(this));
+    this.auth = new AuthApi(this.fetch.bind(this));
   }
 
   fetch(url: UrlSpec, init: any) {

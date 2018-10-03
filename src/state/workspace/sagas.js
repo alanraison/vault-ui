@@ -7,7 +7,7 @@ import { debug } from '../core/core-sagas';
 
 export function* initialise(): Generator<Effect, void, void> {
   const vault: UnauthenticatedVault = yield select(getVault);
-  const policies = yield call(vault.sys.policies);
+  const policies = yield call([vault.sys, vault.sys.policies]);
   policies.map();
   yield put(debug(policies));
 }

@@ -11,14 +11,14 @@ const drawerWidth = 240;
 
 type Props = {
   classes?: {
-    root: string,
-    appFrame: string,
-    appBar: string,
-    appBarShift: string,
-    content: string,
-    contentShift: string,
-    drawerPaper: string,
-    drawerWidth: string,
+    root?: string,
+    appFrame?: string,
+    appBar?: string,
+    appBarShift?: string,
+    content?: string,
+    contentShift?: string,
+    drawerPaper?: string,
+    drawerWidth?: string,
   },
 };
 
@@ -40,15 +40,23 @@ export class PageComponent extends React.Component<Props, State> {
     },
   };
 
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      drawerOpen: false,
-    };
+  state = {
+    drawerOpen: false,
   }
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes = {
+        root: '',
+        appFrame: '',
+        appBar: '',
+        appBarShift: '',
+        drawerWidth: '',
+        drawerPaper: '',
+        content: '',
+        contentShift: '',
+      },
+    } = this.props;
     const { drawerOpen } = this.state;
     return (
       <div className={classes.root}>
@@ -58,6 +66,7 @@ export class PageComponent extends React.Component<Props, State> {
               appBar: classes.appBar,
               appBarShift: drawerOpen && classes.appBarShift,
             }}
+            loading={false}
             menuDrawerOpen={drawerOpen}
             onMenuClick={() => this.setState({ drawerOpen: true })}
           />

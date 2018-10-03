@@ -4,7 +4,6 @@ import * as actions from '../actions';
 import sealStatus, { type SealStatusState } from '../seal-status/reducers';
 import login, { type LoginState } from '../login/reducers';
 import { UnauthenticatedVault } from '../../vault-api';
-import { Server } from 'tls';
 
 export type ErrorState = {
   err?: Error,
