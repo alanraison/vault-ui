@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,6 +10,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames';
 import { CircularProgress } from '@material-ui/core';
 import ProfileMenu from './profile-menu';
+import type { State } from '../../state/reducers';
+import { getServerState } from '../../state/core/core-selectors';
 
 const styles = () => ({
   flex: {
@@ -67,7 +70,7 @@ export const HeaderComponent = ({
       <Typography variant="title" color="inherit" className={classNames(classes.grow)}>
         Vault
       </Typography>
-      { loading ? <CircularProgress variant="indeterminate" /> : null }
+      { loading ? <CircularProgress variant="indeterminate" color="inherit" /> : null }
       <ProfileMenu />
     </Toolbar>
   </AppBar>
@@ -83,4 +86,8 @@ HeaderComponent.defaultProps = {
   onMenuClick: () => undefined,
 };
 
-export default withStyles(styles, { name: 'VaultUIHeader' })(HeaderComponent);
+const mapStateToProps = (state: State) => ({
+  loading: getServerState(state).loading > 0,
+});
+
+export default connect(mapStateToProps)(withStyles(styles, { name: 'VaultUIHeader' })(HeaderComponent));

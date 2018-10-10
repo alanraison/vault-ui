@@ -1,4 +1,3 @@
-// @flow
 import uuid from 'uuid/v4';
 import reducer from './core-reducers';
 import { getAppState, getVault } from './core-selectors';
@@ -33,17 +32,6 @@ describe('Core reducers:', () => {
       };
       const newState = reducer(oldState, actions.sealStatus.unsealRequest(''));
       expect(newState.error).toEqual(oldState.error);
-    });
-  });
-  describe('Connected reducer', () => {
-    it('should set the connected status if the health check succeeds', () => {
-      const newState = reducer({}, actions.healthCheckResponse());
-      expect(newState.connected).toEqual(true);
-    });
-    it('should not respond to other actions', () => {
-      const oldState = reducer(undefined, { type: 'foo' });
-      const newState = reducer(oldState, actions.clearError());
-      expect(newState).toEqual(oldState);
     });
   });
   describe('AppState selector', () => {

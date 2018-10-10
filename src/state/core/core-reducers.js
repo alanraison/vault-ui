@@ -26,19 +26,6 @@ const error = (
   }
 };
 
-export type ConnectedState = boolean;
-const connected = (
-  state: ConnectedState = false,
-  action: actions.HealthCheckResponseAction,
-): ConnectedState => {
-  switch (action.type) {
-    case actions.HEALTH_CHECK_RESPONSE:
-      return true;
-    default:
-      return state;
-  }
-};
-
 export type VaultState = UnauthenticatedVault | null;
 const vault = (
   state: VaultState = null,
@@ -54,40 +41,49 @@ const vault = (
   }
 };
 
-export type ServerState = {
-  connected: boolean,
-  // sealStatus: SealStatusState,
-  loading: boolean,
-};
-const initialServerState: ServerState = {
-  connected: false,
-  loading: false,
-  // sealStatus: sealStatus(),
-};
-const server = (
-  state: ServerState = initialServerState,
+const connected = (
+  state = false,
   action: actions.Action,
-): ServerState => {
+) => {
   switch (action.type) {
-    case actions.HEALTH_CHECK_REQUEST:
-      return {
-        ...state,
-        loading: true,
-      };
     case actions.HEALTH_CHECK_RESPONSE:
-      return {
-        ...state,
-        loading: false,
-        connected: true,
-      };
+      return true;
     default:
       return state;
   }
 };
 
+const loading = (
+  state = 0,
+  action: actions.Action,
+) => {
+  switch (action.type) {
+    case actions.HEALTH_CHECK_REQUEST:
+    case actions.sealStatus.UNSEAL_STATUS_REQUEST:
+    case actions.login.LOGIN_START:
+      return state + 1;
+    case actions.HEALTH_CHECK_RESPONSE:
+    case actions.sealStatus.UNSEAL_STATUS_RESPONSE:
+    case actions.login.LOGIN_SUCCESS:
+    case actions.login.LOGIN_ERROR:
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+export type ServerState = {
+  connected: boolean,
+  loading: number,
+};
+
+const server = combineReducers({
+  connected,
+  loading,
+});
+
 export default combineReducers({
   server,
-  connected,
   error,
   login,
   sealStatus,

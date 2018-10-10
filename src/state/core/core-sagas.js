@@ -12,6 +12,7 @@ import routesMap from './core-routes';
 export function* healthCheck() {
   try {
     const vault = yield select(selectors.getVault);
+    yield put(actions.healthCheckRequest());
     yield call([vault.sys, vault.sys.health], { sealedcode: 200 });
     yield put(actions.healthCheckResponse());
     return true;
