@@ -56,7 +56,7 @@
     "redux-first-router": "2.0.1",
     "redux-first-router-link": "1.4.2",
     "redux-logger": "3.0.6",
-    "redux-saga": "0.16.0"
+    "redux-saga": "0.16.1"
   },
   "jest": {
     "coverageReporters": [
