@@ -9,11 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames';
 import { CircularProgress } from '@material-ui/core';
+import type { Theme } from '@material-ui/core';
 import ProfileMenu from './profile-menu';
 import type { State } from '../../state/reducers';
 import { getServerState } from '../../state/core/core-selectors';
 
-const styles = () => ({
+const styles = (theme: Theme) => ({
   flex: {
     flex: 1,
   },
@@ -27,6 +28,10 @@ const styles = () => ({
   hide: {
     display: 'none',
   },
+  disconnected: {
+    backgroundColor: theme.palette.grey['800'],
+  },
+  appBar: {},
 });
 
 type Props = {
@@ -37,8 +42,10 @@ type Props = {
     flex?: string,
     grow?: string,
     hide: string,
+    disconnected: string,
   },
   loading: boolean,
+  connected: boolean,
   menuDrawerOpen?: boolean,
   onMenuClick?: () => void,
 };
@@ -49,14 +56,16 @@ export const HeaderComponent = ({
     appBarShift: '',
     menuIcon: '',
     hide: '',
+    disconnected: '',
   },
   loading,
+  connected,
   menuDrawerOpen = false,
   onMenuClick,
 }: Props) => (
   <AppBar
     position="static"
-    className={classNames(classes.appBar, menuDrawerOpen && classes.appBarShift)}
+    className={classNames(classes.appBar, !connected && classes.disconnected, menuDrawerOpen && classes.appBarShift)}
   >
     <Toolbar disableGutters={!menuDrawerOpen}>
       <IconButton
@@ -81,6 +90,7 @@ HeaderComponent.defaultProps = {
     flex: '',
     appBar: '',
     hide: '',
+    disconnected: '',
   },
   menuDrawerOpen: false,
   onMenuClick: () => undefined,
@@ -88,6 +98,7 @@ HeaderComponent.defaultProps = {
 
 const mapStateToProps = (state: State) => ({
   loading: getServerState(state).loading > 0,
+  connected: getServerState(state).connected,
 });
 
 export default connect(mapStateToProps)(withStyles(styles, { name: 'VaultUIHeader' })(HeaderComponent));
