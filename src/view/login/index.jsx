@@ -20,7 +20,7 @@ export function LoginComponent({
   onClick,
 }) {
   return (
-    <ViewCard>
+    <ViewCard xs={12} md={6}>
       <CardHeader title="Login to Vault." />
       <CardContent>
         <Slide in={!method} transitionAppear={false} direction="right" unmountOnExit>

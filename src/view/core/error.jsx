@@ -15,7 +15,7 @@ export function ErrorComponent({
   onDismiss,
 }) {
   return (
-    <ViewCard>
+    <ViewCard xs={12} md={6}>
       <CardHeader title="Error" />
       <CardContent>
         <Typography>

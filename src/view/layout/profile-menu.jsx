@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import type { Ref } from 'react';
 import { connect } from 'react-redux';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import RootRef from '@material-ui/core/RootRef';
@@ -48,9 +47,7 @@ class ProfileMenuComponent extends React.Component<
       name,
       onLogout,
     } = this.props;
-    const {
-      profileOpen,
-    } = this.state;
+    const { profileOpen } = this.state;
     return (
       loggedIn ? (
         <div>

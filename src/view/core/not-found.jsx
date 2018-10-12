@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import ViewCard from './view-card';
 
 const NotFound = () => (
-  <ViewCard>
+  <ViewCard xs={12} md={6}>
     <CardHeader title="Error" />
     <CardContent>
       <Typography>

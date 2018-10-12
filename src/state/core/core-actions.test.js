@@ -1,8 +1,13 @@
-// @flow
 import * as actions from './core-actions';
 import testActionCreators from '../testhelper';
 
-const { initialise, healthCheckRequest, healthCheckResponse, clearError, error } = actions;
+const {
+  initialise,
+  healthCheckRequest,
+  healthCheckResponse,
+  clearError,
+  error,
+} = actions;
 
 const tests = testActionCreators({
   initialise,
@@ -22,6 +27,6 @@ describe('action creators', () => {
     it('should set the error source', () => {
       const actual = error(new Error(), 'test source');
       expect(actual.payload.source).toEqual('test source');
-    })
-  })
+    });
+  });
 });

@@ -8,6 +8,7 @@ import List from '@material-ui/core/List';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
 // import ListItemText from '@material-ui/core/ListItemText';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import type { Theme } from '@material-ui/core';
 import Settings from './settings';
 import Logout from './logout';
 
@@ -18,6 +19,7 @@ const styles = (theme: Theme) => ({
     justifyContent: 'flex-end',
     ...theme.mixins.toolbar,
   },
+  drawerPaper: {},
 }: {
   drawerHeader: {
     display: string,
@@ -55,7 +57,7 @@ export function NavDrawerComponent({
 
 NavDrawerComponent.propTypes = {
   classes: PropTypes.shape({
-    drawerPaper: PropTypes.object,
+    drawerPaper: PropTypes.string,
   }),
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,

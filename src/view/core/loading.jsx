@@ -6,7 +6,7 @@ import ViewCard from './view-card';
 
 export default function LoadingComponent() {
   return (
-    <ViewCard>
+    <ViewCard xs={12} md={6}>
       <CardHeader title="Loading..." />
       <CardContent>
         <CircularProgress />
