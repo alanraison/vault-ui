@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import { getAppState } from '../../state/core/core-selectors';
 import LoginMethodSettings from './login-methods';
 import ViewCard from '../core/view-card';
@@ -16,8 +15,8 @@ export default function Settings({
       <CardContent>
         {
           loading
-          ? <div />
-          : <LoginMethodSettings />
+            ? <div />
+            : <LoginMethodSettings />
         }
       </CardContent>
     </ViewCard>

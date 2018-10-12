@@ -7,7 +7,7 @@ export function UnsealCountComponent({
 }) {
   return (
     <span>
-      Please enter {count} unseal key{count === 1 ? '' : 's'} to unlock Vault.
+      {`Please enter ${count} unseal key${count === 1 ? '' : 's'} to unlock Vault.`}
     </span>
   );
 }

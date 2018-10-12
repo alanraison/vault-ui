@@ -67,7 +67,7 @@ export const HeaderComponent = ({
       >
         <MenuIcon />
       </IconButton>
-      <Typography variant="title" color="inherit" className={classNames(classes.grow)}>
+      <Typography variant="h6" color="inherit" className={classNames(classes.grow)}>
         Vault
       </Typography>
       { loading ? <CircularProgress variant="indeterminate" color="inherit" /> : null }

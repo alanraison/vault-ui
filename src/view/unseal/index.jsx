@@ -46,7 +46,7 @@ export class UnsealComponent extends React.Component<Props, ComponentState> {
         </CardContent>
         <CardActions>
           <Button
-            variant="raised"
+            variant="contained"
             color="primary"
             onClick={() => onSubmit(key)}
           >

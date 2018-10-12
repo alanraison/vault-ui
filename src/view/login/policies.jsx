@@ -14,16 +14,22 @@ export class PoliciesComponent extends React.Component {
     this.state = { policy: '' };
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
+
   handleKeyPress(e) {
+    const { onAdd } = this.props;
+    const { policy } = this.state;
     if (e.keyCode === 13) {
-      this.props.onAdd(this.state.policy);
+      onAdd(policy);
     }
   }
+
   render() {
+    const { policy } = this.state;
+    const { policies, onDelete } = this.props;
     return (
       <div>
         <FormGroup row>
-          <Typography type="display1">
+          <Typography type="h4">
             Policies
             <TextField
               id="policy-input"
@@ -31,17 +37,17 @@ export class PoliciesComponent extends React.Component {
               fullWidth
               onChange={e => this.setState({ policy: e.target.value })}
               onKeyUp={this.handleKeyPress}
-              value={this.state.policy}
+              value={policy}
             />
           </Typography>
         </FormGroup>
         <FormGroup row>
           {
-            this.props.policies.map(p => (
+            policies.map(p => (
               <Chip
                 label={p}
                 key={p}
-                onRequestDelete={() => this.props.onDelete(p)}
+                onRequestDelete={() => onDelete(p)}
               />
             ))
           }
