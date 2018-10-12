@@ -44,9 +44,13 @@ export const healthCheckRequest = (): HealthCheckRequestAction => ({
 export const HEALTH_CHECK_RESPONSE = 'vault-ui/core/HEALTH_CHECK_RESPONSE';
 export type HealthCheckResponseAction = {
   +type: 'vault-ui/core/HEALTH_CHECK_RESPONSE';
+  +payload: {
+    +ok: boolean,
+  }
 }
-export const healthCheckResponse = (): HealthCheckResponseAction => ({
+export const healthCheckResponse = ({ ok }: { ok: boolean }): HealthCheckResponseAction => ({
   type: HEALTH_CHECK_RESPONSE,
+  payload: { ok },
 });
 
 export type CoreAction =

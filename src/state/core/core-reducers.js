@@ -47,7 +47,7 @@ const connected = (
 ) => {
   switch (action.type) {
     case actions.HEALTH_CHECK_RESPONSE:
-      return true;
+      return action.payload.ok;
     default:
       return state;
   }

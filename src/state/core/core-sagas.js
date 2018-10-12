@@ -14,9 +14,10 @@ export function* healthCheck() {
     const vault = yield select(selectors.getVault);
     yield put(actions.healthCheckRequest());
     yield call([vault.sys, vault.sys.health], { sealedcode: 200 });
-    yield put(actions.healthCheckResponse());
+    yield put(actions.healthCheckResponse({ ok: true }));
     return true;
   } catch (e) {
+    yield put(actions.healthCheckResponse({ ok: false }));
     yield put(actions.error(e, 'connecting to Vault'));
   }
   return false;
