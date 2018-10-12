@@ -1,7 +1,7 @@
-// @flow
 import { runSaga } from 'redux-saga';
-import { login, startLogin } from './sagas';
+import { login, startLogin, logout } from './sagas';
 import * as actions from './actions';
+import * as coreActions from '../core/core-actions';
 import * as methods from './methods/sagas';
 
 jest.mock('./methods/sagas');
@@ -57,5 +57,17 @@ describe('startLogin saga', () => {
       expect(dispatched).toHaveLength(1);
       expect(dispatched[0]).toEqual(actions.loginSuccess({ token: true }));
     });
+  });
+});
+
+describe('logout saga handler', () => {
+  it('should reinitialise the vault', async () => {
+    const dispatched = [];
+    await runSaga({
+      getState: () => ({ app: { vault: { token: 'abcde' } } }),
+      dispatch: action => dispatched.push(action),
+    }, logout).done;
+    expect(dispatched).toHaveLength(1);
+    expect(dispatched[0].type).toEqual(coreActions.INITIALISE);
   });
 });
