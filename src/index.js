@@ -11,7 +11,6 @@ import {
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
-import createHistory from 'history/createBrowserHistory';
 import { connectRoutes } from 'redux-first-router';
 
 import Page from './view/layout/page';
@@ -22,7 +21,6 @@ import { UnauthenticatedVault } from './vault-api';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const history = createHistory();
 const routesMap = {
   [actions.HOME]: '/',
   [actions.login.LOGIN_SUCCESS]: '/',
@@ -37,7 +35,7 @@ const {
   reducer: location,
   middleware: routingMiddleware,
   enhancer,
-} = connectRoutes(history, routesMap);
+} = connectRoutes(routesMap);
 
 const middlewares = applyMiddleware(sagaMiddleware, routingMiddleware, logger);
 const store = createStore(
