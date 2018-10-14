@@ -35,9 +35,9 @@ const styles = (theme: Theme) => ({
 });
 
 type Props = {
-  classes?: {
-    appBar?: string,
-    appBarShift?: string,
+  classes: {
+    appBar: string,
+    appBarShift: string,
     menuIcon?: string,
     flex?: string,
     grow?: string,
@@ -51,13 +51,7 @@ type Props = {
 };
 
 export const HeaderComponent = ({
-  classes = {
-    appBar: '',
-    appBarShift: '',
-    menuIcon: '',
-    hide: '',
-    disconnected: '',
-  },
+  classes,
   loading,
   connected,
   menuDrawerOpen = false,
@@ -90,12 +84,6 @@ export const HeaderComponent = ({
 );
 
 HeaderComponent.defaultProps = {
-  classes: {
-    flex: '',
-    appBar: '',
-    hide: '',
-    disconnected: '',
-  },
   menuDrawerOpen: false,
   onMenuClick: () => undefined,
 };
