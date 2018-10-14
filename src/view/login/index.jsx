@@ -11,8 +11,8 @@ import ViewCard from '../core/view-card';
 import Chooser from './chooser';
 import AdvancedLoginOptions from './advanced-login-options';
 import methods from './methods';
-import { getLogin } from '../../state/login/selectors';
-import { loginStart } from '../../state/login/actions';
+import { getLogin } from '../../state/user/login/selectors';
+import { loginStart } from '../../state/user/login/actions';
 
 export function LoginComponent({
   method,

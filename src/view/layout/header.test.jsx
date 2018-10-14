@@ -26,61 +26,51 @@ describe('The Header component', () => {
   });
   it('should not merge the appBarShift classes if the menu is not open', () => {
     const classes = {
-      appBar: {
-        bar: 'baz',
-      },
-      appBarShift: {
-        foo: 'quux',
-      },
+      appBar: 'baz',
+      appBarShift: 'quux',
+      disconnected: 'bar',
     };
     shallow(<HeaderComponent
       menuDrawerOpen={false}
       classes={classes}
+      connected
     />);
-    expect(classNames).toHaveBeenCalledWith({ bar: 'baz' }, false);
+    expect(classNames).toHaveBeenCalledWith('baz', false, false);
   });
   it('should merge the appBarShift classes if the menu is open', () => {
     const classes = {
-      appBar: {
-        bar: 'baz',
-      },
-      appBarShift: {
-        foo: 'quux',
-      },
+      appBar: 'baz',
+      appBarShift: 'quux',
+      disconnected: 'bar',
     };
     shallow(<HeaderComponent
       menuDrawerOpen
       classes={classes}
+      connected
     />);
-    expect(classNames).toHaveBeenCalledWith({ bar: 'baz' }, { foo: 'quux' });
+    expect(classNames).toHaveBeenCalledWith('baz', false, 'quux');
   });
   it('should hide the menu button if the menu drawer is open', () => {
     const classes = {
-      menuIcon: {},
-      hide: {
-        display: 'none',
-      },
+      menuIcon: 'menuIcon',
+      hide: 'hide',
     };
     shallow(<HeaderComponent
       menuDrawerOpen
       classes={classes}
     />);
-    expect(classNames).toHaveBeenCalledWith({}, { display: 'none' });
+    expect(classNames).toHaveBeenCalledWith('menuIcon', 'hide');
   });
   it('should show the menu button if the menu drawer is closed', () => {
     const classes = {
-      menuIcon: {
-        foo: 'bar',
-      },
-      hide: {
-        baz: 'quux',
-      },
+      menuIcon: 'bar',
+      hide: 'quux',
     };
     shallow(<HeaderComponent
       menuDrawerOpen={false}
       classes={classes}
     />);
-    expect(classNames).toHaveBeenCalledWith({ foo: 'bar' }, false);
+    expect(classNames).toHaveBeenCalledWith('bar', false);
   });
   it('should do nothing if no menu click handler has been supplied', () => {
     const wrapper = shallow(<HeaderComponent />);

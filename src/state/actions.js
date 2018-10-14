@@ -1,6 +1,6 @@
 // @flow
 import * as core from './core/core-actions';
-import * as login from './login/actions';
+import * as login from './user/login/actions';
 import * as sealStatus from './seal-status/actions';
 import * as serverSettings from './server-settings/actions';
 

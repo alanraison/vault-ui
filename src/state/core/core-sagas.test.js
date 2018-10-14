@@ -36,7 +36,7 @@ describe('healthCheck', () => {
       }, healthCheck).done;
     });
     it('should dispatch a success healthCheckResponse action', async () => {
-      expect(dispatched).toContainEqual(actions.healthCheckResponse());
+      expect(dispatched).toContainEqual(actions.healthCheckResponse({ ok: true }));
     });
     it('should return true', async () => {
       expect(result).toBeTruthy();

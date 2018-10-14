@@ -2,7 +2,7 @@ import * as actions from '../actions';
 import * as core from './core-sagas';
 import * as sealStatus from '../seal-status/sagas';
 // import * as workspace from '../workspace/sagas';
-import * as login from '../login/sagas';
+import * as login from '../user/login/sagas';
 
 export default ({
   [actions.INITIALISE]: core.initialise,

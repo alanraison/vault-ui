@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import type { Action } from '../../state/actions';
-import * as loginActions from '../../state/login/actions';
+import * as loginActions from '../../state/user/login/actions';
 import { getVault } from '../../state/core/core-selectors';
 import type { State } from '../../state/reducers';
 import Vault from '../../vault-api';

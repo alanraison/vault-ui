@@ -1,5 +1,5 @@
 // @flow
-import Vault from '../../vault-api';
+import Vault from '../../../vault-api';
 import * as methods from './methods/actions';
 
 export const START_CHOOSE_LOGIN_METHOD = 'vault-ui/login/START_CHOOSE_LOGIN_METHOD';

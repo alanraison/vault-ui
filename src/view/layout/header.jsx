@@ -65,7 +65,11 @@ export const HeaderComponent = ({
 }: Props) => (
   <AppBar
     position="static"
-    className={classNames(classes.appBar, !connected && classes.disconnected, menuDrawerOpen && classes.appBarShift)}
+    className={classNames(
+      classes.appBar,
+      (!connected) && classes.disconnected,
+      menuDrawerOpen && classes.appBarShift,
+    )}
   >
     <Toolbar disableGutters={!menuDrawerOpen}>
       <IconButton
@@ -76,7 +80,7 @@ export const HeaderComponent = ({
       >
         <MenuIcon />
       </IconButton>
-      <Typography variant="h6" color="inherit" className={classNames(classes.grow)}>
+      <Typography variant="h6" color="inherit" className={classes.grow}>
         Vault
       </Typography>
       { loading ? <CircularProgress variant="indeterminate" color="inherit" /> : null }

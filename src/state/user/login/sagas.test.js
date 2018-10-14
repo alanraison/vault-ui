@@ -1,7 +1,7 @@
 import { runSaga } from 'redux-saga';
 import { login, startLogin, logout } from './sagas';
 import * as actions from './actions';
-import * as coreActions from '../core/core-actions';
+import * as coreActions from '../../core/core-actions';
 import * as methods from './methods/sagas';
 
 jest.mock('./methods/sagas');

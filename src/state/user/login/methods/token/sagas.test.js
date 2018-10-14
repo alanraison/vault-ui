@@ -1,8 +1,8 @@
 import { runSaga } from 'redux-saga';
-import Vault from '../../../../vault-api';
+import Vault from '../../../../../vault-api';
 import tokenSaga from './sagas';
 
-jest.mock('../../../../vault-api');
+jest.mock('../../../../../vault-api');
 
 describe('token login saga', () => {
   const token = 'fake-token';

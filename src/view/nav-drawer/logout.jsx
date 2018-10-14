@@ -6,7 +6,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Logout from '@material-ui/icons/ExitToApp';
-import { logout } from '../../state/login/actions';
+import { logout } from '../../state/user/login/actions';
 
 export function LogoutMenuComponent({
   classes,

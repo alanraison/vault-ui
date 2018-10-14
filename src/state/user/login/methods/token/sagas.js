@@ -1,5 +1,5 @@
 import { call } from 'redux-saga/effects';
-import Vault from '../../../../vault-api';
+import Vault from '../../../../../vault-api';
 
 export default function* token(vault, data) {
   const tok = data.loginData;
