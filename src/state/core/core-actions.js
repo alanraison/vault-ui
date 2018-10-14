@@ -48,7 +48,7 @@ export type HealthCheckResponseAction = {
     +ok: boolean,
   }
 }
-export const healthCheckResponse = ({ ok }: { ok: boolean }): HealthCheckResponseAction => ({
+export const healthCheckResponse = (ok: boolean): HealthCheckResponseAction => ({
   type: HEALTH_CHECK_RESPONSE,
   payload: { ok },
 });
