@@ -8204,9 +8204,9 @@ redux-first-router-link@1.4.2:
     prop-types "15.5.10"
     rudy-match-path "^0.3.0"
 
-redux-first-router@2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-2.0.6.tgz#e978f068ba74cfea0bf7524f94097a454115bfdc"
+redux-first-router@2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-2.0.7.tgz#0e565d9f66804d11c5e584e2a5d2dbd9d0de4c9c"
   dependencies:
     rudy-history "^1.0.0"
     rudy-match-path "^0.3.0"
