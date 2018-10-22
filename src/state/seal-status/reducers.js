@@ -41,11 +41,6 @@ export default (
         ...state,
         sealed: true,
       };
-    case actions.sealStatus.EDIT_UNSEAL_KEY:
-      return {
-        ...state,
-        unsealKey: action.payload.value,
-      };
     case actions.sealStatus.UNSEAL_COMPLETE:
       return {
         ...state,
