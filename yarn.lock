@@ -866,10 +866,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@material-ui/core@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-3.2.0.tgz#81e1a4dc66ea666d58da784a4e0addfbef1c3d80"
-  integrity sha512-fThWolLWQoUMV8exLxe9NqfegFFHmV8T7kJBvk3iX47c7TrAw4Vgyvft4CApnQoYIZbrRfPMig5ovYDvmTmMCg==
+"@material-ui/core@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-3.3.0.tgz#f30838db346faa54f3a23dd795ebaf043144e331"
+  integrity sha512-h340FXiJyAEQ1+xnOBaqLib9f6M82DEn0CicMVRekwTtPhFR9dDYdJT30WDPczS2piNiQ9kuFfFcAE9UTbwcXQ==
   dependencies:
     "@babel/runtime" "7.1.2"
     "@types/jss" "^9.5.6"
@@ -9428,10 +9428,10 @@ redux-first-router-link@1.4.2:
     prop-types "15.5.10"
     rudy-match-path "^0.3.0"
 
-redux-first-router@2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-2.0.6.tgz#e978f068ba74cfea0bf7524f94097a454115bfdc"
-  integrity sha512-ad8+dyMrPY5KCMXTw4o+s1abqHP9d99Cri0nMXXO2oF6F0JYaW+ALtzhgoAwDznQPCQe3CdHtx4/YAhXGSRi8Q==
+redux-first-router@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-2.1.0.tgz#43ddb30d9bf073ffb5aa1806b7a345fdb84c8edd"
+  integrity sha512-WLGCDWutpbyQX7ocgA8Cx5KHFTDUobEAuVT2ug9RA0AwXelEFVLtkfbVp7eWcc25xpWJVvncLzfZpfLXiKno2w==
   dependencies:
     rudy-history "^1.0.0"
     rudy-match-path "^0.3.0"
