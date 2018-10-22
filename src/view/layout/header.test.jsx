@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 
 import { HeaderComponent } from './header';
+import { CircularProgress } from '@material-ui/core';
 
 jest.mock('classnames');
 
@@ -68,5 +69,19 @@ describe('The Header component', () => {
     const wrapper = shallow(<HeaderComponent classes={classes} />);
     wrapper.find(IconButton).simulate('click');
     // No assertion; test for coverage.
+  });
+  it('should show a loading component when loading prop is set', () => {
+    const wrapper = shallow(<HeaderComponent
+      classes={classes}
+      loading
+    />);
+    expect(wrapper.find(CircularProgress)).toExist();
+  });
+  it('should not show a loading component when loading prop is false', () => {
+    const wrapper = shallow(<HeaderComponent
+      classes={classes}
+      loading={false}
+    />);
+    expect(wrapper.find(CircularProgress)).not.toExist();
   });
 });
