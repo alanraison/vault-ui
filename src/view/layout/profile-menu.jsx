@@ -25,7 +25,7 @@ type ComponentState = {
   profileOpen: boolean,
 }
 
-class ProfileMenuComponent extends React.Component<
+export class ProfileMenuComponent extends React.Component<
   PropsFromState & DispatchProps,
   ComponentState
 > {
