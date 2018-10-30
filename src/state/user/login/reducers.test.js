@@ -35,6 +35,12 @@ describe('Login reducer', () => {
     const newState = loginReducer(state, actions.login.addPolicy('policy-a'));
     expect(newState).toEqual({ policies: new Set(['policy-a']) });
   });
+
+  it('should logout', () => {
+    const state = { loggedIn: true };
+    const newState = loginReducer(state, actions.login.logout());
+    expect(newState.loggedIn).toBeFalsy();
+  });
   describe('with a login method set', () => {
     const myMethodState = { key: 'test' };
     const state = { method: 'myMethod', myMethod: myMethodState };
