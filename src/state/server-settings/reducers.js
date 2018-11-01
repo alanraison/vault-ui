@@ -5,7 +5,7 @@ export type ServerSettingsState = {
   loading?: boolean,
 };
 
-const initialState = {};
+export const initialState = {};
 
 export default (
   state: ServerSettingsState = initialState,
