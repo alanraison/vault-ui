@@ -8,13 +8,13 @@ import ViewCard from '../core/view-card';
 export function WorkspaceComponent() {
   return [
     <Hidden smDown>
-      <ViewCard md={3}>
+      <ViewCard id="recent" md={3}>
         <CardContent>
           Recent Paths
         </CardContent>
       </ViewCard>
     </Hidden>,
-    <ViewCard xs={12} md={8}>
+    <ViewCard id="address" xs={12} md={8}>
       <CardContent>
         <TextField
           id="path"
