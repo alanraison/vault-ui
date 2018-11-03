@@ -9,7 +9,8 @@ import Loading from './loading';
 describe('The core page router', () => {
   it('should display something if no routes match', () => {
     const wrapper = shallow(<RouteContainer route="SOME UNKNOWN ROUTE" />);
-    expect(wrapper).toContainReact(React.createElement(routesMap[NOT_FOUND]));
+    const NotFound = routesMap[NOT_FOUND];
+    expect(wrapper).toContainReact(<NotFound />);
   });
   it('should display the desired components when the actions are found', () => {
     const wrapper = shallow(<RouteContainer route={actions.INITIALISE} />);
