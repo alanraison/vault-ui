@@ -9577,10 +9577,9 @@ redux-first-router-link@1.4.2:
     prop-types "15.5.10"
     rudy-match-path "^0.3.0"
 
-redux-first-router@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-2.1.0.tgz#43ddb30d9bf073ffb5aa1806b7a345fdb84c8edd"
-  integrity sha512-WLGCDWutpbyQX7ocgA8Cx5KHFTDUobEAuVT2ug9RA0AwXelEFVLtkfbVp7eWcc25xpWJVvncLzfZpfLXiKno2w==
+redux-first-router@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-2.1.1.tgz#500acc1f78b545e8d0da7b430c5842a17dbb8619"
   dependencies:
     rudy-history "^1.0.0"
     rudy-match-path "^0.3.0"
