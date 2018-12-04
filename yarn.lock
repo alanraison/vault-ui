@@ -8338,12 +8338,14 @@ reduce-css-calc@^2.0.0:
     css-unit-converter "^1.1.1"
     postcss-value-parser "^3.3.0"
 
-redux-first-router-link@1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-1.4.2.tgz#2cd5274fe12539f617068bb2412f329f437813d2"
+redux-first-router-link@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-2.0.0.tgz#017e56fdec25b4e8aa21af2bdfdee8a96ac1ef04"
+  integrity sha512-jUuHYv3GzLzrSMxodidXhOSTB34T6oGWO8s4VT2E2uF79WCFoZWFLTCCAOBwenIbtcp7Zv86+ydN28CPGl2Rzg==
   dependencies:
     path-to-regexp "^1.7.0"
     prop-types "15.5.10"
+    rudy-history "^1.0.0"
     rudy-match-path "^0.3.0"
 
 redux-first-router@2.1.1:
