@@ -8347,10 +8347,10 @@ reduce-css-calc@^2.0.0:
     css-unit-converter "^1.1.1"
     postcss-value-parser "^3.3.0"
 
-redux-first-router-link@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-2.0.1.tgz#4aba3c6b135293eedcc15e2fa38574be1e9ef140"
-  integrity sha512-B3+KxISV8FUqDa6A+C4ozoEe8n1OYO1m+GR3+roBo87HUl/05E6suFHEyBrA0iC9etGCPwNncluofxP1Zab/Dw==
+redux-first-router-link@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-2.1.0.tgz#f4017d9dfb2158c2f00eaf43d67645f5c28211f4"
+  integrity sha512-p4KFLANgvxBzrhu2rETTK5W6bjPM8PqugSNAi5Al9rcAQk+yi2LncbHzU3yM1yQOvOSDjP16gw7Vq8LbU7+FRg==
   dependencies:
     path-to-regexp "^1.7.0"
     prop-types "^15.5.10"
