@@ -1,0 +1,35 @@
+{
+  "name": "vault-ui",
+  "version": "1.0.0",
+  "description": "A free Vault UI",
+  "private": true,
+  "license": "GPLv3",
+  "repository": {
+    "url": "git@github.com:alanraison/vault-ui.git",
+    "type": "git"
+  },
+  "author": "Alan Raison <alan.raison@users.sourceforge.net>",
+  "proxy": "http://localhost:8200",
+  "devDependencies": {
+    "react-scripts": "2.1.3"
+  },
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
