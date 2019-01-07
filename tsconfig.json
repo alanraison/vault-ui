@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "outDir": "./build/",
+    "target": "es6",
+    "strictNullChecks": true,
+    "jsx": "react",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "api/**/*",
+    "ui/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}

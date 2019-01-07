@@ -1,0 +1,4 @@
+/**
+ * UnauthenticatedVault
+ */
+export class UnauthenticatedVault {}

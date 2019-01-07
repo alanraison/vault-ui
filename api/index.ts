@@ -1,0 +1,1 @@
+export { UnauthenticatedVault } from './unauthenticatedvault';
