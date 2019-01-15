@@ -1,0 +1,19 @@
+{
+  "name": "vault-api",
+  "version": "1.0.0",
+  "description": "Vault API for Vault UI",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alanraison/vault-ui.git"
+  },
+  "author": "Alan Raison <alan.raison@users.sourceforge.net>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/alanraison/vault-ui/issues"
+  },
+  "homepage": "https://github.com/alanraison/vault-ui#readme"
+}

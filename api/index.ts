@@ -1,1 +1,1 @@
-export { UnauthenticatedVault } from './unauthenticatedvault';
+export { UnauthenticatedVault } from './UnauthenticatedVault';
