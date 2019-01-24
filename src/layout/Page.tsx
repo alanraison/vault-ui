@@ -3,8 +3,9 @@ import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import classNames from 'classnames';
 
-import { Header } from './Header';
-import { Router } from './Router';
+import Header from './Header';
+import Router from './Router';
+import NavDrawer from '../nav-drawer/NavDrawer';
 
 const drawerWidth = 240;
 const useStyle = makeStyles((theme: Theme) => ({
@@ -19,6 +20,7 @@ const useStyle = makeStyles((theme: Theme) => ({
   },
   appBar: {
     position: 'absolute',
+    marginRight: 20,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -68,6 +70,13 @@ export const Page = ({
 }) => {
   const [drawerOpen, setOpen] = useState(false);
   const classes = useStyle();
+
+  function handleMenuClick() {
+    if (drawerOpen) {
+      setOpen(false);
+    }
+  }
+
   return (
     <div className={classes.root}>
       <div className={classes.appFrame}>
@@ -80,6 +89,12 @@ export const Page = ({
           menuDrawerOpen={drawerOpen}
           onMenuClick={() => setOpen(!drawerOpen)}
           connected={true} /* TODO: inject from state */
+        />
+        <NavDrawer
+          open={drawerOpen}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+          classes={{ paper: classes.drawerPaper }}
         />
         <main className={classNames(classes.contentClass, {
           [classes.contentShift]: drawerOpen,

@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/alanraison/vault-ui/issues"
   },
-  "homepage": "https://github.com/alanraison/vault-ui#readme"
+  "homepage": "https://github.com/alanraison/vault-ui#readme",
+  "devDependencies": {
+    "@types/jest": "^23.3.13",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5"
+  }
 }

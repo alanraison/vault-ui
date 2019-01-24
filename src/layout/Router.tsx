@@ -1,3 +1,4 @@
 import React from 'react';
+import { Workspace } from '../workspace';
 
-export const Router = () => <div>Router</div>
+export default function Router() { return <Workspace/> }
