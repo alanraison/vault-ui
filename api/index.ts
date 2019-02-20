@@ -1,1 +1,0 @@
-export { UnauthenticatedVault } from './UnauthenticatedVault';

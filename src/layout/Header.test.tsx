@@ -19,3 +19,19 @@ test('it should indicate when vault is connected', () => {
   );
   getByTestId('')
 })
+
+test('when the user is logged out there should not be a profile menu', () => {
+  const { getByTestId } = render(
+    <Header
+      loading={false}
+      connected={true}
+      menuDrawerOpen={false}
+      classes={{
+        appBar: '',
+        appBarShift: '',
+      }}
+      onMenuClick={noop}
+    />
+  );
+  expect(getByTestId('profile-menu')).toBeNull();
+})

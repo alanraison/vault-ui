@@ -73,7 +73,7 @@ export default function Header({
           Vault
         </Typography>
         { loading ? <CircularProgress variant="indeterminate" color="inherit" /> : null }
-        <ProfileMenu />
+        <ProfileMenu data-testid="profile-menu"/>
       </Toolbar>
     </AppBar>
   );

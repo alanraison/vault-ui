@@ -13,24 +13,43 @@ jobs:
     - run:
         name: yarn
         command: yarn
+    - run:
+        name: Update lockfile
+        command: greenkeeper-lockfile-update
     - save_cache:
         key: dependency-cache-{{ arch }}-{{ checksum "yarn.lock" }}
         paths:
         - node_modules
         - ~/.cache/yarn
+    - persist_to_workspace:
+        root: node_modules
+        paths:
+        - '*'
+  test:
+    docker:
+    - image: circleci/node:10
+    steps:
+    - checkout
+    - attach_workspace:
+        at: node_modules
     - run:
-        name: Update lockfile
-        command: greenkeeper-lockfile-update
-    - run:
+        name: test
         command: yarn test --coverage --coveragePathIgnorePatterns=src/setupTests.js \
             --coveragePathIgnorePatterns=src/actions/testhelper.js
+    - run:
+        name: Install greenkeeper-lockfile and coveralls
+        command: yarn global add greenkeeper-lockfile@1 coveralls
     - run:
         name: Upload lockfile
         command: greenkeeper-lockfile-upload
     - run:
+        name: Upload coverage
         command: cat coverage/lcov.info | node_modules/.bin/coveralls
 workflows:
   version: 2
   build_and_test:
     jobs:
     - build
+    - test:
+        requires:
+        - build
