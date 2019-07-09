@@ -40,7 +40,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "@material-ui/core": "3.7.1",
@@ -55,7 +57,8 @@
     "redux-first-router": "2.1.1",
     "redux-first-router-link": "2.1.0",
     "redux-logger": "3.0.6",
-    "redux-saga": "0.16.2"
+    "redux-saga": "0.16.2",
+    "snyk": "^1.192.4"
   },
   "jest": {
     "coverageReporters": [
@@ -71,5 +74,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "snyk": true
 }
